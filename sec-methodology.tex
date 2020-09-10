@@ -164,6 +164,26 @@ However, we have verified that results are fairly independent of this exact choi
 predictions on the training data did not change significantly when the architecture 
 was increased by a factor of two.
 
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=99mm]{plots/architecture.pdf}
+    \caption{Schematic representation of our ML model for the ZLP, Eq.~(\ref{eq:ZLPmodelNN}).
+      %
+      The input is an $n_I$-dimensional array containing $\Delta E$ and other
+      operation variables of the microscope such as $E_b$ and $t_{\rm exp}$.
+      %
+      The output is the predicted value of the intensity of the zero-loss peak
+      distribution associated to those specific input variables.
+      %
+      The architecture is chosen to be $n_I$-10-15-5-1, with sigmoid activation functions
+      in all layers except for a ReLU in the output neuron.
+    }
+    \label{fig:architecture}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 A schematic representation of this model
 is displayed in Fig.~\ref{fig:architecture}.
 %
@@ -188,25 +208,7 @@ is displayed in Fig.~\ref{fig:architecture}.
  %
  This means that we need to define a suitable regularisation strategy, which 
  will be explained later onwards in Sect.~\ref{sec:training}.
-  
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=99mm]{plots/architecture.pdf}
-    \caption{Schematic representation of our ML model for the ZLP, Eq.~(\ref{eq:ZLPmodelNN}).
-      %
-      The input is an $n_I$-dimensional array containing $\Delta E$ and other
-      operation variables of the microscope such as $E_b$ and $t_{\rm exp}$.
-      %
-      The output is the predicted value of the intensity of the zero-loss peak
-      distribution associated to those specific input variables.
-      %
-      The architecture is chosen to be $n_I$-10-15-5-1, with sigmoid activation functions
-      in all layers except for a ReLU in the output neuron.
-    }
-    \label{fig:architecture}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 
 \subsection{Uncertainty propagation}
@@ -219,29 +221,36 @@ Also, the input data can be described by a large number of different neural
 network configurations, each with a different functional form of $I_{\rm ZLP}^{(\rm mod)}$
 but representing the data equally well.
 %
-The Monte Carlo replica method can be used to estimate these uncertainties
+The Monte Carlo replica method can be used to estimate these two sources of 
+uncertainties, introduced by the experimental data and the methodology,
 and to propagate them to physical predictions.
 %
-The basic idea  is to exploit the available information
-on experimental measurements (central values, uncertainties, and correlations)
-to construct a sampling of the probability density in the space of 
-the data, here the ZLP.
+The basic idea is twofold:
+first, it is useful to represent problems with a possibility of non-gaussian errors
+through the use of their central values and uncertainties, which are obtained from a Monte Carlo sample
+as their averages and standard deviations.
 %
-By means of the NN training, this information is then propagated
-to a probability density in the space of $I_{\rm ZLP}$ models.
+Second, when a problem requires a reconstruction of discrete sampling without making assumptions on its 
+functional form, neural networks are useful to work as unbiased interpolators. 
+%
+It is the combination of both techniques that explains the use of neural networks to separate a smooth
+signal from background signals, while the MC samples handles the fluctuations within the data.\\
 
 Let us assume that we have $n_{\rm dat}$ independent measurements of the ZLP intensity, for
-different or the same values of the input parameters. The collective of inputs are given as $\{z_i\}$:
+different conmbinations of input parameters. %
+The collective of inputs are given as $\{z_i\}$:
 \be
 I^{\rm (exp)}_{{\rm ZLP},i}\lp \{ z_i  \}\rp = I^{\rm (exp)}_{{\rm ZLP},i}\lp  \Delta E_i, E_{b,i}, t_{\rm exp,i},\ldots \rp
 \,, \quad i=1,\ldots,n_{\rm dat} \, .
 \ee
+
 The Monte Carlo method is based on the generation
 of a large number $N_{\rm rep}$ of Monte Carlo replicas of these original data points
-by means of a multi-Gaussian distribution, with the central values and covariance matrices
+by means of a multi-Gaussian distribution, where we use the central values and covariance matrices
 from the input measurements. 
 %
-The fully comprehensive description of the generation of Monte Carlo replicas goes as follows:
+The strategy of the generation of Monte Carlo replicas goes as follows: we create for each original data point
+($I^{\rm (exp)}_{{\rm ZLP},i}$) an ensemble of artificial pseudo points (replicas): 
 \be
 \label{eq:MCreplicaGen}
   I_{{\rm ZLP},i}^{{\rm (art)}(k)}  =  I^{\rm (exp)}_{{\rm ZLP},i} + r_i^{({\rm stat},k)}\sigma_i^{\rm (stat)}
@@ -252,82 +261,51 @@ The fully comprehensive description of the generation of Monte Carlo replicas go
   and systematic uncertainties (the latter divided into  $n_{\rm sys}$ fully point-to-point correlated
   sources) and $\{r_i^{(k)}\}$ are Gaussianly distributed random numbers.
   %
-  The values of $\{r_i^{(k)}\}$ are
-  generated with a suitable correlation pattern to ensure
-  that averages over the set of Monte Carlo
-  replicas reproduce the original experimental covariance matrix, namely
-  \be
-  \la  \lp I_{{\rm ZLP},i}^{{\rm (art)}(k)} - \la I_{{\rm ZLP},i}^{{\rm (art)}}\ra_{\rm rep}\rp
-  \lp I_{{\rm ZLP},j}^{{\rm (art)}(k)} - \la I_{{\rm ZLP},j}^{{\rm (art)}}\ra_{\rm rep}\rp\ra_{\rm rep}
-  \label{eq:expcovariance} = {\rm cov}^{(\rm exp)}\lp I_{{\rm ZLP},i},I_{{\rm ZLP},j}\rp  \, ,
-  \ee
-  where averages are evaluated over the $N_{\rm rep}$ replicas that compose the sample.
-  %
 In the end, each $k$-th replica contains exactly
 as many data points as the original set.
 
-%%>>>>>>>>>>>>>>>>>>>>%%>>>>>>>>>>>>>>>%%>>>>>>>>>>>>>>>%%>>>>>>>>>>>>>>>%%>>>>>>>>>>>>>>>%%>>>>>>>>>>>>>>>%%>>>>>>>>>>>>>>>%%>>>>>>>>>>>>>>>%%>>>>>>>>>>>>>>>>>>>>>>>>>>>%%%HIER GEBLEVEN!!
 In our case we have no information on experimental correlations betweem the measurements and
 for this reason we assume that there is only one single source of point-by-point systematic
 uncertainty, which is uncorrelated. 
 %
-In other words, to each data point we associate an individual uncertainty, and we 
-discard covariances between datapoints. 
+  Should in the future correlations became available, it would be straightforward to extend
+  our model to that case.
 %
-It is denoted as $\sigma_i^{\rm (exp)}$ and we 
+In other words, to each data point we associate an individual uncertainty and we 
+discard covariances between datapoints, which means that we drop the last term in Eq.~\ref{eq:MCreplicaGen} 
+and it reduces to
+\be
+\label{eq:MCreplicaGen2}
+  I_{{\rm ZLP},i}^{{\rm (art)}(k)}  =  I^{\rm (exp)}_{{\rm ZLP},i} + r_i^{({\rm stat},k)}\sigma_i^{\rm (stat)}
+\ee
+
+The statistical errors on the training data are derived by means of what is called
+equal width discretization (EWD) and it works as follows.
 %
 The input measurements will be composed in general on subsets of EEL
 spectra taken with identical operation conditions.
 %
-Assume that for a specific set of operation conditions we have $N_{\rm sp}$ of such spectra.
+For example, we have one specific set of $N_{sp}$ spectra all recorded with 
+the same exposure time and beam energy. 
 %
-Since the values of $\Delta E$ will be different in each case, first of all
+Since the range of $\Delta E$ over which the spectra have been recorded
+is usually not the same in each case, first of 
 we uniformise a common binning in $\Delta E$ with $n_{\rm dat}$ entries.
 %
 Then we evaluate the total experimental uncertainty in one of these bins as
 \be
-\label{eq:sigmaiexp}
 \sigma_i^{\rm (exp)} = \lp \frac{1}{N_{\rm sp}-1} \sum_{l=1}^{N_{\rm sp}}
 \lp I_{{\rm ZLP},i}^{ ({\rm exp}),l}  - \la I_{{\rm ZLP},i}^{ ({\rm exp})}\ra_{N_{\rm sp}} \rp \rp^{1/2} \, ,\,
 i=1,\ldots, n_{\rm dat} \, ,
 \ee
-that is, as the standard deviation over the $N_{\rm sp}$ spectra.
+that is, $\sigma_i^{\rm (exp)}$ is the standard deviation in bin $i$ calculated over the $N_{\rm sp}$ spectra.
 %
 This uncertainty is separately evaluated for each set of microscope operation conditions
 for which data available.
 %
-In the absence of correlations Eqns.~(\ref{eq:MCreplicaGen}) and~(\ref{eq:expcovariance}) thus
-simplify to
-\be
- I_{{\rm ZLP},i}^{{\rm (art)}(k)}  =  I^{\rm (exp)}_{{\rm ZLP},i} + r_i^{({\rm tot},k)}\sigma_i^{\rm (exp)}
- \,, \quad \forall i
-  \,, \quad k=1,\ldots,N_{\rm rep} \,.\,\, \,
-\ee
-and
-  \bea
-  \la  \lp I_{{\rm ZLP},i}^{{\rm (art)}(k)} - \la I_{{\rm ZLP},i}^{{\rm (art)}}\ra_{\rm rep}\rp
-  \lp I_{{\rm ZLP},j}^{{\rm (art)}(k)} - \la I_{{\rm ZLP},j}^{{\rm (art)}}\ra_{\rep}\rp\ra_{\rm rep} =
-  \sigma_i^{\rm (exp)}\sigma_j^{\rm (exp)}\delta_{ij} \, ,
-  \eea
-  given that the experimental covariance matrix is diagonal.
-  %
-  Should in the future correlations became available, it would be straightforward to extend
-  our model to that case.
-
 The value of the number of generated MC replicas, $N_{\rm rep}$, should be chosen such that the set of replicas 
 models accurately the probability distribution of original training data.
 %
-To verify that this is the case,
-Fig.~\ref{fig:MC} displays a comparison between the original experimental central values
-$I_{{\rm ZLP},i}^{\rm (exp)}$ (left) and the corresponding 
-total uncertainties $\sigma_i^{(\rm exp)}$ (right panel) with the results of averaging over
-a sample of $N_{\rm rep}$ Monte Carlo replicas generated by means of
-Eq.~(\ref{eq:MCreplicaGen}) for different number of replicas.
-%
-We find that $N_{\rm rep}=500$ is a value that ensures that both
-the central values and uncertainties are reasonably well reproduced,
-and we adopt it in what follows.
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[t]
     \centering
@@ -342,6 +320,30 @@ and we adopt it in what follows.
     \label{fig:MC}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+
+To verify that this is the case,
+Fig.~\ref{fig:MC} displays a comparison between the original experimental central values
+$I_{{\rm ZLP},i}^{\rm (exp)}$ (left) and the corresponding 
+total uncertainties $\sigma_i^{(\rm exp)}$ (right panel) with the results of averaging over
+a sample of $N_{\rm rep}$ Monte Carlo replicas generated by means of
+Eq.~(\ref{eq:MCreplicaGen}) for different number of replicas.
+%
+We find that $N_{\rm rep}=500$ is a value that ensures that both
+the central values and uncertainties are reasonably well reproduced,
+and we adopt it in what follows.
+%
+A schematic overview of the method just described can be observed in Fig~\ref{fig:MCscheme}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.7\textwidth]{plots/MCscheme.pdf}
+    \caption{Representation of MC generation (needs to be higher up).}
+    \label{fig:MCscheme}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+
+
 
 \subsection{Training strategy}
 \label{sec:training}

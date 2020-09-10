@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.8.26)  10 SEP 2020 16:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.8.26)  10 SEP 2020 18:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -759,47 +759,77 @@ Underfull \hbox (badness 10000) in paragraph at lines 140--155
 
  []
 
-
-LaTeX Warning: Reference `sec:neuralnetworks' on page 15 undefined on input lin
-e 187.
-
-<plots/architecture.pdf, id=465, 670.505pt x 604.2575pt>
+<plots/architecture.pdf, id=463, 670.505pt x 604.2575pt>
 File: plots/architecture.pdf Graphic file (type pdf)
 <use plots/architecture.pdf>
-Package pdftex.def Info: plots/architecture.pdf  used on input line 195.
+Package pdftex.def Info: plots/architecture.pdf  used on input line 171.
 (pdftex.def)             Requested size: 281.68228pt x 253.85095pt.
-[15] [16 <./plots/architecture.pdf>]
-<plots/MC.pdf, id=616, 1300.86pt x 505.89pt>
+
+LaTeX Warning: Reference `sec:neuralnetworks' on page 15 undefined on input lin
+e 207.
+
+[15 <./plots/architecture.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 216--238
+
+ []
+
+[16]
+<plots/MC.pdf, id=613, 1300.86pt x 505.89pt>
 File: plots/MC.pdf Graphic file (type pdf)
 <use plots/MC.pdf>
-Package pdftex.def Info: plots/MC.pdf  used on input line 334.
+Package pdftex.def Info: plots/MC.pdf  used on input line 312.
 (pdftex.def)             Requested size: 450.69417pt x 175.26556pt.
- [17 <./plots/MC.pdf>] [18]
-<plots/EELS_toy.pdf, id=703, 361.35pt x 252.945pt>
+<plots/MCscheme.pdf, id=619, 1019.81pt x 764.8575pt>
+File: plots/MCscheme.pdf Graphic file (type pdf)
+<use plots/MCscheme.pdf>
+Package pdftex.def Info: plots/MCscheme.pdf  used on input line 340.
+(pdftex.def)             Requested size: 318.66948pt x 239.0057pt.
+ [17 <./plots/MC.pdf>] [18 <./plots/MCscheme.pdf>] [19]
+<plots/EELS_toy.pdf, id=761, 361.35pt x 252.945pt>
 File: plots/EELS_toy.pdf Graphic file (type pdf)
 <use plots/EELS_toy.pdf>
-Package pdftex.def Info: plots/EELS_toy.pdf  used on input line 541.
+Package pdftex.def Info: plots/EELS_toy.pdf  used on input line 543.
 (pdftex.def)             Requested size: 405.16698pt x 283.62067pt.
- [19] [20 <./plots/EELS_toy.pdf>]) (./sec-results-vacuum.tex [21]
-<plots/intensity_to_error_ratio.pdf, id=781, 361.35pt x 252.945pt>
+ [20 <./plots/EELS_toy.pdf>]) (./sec-results-vacuum.tex [21]
+
+LaTeX Warning: Reference `eq:sigmaiexp' on page 22 undefined on input line 90.
+
+
+LaTeX Warning: Reference `eq:sigmaiexp' on page 22 undefined on input line 99.
+
+[22]
+<plots/intensity_to_error_ratio.pdf, id=837, 361.35pt x 252.945pt>
 File: plots/intensity_to_error_ratio.pdf Graphic file (type pdf)
 <use plots/intensity_to_error_ratio.pdf>
 Package pdftex.def Info: plots/intensity_to_error_ratio.pdf  used on input line
  106.
 (pdftex.def)             Requested size: 341.43306pt x 239.0034pt.
- [22] [23 <./plots/intensity_to_error_ratio.pdf>]
-<plots/chi2_distributions.pdf, id=858, 542.025pt x 361.35pt>
+
+
+LaTeX Warning: Reference `eq:sigmaiexp' on page 23 undefined on input line 117.
+
+
+
+LaTeX Warning: Reference `eq:sigmaiexp' on page 23 undefined on input line 117.
+
+
+[23 <./plots/intensity_to_error_ratio.pdf>]
+<plots/chi2_distributions.pdf, id=904, 542.025pt x 361.35pt>
 File: plots/chi2_distributions.pdf Graphic file (type pdf)
 <use plots/chi2_distributions.pdf>
 Package pdftex.def Info: plots/chi2_distributions.pdf  used on input line 228.
 (pdftex.def)             Requested size: 223.07211pt x 148.71686pt.
-<plots/train_val_error_271.pdf, id=859, 433.62pt x 289.08pt>
+<plots/train_val_error_271.pdf, id=905, 433.62pt x 289.08pt>
 File: plots/train_val_error_271.pdf Graphic file (type pdf)
 <use plots/train_val_error_271.pdf>
 Package pdftex.def Info: plots/train_val_error_271.pdf  used on input line 229.
 
 (pdftex.def)             Requested size: 223.07211pt x 148.71686pt.
-<plots/deltaE_dependence_vacuum.pdf, id=871, 1011.78pt x 650.43pt>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<plots/deltaE_dependence_vacuum.pdf, id=917, 1011.78pt x 650.43pt>
 File: plots/deltaE_dependence_vacuum.pdf Graphic file (type pdf)
 <use plots/deltaE_dependence_vacuum.pdf>
 Package pdftex.def Info: plots/deltaE_dependence_vacuum.pdf  used on input line
@@ -810,36 +840,49 @@ Overfull \hbox (28.45273pt too wide) in paragraph at lines 295--310
  [][] 
  []
 
-[24 <./plots/chi2_distributions.pdf> <./plots/train_val_error_271.pdf
+[24] [25 <./plots/chi2_distributions.pdf> <./plots/train_val_error_271.pdf
 
 pdfTeX warning: pdflatex (file ./plots/train_val_error_271.pdf): PDF inclusion:
  multiple pdfs with page group included in a single page
 >]
-<plots/prediction_with_cut_10ms.pdf, id=973, 433.62pt x 289.08pt>
+<plots/prediction_with_cut_10ms.pdf, id=1026, 433.62pt x 289.08pt>
 File: plots/prediction_with_cut_10ms.pdf Graphic file (type pdf)
 <use plots/prediction_with_cut_10ms.pdf>
 Package pdftex.def Info: plots/prediction_with_cut_10ms.pdf  used on input line
  356.
 (pdftex.def)             Requested size: 223.07211pt x 148.71686pt.
-<plots/prediction_with_cut_100ms.pdf, id=974, 433.62pt x 289.08pt>
+<plots/prediction_with_cut_100ms.pdf, id=1027, 433.62pt x 289.08pt>
 File: plots/prediction_with_cut_100ms.pdf Graphic file (type pdf)
 <use plots/prediction_with_cut_100ms.pdf>
 Package pdftex.def Info: plots/prediction_with_cut_100ms.pdf  used on input lin
 e 357.
 (pdftex.def)             Requested size: 223.07211pt x 148.71686pt.
- [25]
-<plots/Ebeam_extrapolation.pdf, id=983, 361.35pt x 252.945pt>
+ [26 <./plots/deltaE_dependence_vacuum.pdf>]
+<plots/Ebeam_extrapolation.pdf, id=1082, 361.35pt x 252.945pt>
 File: plots/Ebeam_extrapolation.pdf Graphic file (type pdf)
 <use plots/Ebeam_extrapolation.pdf>
 Package pdftex.def Info: plots/Ebeam_extrapolation.pdf  used on input line 411.
 
 (pdftex.def)             Requested size: 223.07211pt x 156.1527pt.
-<plots/time_extrapolation.pdf, id=984, 361.35pt x 252.945pt>
+<plots/time_extrapolation.pdf, id=1083, 361.35pt x 252.945pt>
 File: plots/time_extrapolation.pdf Graphic file (type pdf)
 <use plots/time_extrapolation.pdf>
 Package pdftex.def Info: plots/time_extrapolation.pdf  used on input line 412.
 (pdftex.def)             Requested size: 223.07211pt x 156.1527pt.
- [26 <./plots/deltaE_dependence_vacuum.pdf>]) (./sec-results-sample.tex
+ [27 <./plots/prediction_with_cut_10ms.pdf> <./plots/prediction_with_cut_100ms.
+pdf
+
+pdfTeX warning: pdflatex (file ./plots/prediction_with_cut_100ms.pdf): PDF incl
+usion: multiple pdfs with page group included in a single page
+> <./plots/Ebeam_extrapolation.pdf
+
+pdfTeX warning: pdflatex (file ./plots/Ebeam_extrapolation.pdf): PDF inclusion:
+ multiple pdfs with page group included in a single page
+> <./plots/time_extrapolation.pdf
+
+pdfTeX warning: pdflatex (file ./plots/time_extrapolation.pdf): PDF inclusion: 
+multiple pdfs with page group included in a single page
+>]) (./sec-results-sample.tex
 Overfull \hbox (8.70644pt too wide) in paragraph at lines 1--1
 []\OT1/cmr/bx/n/17.28 ZLP sub-trac-tion and bandgap de-ter-mi-na-tion in WS$[]$
  
@@ -857,60 +900,50 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 1.
 
-[27 <./plots/prediction_with_cut_10ms.pdf> <./plots/prediction_with_cut_100ms.p
-df
-
-pdfTeX warning: pdflatex (file ./plots/prediction_with_cut_100ms.pdf): PDF incl
-usion: multiple pdfs with page group included in a single page
-> <./plots/Ebeam_extrapolation.pdf
-
-pdfTeX warning: pdflatex (file ./plots/Ebeam_extrapolation.pdf): PDF inclusion:
- multiple pdfs with page group included in a single page
-> <./plots/time_extrapolation.pdf
-
-pdfTeX warning: pdflatex (file ./plots/time_extrapolation.pdf): PDF inclusion: 
-multiple pdfs with page group included in a single page
->]
-<plots/Spectra_location.pdf, id=1221, 556.0775pt x 529.98pt>
+<plots/Spectra_location.pdf, id=1268, 556.0775pt x 529.98pt>
 File: plots/Spectra_location.pdf Graphic file (type pdf)
 <use plots/Spectra_location.pdf>
 Package pdftex.def Info: plots/Spectra_location.pdf  used on input line 46.
 (pdftex.def)             Requested size: 396.06015pt x 377.47717pt.
- [28 <./plots/Spectra_location.pdf>] [29]
+[28] [29 <./plots/Spectra_location.pdf>]
 Overfull \hbox (2.77216pt too wide) in alignment at lines 256--264
  [][][] []
  []
 
 [30]
-<plots/SubtractedEELS_plot_sp14.pdf, id=1374, 1300.86pt x 505.89pt>
+<plots/SubtractedEELS_plot_sp14.pdf, id=1420, 1300.86pt x 505.89pt>
 File: plots/SubtractedEELS_plot_sp14.pdf Graphic file (type pdf)
 <use plots/SubtractedEELS_plot_sp14.pdf>
 Package pdftex.def Info: plots/SubtractedEELS_plot_sp14.pdf  used on input line
  342.
 (pdftex.def)             Requested size: 450.69417pt x 175.26556pt.
- [31 <./plots/SubtractedEELS_plot_sp14.pdf>]
-<plots/Stability_plots_sp14.pdf, id=1450, 1011.78pt x 361.35pt>
+ [31]
+<plots/Stability_plots_sp14.pdf, id=1443, 1011.78pt x 361.35pt>
 File: plots/Stability_plots_sp14.pdf Graphic file (type pdf)
 <use plots/Stability_plots_sp14.pdf>
 Package pdftex.def Info: plots/Stability_plots_sp14.pdf  used on input line 413
 .
 (pdftex.def)             Requested size: 450.69417pt x 160.96289pt.
- [32 <./plots/Stability_plots_sp14.pdf>]
-<plots/SubtractedEELS_plot_sp4.pdf, id=1503, 650.43pt x 505.89pt>
+ [32 <./plots/SubtractedEELS_plot_sp14.pdf>]
+<plots/SubtractedEELS_plot_sp4.pdf, id=1513, 650.43pt x 505.89pt>
 File: plots/SubtractedEELS_plot_sp4.pdf Graphic file (type pdf)
 <use plots/SubtractedEELS_plot_sp4.pdf>
 Package pdftex.def Info: plots/SubtractedEELS_plot_sp4.pdf  used on input line 
 460.
 (pdftex.def)             Requested size: 273.14923pt x 212.44919pt.
-<plots/subtracted_spectra_comp.pdf, id=1515, 722.7pt x 252.945pt>
+ [33 <./plots/Stability_plots_sp14.pdf> <./plots/SubtractedEELS_plot_sp4.pdf
+
+pdfTeX warning: pdflatex (file ./plots/SubtractedEELS_plot_sp4.pdf): PDF inclus
+ion: multiple pdfs with page group included in a single page
+>]
+<plots/subtracted_spectra_comp.pdf, id=1608, 722.7pt x 252.945pt>
 File: plots/subtracted_spectra_comp.pdf Graphic file (type pdf)
 <use plots/subtracted_spectra_comp.pdf>
 Package pdftex.def Info: plots/subtracted_spectra_comp.pdf  used on input line 
 508.
 (pdftex.def)             Requested size: 450.69417pt x 157.74286pt.
-) (./sec-summary.tex [33 <./plots/SubtractedEELS_plot_sp4.pdf>]
-[34 <./plots/subtracted_spectra_comp.pdf>]) (./app-code.tex) (./thesis.bbl
-[35] [36] [37] [38])
+) (./sec-summary.tex [34 <./plots/subtracted_spectra_comp.pdf>])
+(./app-code.tex) (./thesis.bbl [35] [36] [37] [38])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 247.
  [39]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 247.
@@ -929,13 +962,13 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 247.
  ) 
 Here is how much of TeX's memory you used:
- 9437 strings out of 482056
- 142245 string characters out of 5937675
- 418826 words of memory out of 5000000
- 24693 multiletter control sequences out of 15000+600000
+ 9443 strings out of 482056
+ 142395 string characters out of 5937675
+ 421579 words of memory out of 5000000
+ 24699 multiletter control sequences out of 15000+600000
  551523 words of font info for 95 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 41i,16n,63p,815b,452s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,16n,63p,815b,454s stack positions out of 5000i,500n,10000p,200000b,80000s
  </Users/laurienroest/Library/texlive/2020basic/texmf-var/fonts/pk/ljfour/jkn
 appen/ec/tcrm1200.600pk></usr/local/texlive/2020basic/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2020basic/texmf-dist/fonts/type
@@ -960,10 +993,10 @@ usr/local/texlive/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
 ti12.pfb></usr/local/texlive/2020basic/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmtt12.pfb></usr/local/texlive/2020basic/texmf-dist/fonts/type1/public/amsfon
 ts/symbols/msbm10.pfb>
-Output written on thesis.pdf (39 pages, 4424654 bytes).
+Output written on thesis.pdf (39 pages, 4449403 bytes).
 PDF statistics:
- 1766 PDF objects out of 2073 (max. 8388607)
- 1055 compressed objects within 11 object streams
- 194 named destinations out of 1000 (max. 500000)
- 300 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1813 PDF objects out of 2073 (max. 8388607)
+ 1085 compressed objects within 11 object streams
+ 193 named destinations out of 1000 (max. 500000)
+ 305 words of extra memory for PDF output out of 10000 (max. 10000000)
 
