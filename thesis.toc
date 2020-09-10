@@ -1,0 +1,25 @@
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
+\contentsline {section}{\numberline {2}Fundamentals of Electron Energy Loss Spectroscopy}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}EEL spectra}{5}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Energy resolution}{6}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}ZLP subtraction}{8}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Transition metal dichalcogenides and WS$_2$}{9}{section.3}%
+\contentsline {section}{\numberline {4}Fundamentals of Neural Networks}{11}{section.4}%
+\contentsline {section}{\numberline {5}Neural network determination of the ZLP}{13}{section.5}%
+\contentsline {subsection}{\numberline {5.1}ZLP parametrisation}{14}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Uncertainty propagation}{15}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Training strategy}{17}{subsection.5.3}%
+\contentsline {paragraph}{Training of vacuum spectra.}{18}{section*.12}%
+\contentsline {paragraph}{Training of sample spectra.}{19}{section*.13}%
+\contentsline {section}{\numberline {6}ZLP parametrisation for vacuum spectra}{21}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Training settings}{22}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Fit quality}{24}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Dependence on the electron energy loss}{24}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Dependence on beam energy and exposure time }{25}{subsection.6.4}%
+\contentsline {section}{\numberline {7}ZLP subtraction and bandgap determination in WS$_2$}{27}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Training dataset}{27}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Subtraction procedure}{29}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Bandgap analysis of sample A}{31}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Bandgap analysis of sample B}{33}{subsection.7.4}%
+\contentsline {section}{\numberline {8}Summary and outlook}{33}{section.8}%
+\contentsline {section}{\numberline {A}Installation and usage of {\tt EELSfitter}}{35}{appendix.A}%

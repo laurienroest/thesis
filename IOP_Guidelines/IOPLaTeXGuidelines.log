@@ -1,0 +1,331 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.6.9)  22 JUL 2020 08:58
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**IOPLaTeXGuidelines.tex
+(./IOPLaTeXGuidelines.tex
+LaTeX2e <2020-02-02> patch level 5
+L3 programming layer <2020-03-06> (./iopart.cls
+Document Class: iopart 1996/06/10 v0.0 IOP Journals LaTeX article class
+(./iopart12.clo
+File: iopart12.clo 1997/01/15 v1.0 LaTeX2e file (size option)
+)
+\c@jnl=\count167
+\c@section=\count168
+\c@subsection=\count169
+\c@subsubsection=\count170
+\c@paragraph=\count171
+\c@subparagraph=\count172
+\c@figure=\count173
+\c@table=\count174
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\indentedwidth=\skip49
+\mathindent=\dimen134
+\c@eqnval=\count175
+)
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.
+def
+File: l3backend-pdfmode.def 2020-03-12 L3 backend support: PDF mode
+\l__kernel_color_stack_int=\count176
+\l__pdf_internal_box=\box45
+)
+No file IOPLaTeXGuidelines.aux.
+\openout1 = `IOPLaTeXGuidelines.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <17.28> on input line 49.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 49.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 61.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 61.
+
+LaTeX Warning: Reference `jlab1' on page 1 undefined on input line 65.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 96.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 96.
+
+LaTeX Warning: Reference `jlab1' on page 1 undefined on input line 103.
+
+
+LaTeX Warning: Reference `except' on page 1 undefined on input line 136.
+
+
+LaTeX Warning: Reference `jlab1' on page 1 undefined on input line 142.
+
+[1
+
+{/usr/local/texlive/2020basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+[2]
+
+LaTeX Warning: Reference `figinc' on page 3 undefined on input line 168.
+
+
+LaTeX Warning: Reference `figinc' on page 3 undefined on input line 184.
+
+
+LaTeX Warning: Reference `fname' on page 3 undefined on input line 185.
+
+[3]
+Underfull \hbox (badness 4492) in paragraph at lines 203--208
+[]\OT1/cmr/m/n/12 For the nu-mer-i-cal (Van-cou-ver) ref-er-ence style we rec-o
+m-mend that au-
+ []
+
+
+Underfull \hbox (badness 6625) in paragraph at lines 203--208
+\OT1/cmr/m/n/12 thors use [][]\OT1/cmtt/m/n/12 unsrt.bst[]\OT1/cmr/m/n/12 ; thi
+s does not quite fol-low the style of pub-
+ []
+
+
+Underfull \hbox (badness 1675) in paragraph at lines 203--208
+\OT1/cmr/m/n/12 lished ar-ti-cles in our jour-nals but this is not a prob-lem. 
+Al-ter-na-tively
+ []
+
+
+Underfull \hbox (badness 3323) in paragraph at lines 203--208
+\OT1/cmr/m/n/12 closely matches that in pub-lished ar-ti-cles. The file is avai
+l-able from
+ []
+
+
+Underfull \hbox (badness 4353) in paragraph at lines 208--217
+\OT1/cmr/m/n/12 the [][]\OT1/cmtt/m/n/12 harvard.sty []\OT1/cmr/m/n/12 in conju
+nction with the [][]\OT1/cmtt/m/n/12 jphysicsB.bst []\OT1/cmr/m/n/12 BibTeX sty
+le
+ []
+
+
+Underfull \hbox (badness 1077) in paragraph at lines 208--217
+\OT1/cmr/m/n/12 file. These, and accompanying documentation, can be downloaded 
+from 
+ []
+
+
+Underfull \hbox (badness 1147) in paragraph at lines 208--217
+[][]\OT1/cmtt/m/n/12 http://www.ctan.org/tex-archive/macros/latex/contrib/harva
+rd/[]\OT1/cmr/m/n/12 . Note
+ []
+
+[4] [5] [6]
+
+LaTeX Warning: Reference `arttype' on page 7 undefined on input line 339.
+
+
+Underfull \hbox (badness 2644) in paragraph at lines 337--350
+[]\OT1/cmr/m/n/12 For article types other than papers, [][]\OT1/cmtt/m/n/12 iop
+art.cls []\OT1/cmr/m/n/12 has a generic heading
+ []
+
+[7]
+
+LaTeX Warning: Reference `startsample' on page 8 undefined on input line 405.
+
+
+LaTeX Warning: Reference `jlab1' on page 8 undefined on input line 426.
+
+[8]
+
+LaTeX Warning: Reference `xrefs' on page 9 undefined on input line 447.
+
+
+LaTeX Warning: Reference `eqnum' on page 9 undefined on input line 448.
+
+[9]
+
+LaTeX Warning: Reference `jlab1' on page 10 undefined on input line 505.
+
+[10] [11]
+
+LaTeX Warning: Reference `math-tab2' on page 12 undefined on input line 639.
+
+
+Underfull \hbox (badness 10000) in alignment at lines 645--658
+[] [] [] [][][][][][][][][][][][][]
+ []
+
+[12]
+
+LaTeX Warning: Reference `eq1' on page 13 undefined on input line 665.
+
+
+LaTeX Warning: Reference `eq2' on page 13 undefined on input line 665.
+
+
+LaTeX Warning: Reference `eq3' on page 13 undefined on input line 672.
+
+
+LaTeX Warning: Reference `eq4' on page 13 undefined on input line 672.
+
+
+LaTeX Warning: Reference `eq5' on page 13 undefined on input line 678.
+
+
+LaTeX Warning: Reference `eq6' on page 13 undefined on input line 678.
+
+[13]
+
+LaTeX Warning: Reference `dblcol' on page 14 undefined on input line 697.
+
+
+LaTeX Warning: Reference `abrefs' on page 14 undefined on input line 740.
+
+[14]
+Underfull \hbox (badness 2012) in paragraph at lines 742--747
+[]\OT1/cmr/m/n/12 Sometimes it is useful to number equations as parts of the sa
+me basic
+ []
+
+
+LaTeX Warning: Reference `second' on page 15 undefined on input line 760.
+
+
+Underfull \hbox (badness 2384) in paragraph at lines 759--761
+[]\OT1/cmr/m/n/12 Equation labels within the [][]\OT1/cmtt/m/n/12 \eqnarray []\
+OT1/cmr/m/n/12 environment will be referenced as
+ []
+
+
+LaTeX Warning: Reference `cases' on page 15 undefined on input line 765.
+
+[15]
+
+LaTeX Warning: Reference `bibby' on page 16 undefined on input line 843.
+
+[16]
+
+LaTeX Warning: Reference `bibby' on page 17 undefined on input line 871.
+
+[17]
+
+LaTeX Warning: Reference `jlab2' on page 18 undefined on input line 907.
+
+
+LaTeX Warning: Reference `jlab3' on page 18 undefined on input line 907.
+
+[18] [19]
+
+LaTeX Warning: Reference `abrefs' on page 20 undefined on input line 1075.
+
+[20]
+Underfull \hbox (badness 1082) in paragraph at lines 1083--1083
+[]\OT1/cmr/bx/n/10 Table 4. []\OT1/cmr/m/n/10 Alternatives to the normal refere
+nces command $\OMS/cmsy/m/n/10 n$\OT1/cmtt/m/n/10 ref \OT1/cmr/m/n/10 available
+ in
+ []
+
+[21]
+
+LaTeX Warning: Reference `tabone' on page 22 undefined on input line 1158.
+
+
+LaTeX Warning: Reference `tabl3' on page 22 undefined on input line 1207.
+
+[22]
+
+LaTeX Warning: Reference `copyright' on page 23 undefined on input line 1259.
+
+[23]
+Underfull \hbox (badness 3098) in paragraph at lines 1274--1279
+[]\OT1/cmr/m/n/12 For more detail about graphics inclusion see the documentatio
+n of the
+ []
+
+
+Underfull \hbox (badness 2197) in paragraph at lines 1274--1279
+[][]\OT1/cmtt/m/n/12 graphicx []\OT1/cmr/m/n/12 package, refer to one of the bo
+oks on L[]T[]X, e.g. Goosens M,
+ []
+
+
+LaTeX Warning: Reference `blobs' on page 24 undefined on input line 1298.
+
+[24] [25] [26
+
+]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [27]
+[28
+
+
+]
+Overfull \hbox (2.62785pt too wide) in paragraph at lines 1508--1532
+[][] 
+ []
+
+[29
+
+] [30
+
+] (./IOPLaTeXGuidelines.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ )
+(\end occurred inside a group at level 1)
+
+### simple group (level 1) entered at line 1278 ({)
+### bottom level 
+Here is how much of TeX's memory you used:
+ 723 strings out of 482056
+ 8405 string characters out of 5937676
+ 251640 words of memory out of 5000000
+ 16464 multiletter control sequences out of 15000+600000
+ 543259 words of font info for 60 fonts, out of 8000000 for 9000
+ 319 hyphenation exceptions out of 8191
+ 24i,13n,21p,804b,510s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2020basic/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmbx10.pfb></usr/local/texlive/2020basic/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2020basic/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2020basic/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2020basic/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2020basic/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2020basic/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2020basic/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2020basic/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2020basic
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2020ba
+sic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/202
+0basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2
+020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive
+/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texli
+ve/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/t
+exlive/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/loca
+l/texlive/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/l
+ocal/texlive/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></u
+sr/local/texlive/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb
+></usr/local/texlive/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.
+pfb></usr/local/texlive/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
+t10.pfb></usr/local/texlive/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmtt12.pfb>
+Output written on IOPLaTeXGuidelines.pdf (30 pages, 358691 bytes).
+PDF statistics:
+ 189 PDF objects out of 1000 (max. 8388607)
+ 133 compressed objects within 2 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+
