@@ -1,14 +1,17 @@
 \section{ZLP parametrisation for vacuum spectra}
 \label{sec:results_vacuum}
 
-Now we move to present the application of the strategy presented in the previous
-section to the parametrisation of ZLP spectra acquired in vacuum.
+In this section we present the application of the previously presented strategy 
+to the parametrisation of ZLP spectra acquired in vacuum.
 %
 Applying our model to this case has a two-fold motivation.
 %
 First of all, we aim to demonstrate that our model is flexible enough to effectively reproduce the
 input EELS measurements for a range of variations of the operation parameters of the microscope.
 %
+Herefore, we modify the input parameters beyond those included in the training set
+and see how the model is able to interpolate and extrapolate on its inputs.
+
 Second, it will allow us to provide a calibration prediction
 useful for the case of the in-sample measurements.
 %
@@ -25,7 +28,7 @@ Lastly, we study the dependence of the model predictions in its various input
 variables, and study the dependence of the model uncertainties upon
 the removal of a subset of the training dataset.
 
-\subsection{Training settings}
+\subsection{Training initialization}
 
 In Table~\ref{table:vacuumdata} we collect the main properties of the EELS spectra acquired in vacuum to train the neural
     network model.  For each set of spectra, we indicate the exposure time $t_{\rm exp}$, the beam energy
@@ -34,7 +37,7 @@ In Table~\ref{table:vacuumdata} we collect the main properties of the EELS spect
     and the average full width at half maximum (FWHM)
     evaluated over the $N_{\rm sp}$ spectra with the corresponding variance.
     %
-    All the spectra  listed on Table~\ref{table:vacuumdata}
+    All the spectra listed on Table~\ref{table:vacuumdata}
     were acquired with a Titan TEM equipped with a Schottky field emitter.
     %
     We point out that since here
@@ -44,7 +47,7 @@ In Table~\ref{table:vacuumdata} we collect the main properties of the EELS spect
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{table}[t]
+\begin{table}[h]
   \begin{center}
             \renewcommand{\arraystretch}{1.50}
   \begin{tabular}{@{}ccccccccc}
@@ -89,8 +92,22 @@ Following the strategy presented in Sect.~\ref{sec:methodology}, first of all we
 corresponding to each of the four sets of operation conditions and determine the statistical uncertainty
 associated to each energy loss bin by means of Eq.~(\ref{eq:sigmaiexp}).
 %
+The resulting set of training points can be observed in Fig.~\ref{fig:training_points_vacuum}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=120mm]{plots/training_points_vacuum.pdf}
+    \caption{Graphical representation of the four sets of training inputs
+    that have been calculated as means and standard deviations over the
+    $N_{\rm sp}$ four each set of operating conditions \{t$_{exp}$(ms), E$_b$(keV)\}.
+      }
+\label{fig:training_points_vacuum}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 For each of the training sets, we need to determine the value of $\Delta E_{\rm pd}^{\rm (min)}$
-that defines the range for which we add the  pseudo-data
+that defines the lower limit of the range for which we add the pseudo-data
 that imposes the correct $\Delta E \to \infty$ limit of the model.
 %
 This value is determined
@@ -98,10 +115,9 @@ by inspecting the ratio between the central experimental value of the total
 EELS intensity, $I_{{\rm EEL},i}^{(\rm exp)}$, and its corresponding
 total uncertainty defined in Eq.~(\ref{eq:sigmaiexp}).
 
-
       
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[t]
+\begin{figure}[h]
     \centering
     \includegraphics[width=120mm]{plots/intensity_to_error_ratio.pdf}
     \caption{\small The ratio between the central experimental value of the total
@@ -261,11 +277,20 @@ Total    &           0.771        &    1.470            &  1.853  \\
   }
    \label{table:chi2summary}
 \end{table}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+From Table~\ref{table:chi2summary} we observe that the $\chi^2$ of the central fit is about half the size 
+the error, which measures the quality of the fit for each MC replica. 
+%
+This is what we would expect a fit which correctly represents the fluctuations of the underlying set
+of experimental data:
+given that replicas fluctuate about the experimental measurements, these measurements themselves 
+fluctuate about their "true" underlying values. 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Dependence on the electron energy loss}
-\label{eq:depdeltae}
+\label{sec:depdeltae}
 
 Having demonstrated that our neural network model provides a satisfactory description
 of all the input EEL spectra, we now present its  predictions for specific
@@ -366,7 +391,7 @@ in all three cases in the region 800 meV $\le \Delta E \le 1 eV$.
       %
       Note that the same pseudo-data points that enforce $I_{\rm EEL}(\Delta E)\to 0$ are present
       in all three cases.
-      \label{fig:EELS_vacuum_DeltaE}}
+      \label{fig:EELS_vacuum_cuts}}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -447,5 +472,105 @@ that lower values of $t_{\rm exp}$ allow for an improved spectral resolution.
 %
 Further, also in this case we find that the model uncertainties grow rapidly in the
 extrapolation region beyond that covered for the training dataset.
+
+
+\subsection{Stability and reliability checks}
+In this section, we assess the stability of the results and the reliability of the 
+error estimate regarding the neural network parametrisation.\\
+
+To begin with, we study the depence on the architecture of the neural networks. 
+As previously mentioned, we have chosen a redundant architecture as to assure that the network
+is sufficiently large to parametrise the ZLP.
+%
+In order to check that this is indeed the case, we have both increased and decreased the
+number of neurons, so that we can assess the stability of results for both cases.
+%
+Throughout this work, the default architecture is 3-10-15-5-1. 
+The "big" architecture was chosen as a 3-15-25-10-1, increasing the number of free
+parameters from 289 to 731. 
+%
+The "small" network corresponds to an architecture of 3-5-8-6-1, which introduces 129
+free parameters to be optimised. 
+
+We have followed a similar procedure as presented in Sect.~\ref{sec:depdeltae} to investigate
+the dependence of the results as a function of the energy loss, corresponding to 
+E$_b$ = 60, 120 and 200 keV. 
+%
+The central value and 68\% confidence level band for the predicted ZLP distributions
+can be observed in Fig.~\ref{fig:EELS_vacuum_DeltaE_check} below, which can be directly
+compared to Fig.~\ref{fig:EELS_vacuum_DeltaE}. 
+
+\begin{figure}[h]
+\centering
+ \includegraphics[width=0.9\textwidth]{plots/Prediction_120keV_bignetwork.pdf}\label{first}
+ \includegraphics[width=0.9\textwidth]{plots/Prediction_120keV_smallnetwork.pdf}\label{second}
+ \caption{Similar to Fig.~\ref{fig:EELS_vacuum_DeltaE} but now
+    for a network with twice (up) and half (down) the architecture. 
+    We see that the when doubling the network, predictions are
+    almost identical, exact that uncertainty bands are slightly smaller.
+    However, decreasing the network by a factor of 2 results in predictions
+    that are a bit off from our default network. 
+    Note that the predictions made for E$_b$=120 keV are purely
+    interpolation results; the training set contains only data for beam 
+    energies of 60 and 200 keV.}
+    \label{fig:EELS_vacuum_DeltaE_check}
+\end{figure}
+It can be observed that results are well
+reproduced for both smaller and bigger graphs, . 
+%
+Particularly for the large network, both the central values and the uncertainty bands are 
+in almost perfect correspondence with the results presented in Sect.~\ref{sec:depdeltae}. 
+%
+This confirms the fact that our default network is sufficiently large and flexible to parametrise
+the ZLP: since increasing the size doesn't affect the obtained results, 
+the number of optimizable parameters is much larger than the 
+minimum required in order to reproduce the data.
+
+This becomes more evident when we substantially decrease the size of the neural network.
+Predictions on the training data (E$_b$=60 and 200 keV) are still consistent, however the uncertainty
+bands have grown remarkably bigger, indicating that the neural network outcomes are less 
+stable than before. 
+%
+When we look at the prediction for the interpolation (E$_b$=120 keV), the central 
+values differ (however only moderately) from the ones obtained on bigger networks.
+%
+This difference indicates that the predicted outcomes indeed depend on the size of the network,
+and simultaneously it confirms the sufficient redundancy of the architecture used as default. \\
+
+Next, we check that the results are stable among different subsets of 100 out of the 
+total of 500 Monte Carlo replicas. 
+%
+The results can be observed in Fig.~\ref{fig:EELS_vacuum_DeltaE_check2}.
+%
+We find remarkable stability: the two sets yield to almost identical representations,
+both for the training data as for the interpolation regime. 
+%
+\begin{figure}[h]
+\centering
+ \includegraphics[width=0.9\textwidth]{plots/Prediction_120keV_100replicas_part1.pdf}
+ \includegraphics[width=0.9\textwidth]{plots/Prediction_120keV_100replicas_part2.pdf}
+ \caption{Similar to Fig.~\ref{fig:EELS_vacuum_DeltaE} but now for two subsets of 100 replicas
+ instead of the full set of 500 replicas.}
+    \label{fig:EELS_vacuum_DeltaE_check2}
+\end{figure}
+
+A final check is to see how uncertainties change with the number of replicas. 
+We have produced the same plot but now based on three different sizes of MC ensembles:
+N$_{rep}$=25, 100 and 400. 
+%
+It is clear that for a small subset (N$_{rep}$=25), in the peaks the predictions are
+already well produced, however uncertainties in the tails are significantly larger.
+%
+The difference between using either 100 or 400 replicas is hardly noticable, which
+confirms our statement given in Sect.~\ref{sec:uncertaintypropagation} that 500
+replicas is (more than) enough to obtain a faithful representation.
+
+\begin{figure}[h]
+\centering
+ \includegraphics[width=0.7\textwidth]{plots/Prediction_120keV_different_nrep.pdf}
+ \caption{Predictions for three different number of replicas. See how uncertainties change..}
+    \label{fig:EELS_vacuum_DeltaE_check3}
+\end{figure}
+
 
 

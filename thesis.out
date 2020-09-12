@@ -10,14 +10,15 @@
 \BOOKMARK [2][-]{subsection.5.2}{Uncertainty propagation}{section.5}% 10
 \BOOKMARK [2][-]{subsection.5.3}{Training strategy}{section.5}% 11
 \BOOKMARK [1][-]{section.6}{ZLP parametrisation for vacuum spectra}{}% 12
-\BOOKMARK [2][-]{subsection.6.1}{Training settings}{section.6}% 13
+\BOOKMARK [2][-]{subsection.6.1}{Training initialization}{section.6}% 13
 \BOOKMARK [2][-]{subsection.6.2}{Fit quality}{section.6}% 14
 \BOOKMARK [2][-]{subsection.6.3}{Dependence on the electron energy loss}{section.6}% 15
 \BOOKMARK [2][-]{subsection.6.4}{Dependence on beam energy and exposure time }{section.6}% 16
-\BOOKMARK [1][-]{section.7}{ZLP subtraction and bandgap determination in WS2}{}% 17
-\BOOKMARK [2][-]{subsection.7.1}{Training dataset}{section.7}% 18
-\BOOKMARK [2][-]{subsection.7.2}{Subtraction procedure}{section.7}% 19
-\BOOKMARK [2][-]{subsection.7.3}{Bandgap analysis of sample A}{section.7}% 20
-\BOOKMARK [2][-]{subsection.7.4}{Bandgap analysis of sample B}{section.7}% 21
-\BOOKMARK [1][-]{section.8}{Summary and outlook}{}% 22
-\BOOKMARK [1][-]{appendix.A}{Installation and usage of EELSfitter}{}% 23
+\BOOKMARK [2][-]{subsection.6.5}{Stability and reliability checks}{section.6}% 17
+\BOOKMARK [1][-]{section.7}{ZLP subtraction and bandgap determination in WS2}{}% 18
+\BOOKMARK [2][-]{subsection.7.1}{Training dataset}{section.7}% 19
+\BOOKMARK [2][-]{subsection.7.2}{Subtraction procedure}{section.7}% 20
+\BOOKMARK [2][-]{subsection.7.3}{Bandgap analysis of sample A}{section.7}% 21
+\BOOKMARK [2][-]{subsection.7.4}{Bandgap analysis of sample B}{section.7}% 22
+\BOOKMARK [1][-]{section.8}{Summary and outlook}{}% 23
+\BOOKMARK [1][-]{appendix.A}{Installation and usage of EELSfitter}{}% 24

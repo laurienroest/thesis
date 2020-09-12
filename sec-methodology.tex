@@ -62,13 +62,10 @@ In this regard we also
 explain the Monte Carlo replica method, which is used to estimate and propagate the
 uncertainties from the input data to the model predictions.
 %
-Subsequently, we first present the results of this training strategy in case of 
-vacuum spectra, where we modify the input parameters beyond those included in the training set
-and see how the model is able to interpolate and extrapolate on its inputs.
-%
-After this we move on to the prediction on sample spectra: 
-we explain how the training strategy is modified to use it on spectra recorded over
+After this we move on to the training strategy on sample spectra: 
+we explain how the method is modified to use it on spectra recorded over
 WS$_2$ specimens and how one can select the hyper-parameters that appear in the model.
+
 
 \subsection{ZLP parametrisation}
 \label{sec:parametrisation}
@@ -212,6 +209,7 @@ is displayed in Fig.~\ref{fig:architecture}.
 
 
 \subsection{Uncertainty propagation}
+\label{sec:uncertaintypropagation}
 
 We discussed in Sect.~\ref{sec:eels} how
 even for EEL spectra taken at identical operating conditions of the microscope,
@@ -234,10 +232,32 @@ Second, when a problem requires a reconstruction of discrete sampling without ma
 functional form, neural networks are useful to work as unbiased interpolators. 
 %
 It is the combination of both techniques that explains the use of neural networks to separate a smooth
-signal from background signals, while the MC samples handles the fluctuations within the data.\\
+signal from background signals, while the MC samples handles the fluctuations within the data.
 
-Let us assume that we have $n_{\rm dat}$ independent measurements of the ZLP intensity, for
-different conmbinations of input parameters. %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{plots/MCscheme.pdf}
+    \caption{Representation of the Monte Carlo replica strategy. From the original set of training data,
+    an ensemble of replicas is created from the experimental central values and uncertainties. 
+    On each replica, an individual neural network is trained and a ZLP parametrisation is obtained.
+    The total set of predictions is then used to calculate physical observables from the corresponding
+    central values and uncertainties.}
+    \label{fig:MCscheme}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+
+The MC strategy is schematically summarized in figure \ref{fig:MCschema} and it involves two stages.
+In the first, we generate an ensemble of replicas of the original training set. 
+%
+Then, each replica
+is passed through an individual neural network, which thereby outputs a parametrisation of the ZLP.
+%
+Any physical observables can be calculated over the set of computed ZLP distributuions.\\
+
+Let us assume that we have $n_{\rm dat}$ independent measurements of the ZLP intensity, 
+so our training dataset contains $n_{\rm dat}$ data points, all with different combinations of input parameters. 
+%
 The collective of inputs are given as $\{z_i\}$:
 \be
 I^{\rm (exp)}_{{\rm ZLP},i}\lp \{ z_i  \}\rp = I^{\rm (exp)}_{{\rm ZLP},i}\lp  \Delta E_i, E_{b,i}, t_{\rm exp,i},\ldots \rp
@@ -272,14 +292,14 @@ uncertainty, which is uncorrelated.
   our model to that case.
 %
 In other words, to each data point we associate an individual uncertainty and we 
-discard covariances between datapoints, which means that we drop the last term in Eq.~\ref{eq:MCreplicaGen} 
+discard covariances between datapoints, which means that we drop the last term in Eq.~(\ref{eq:MCreplicaGen})
 and it reduces to
 \be
 \label{eq:MCreplicaGen2}
   I_{{\rm ZLP},i}^{{\rm (art)}(k)}  =  I^{\rm (exp)}_{{\rm ZLP},i} + r_i^{({\rm stat},k)}\sigma_i^{\rm (stat)}
 \ee
 
-The statistical errors on the training data are derived by means of what is called
+These statistical errors on the training data can be derived by means of what is called
 equal width discretization (EWD) and it works as follows.
 %
 The input measurements will be composed in general on subsets of EEL
@@ -331,34 +351,32 @@ Eq.~(\ref{eq:MCreplicaGen}) for different number of replicas.
 We find that $N_{\rm rep}=500$ is a value that ensures that both
 the central values and uncertainties are reasonably well reproduced,
 and we adopt it in what follows.
-%
-A schematic overview of the method just described can be observed in Fig~\ref{fig:MCscheme}.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=0.7\textwidth]{plots/MCscheme.pdf}
-    \caption{Representation of MC generation (needs to be higher up).}
-    \label{fig:MCscheme}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
-
 
 
 \subsection{Training strategy}
 \label{sec:training}
 
 The training of the neural-network model for the ZLP peak differs between
-the cases of EEL spectra taken on vacuum, where by construction $I_{\rm EEL}(\Delta E) =I_{\rm ZLP}^{\rm (mod)}(\Delta E)$,
-and for spectra taken on sample.\footnote{Actually EEL spectra taken in the vacuum but close
-  to the sample might still receive inelastic contributions due to processes such as .... Here
-  when we use vacuum spectra we consider exclusively those taken reasonably far from the surface
-of the analysed nanostructures.}
+the cases of EEL spectra taken on vacuum,
+where by construction $I_{\rm EEL}(\Delta E) =I_{\rm ZLP}^{\rm (mod)}(\Delta E)$,
+and for spectra taken on samples. 
 %
-In the latter case, as indicated by Eq.~(\ref{eq:ZLPseparation}), in order to avoid
-biasing the results it is
-important to ensure that the model is trained only on the region of the spectra
+In fact, EEL spectra taken in the vacuum but close
+to the sample might still receive inelastic contributions coming from the specimen.
+%
+When we talk about vacuum spectra, we consider exclusively those taken 
+reasonably far from the surface of the analysed nanostructures.
+%
+In the latter case, we need to find a training strategy to make predictions
+about the ZLP distribution in the low-loss regime, while we can not directly
+train on data in this region.
+%
+As indicated by Eq.~(\ref{eq:ZLPseparation}), in order to avoid
+biasing the results it is important to ensure that the model is trained only on the region of the spectra
 where the ZLP dominates over the inelastic scatterings.
+%
+Then we can make predictions in the extrapolation regime based on these 
+training parameters.
 %
 We now describe the training strategy that is adopted in both cases.
 
@@ -367,8 +385,8 @@ We now describe the training strategy that is adopted in both cases.
 For each of the $N_{\rm rep}$ generated Monte Carlo replicas, we train an independent
 neural network as described in Sect.~\ref{sec:parametrisation}.
 %
-The parameters of the neural network are determined from the minimisation of a figure of merit
-defined as
+Fitting the neural networks parameters to the data is performed by minimisation of a
+figure of merit (error function), defined as:
 \begin{equation}
   \label{eq:chi2}
 \begin{centering}
@@ -376,10 +394,17 @@ defined as
   I_{{\rm ZLP},i}^{{\rm (mod)}}\lp \{\theta^{(k)}\}\rp }{\sigma_i^{(\rm exp)}}\right)^2, 
 \end{centering}
 \end{equation}
-which is the $\chi^2$ per data point comparing the $k$-th replica for the ZLP
-intensity with the corresponding model prediction for the values
-$\{\theta^{(k)}\}$ of its weights and thresholds.
+
+which is the $\chi^2$ per data point comparing each replicated ZLP intensity
+with the corresponding model prediction.
 %
+In this expression $E^{(k)}\lp \{\theta^{(k)}\}\rp$ is the error for the values 
+$\{\theta^{(k)}\}$ of the network weights and thresholds;
+$I_{{\rm ZLP},i}^{{\rm (art)}(k)}$ is the $k$-th replica for the ZLP 
+intensity and $I_{{\rm ZLP},i}^{{\rm (mod)}}$ is the model prediction on this
+replica; and ${\sigma_i^{(\rm exp)}}$ again represents the error
+associated to this experimental data point.\\
+
 The chi-squared method is the cornerstone of almost all fitting, 
 as it is an intuitively reasonable measure of how well the predictions fit the data. 
 %
@@ -394,8 +419,8 @@ all inputs and outputs are scaled to lie between $[0.1, 0.9]$ before
 being feed to the network.
 %
 This preprocessing facilitates that
- the neuron activation states will typically
-lie close to the linear region of the sigmoid activation function.
+the neuron activation states will typically
+lie close to the linear region of the sigmoid activation function.\\
 
 The contribution to the figure of merit from the input experimental data, Eq.~(\ref{eq:chi2}),
 needs in general to be complemented with that of theoretical constraints on the model.
@@ -404,12 +429,13 @@ For instance, when determining nuclear parton distributions~\cite{AbdulKhalek:20
 extend Eq.~(\ref{eq:chi2}) with Lagrange multipliers to ensure that both the $A=1$ proton boundary
 condition and the cross-section positivity are satisfied.
 %
-In the case at hand, our model for the ZLP should implement the property that $I_{\rm ZLP}(\Delta E)\to 0$
-when $|\Delta E| \to \infty$, since far from $\Delta E\simeq 0$ the contribution from elastic scatterings
-and instrumental broadening is completely negligible.
+In the case at hand, our model for the ZLP should satisfy the constraint that $I_{\rm ZLP}(\Delta E)\to 0$
+when $|\Delta E| \to \infty$, since far from $\Delta E\simeq 0$ the contribution from the ZLP
+is completely negligible.
 %
-In order to implement this constraint, we add $n_{pd}$ pseudo-data points to the training dataset and modify
-the figure of merit Eq.~(\ref{eq:chi2}) as follows
+In order to implement this constraint, we add $n_{pd}$ pseudo-data points to the training dataset 
+"far" away from the ZLP and we modify
+the figure of merit Eq.~(\ref{eq:chi2}) accordingly,
 \be
 \label{eq:chi2modified}
 E^{(k)}\lp \{\theta^{(k)}\}\rp \to E^{(k)}\lp \{\theta^{(k)}\}\rp +
@@ -420,30 +446,57 @@ E^{(k)}\lp \{\theta^{(k)}\}\rp \to E^{(k)}\lp \{\theta^{(k)}\}\rp +
   condition
   is satisfied without affecting the description of the training dataset.
   %
-  The pseudo-data points are chosen to lie in the region $\lc \Delta E_{\rm pd}^{\rm (min)},
-  \Delta E_{\rm pd}^{\rm (max)}\rc$ (and symmetrically for negative energy losses),
-  which is determined automatically via the ratio of the intensity to the uncertainty in each data point: 
-  $I_{ZLP,i}^{(exp)} / \sigma_{i}^{(exp)}$. 
+  In other words, we add a contribution to the error function coming from these pseudo points in the
+  higher-loss regime, making sure that the optimization of the error function also takes into account
+  the fact that at higher losses the intensity should vanish.
   %
-  At a certain energy loss this ratio approaches 1, which indicates that we are practically fitting noise. 
+  However, when calculating the overall fit quality after training, we do not include the second term
+  on the right-hand side of Eq.~(\ref{eq:chi2modified}) in the evaluation of the figure of merit, 
+  as these "fake" datapoints do not give any physical
+  information about the original dataset whatsoever.
+
+  The pseudo-data points are added in the region $\lc \Delta E_{\rm pd}^{\rm (min)},
+  \Delta E_{\rm pd}^{\rm (max)}\rc$, and symmetrically for negative energy losses.
   %
-  In order to avoid this and only fit data that is different from zero within errors, we set the value
-  of $\Delta E_{\rm pd}^{\rm (min)}$ for each set of training data equal to the point where the ratio
-  $I_{ZLP,i}^{(exp)} / \sigma_{i}^{(exp)}$ drops below 1. 
-  %
-  We keep the training data in the region $\Delta E \le \Delta E_{\rm pd}^{\rm (min)}$ and the pseudo-data
-  points are added for $\lc \Delta E_{\rm pd}^{\rm (min)}, \Delta E_{\rm pd}^{\rm (max)}\rc$. 
-  %
-  The value of $\Delta E_{\rm pd}^{\rm (max)}$ can be chosen arbitrarily and can be as large as necessary
-  to ensure that $I_{\rm ZLP}(\Delta E)\to 0$ as $|\Delta E| \to \infty$.
-  %u
+The value of $\Delta E_{\rm pd}^{\rm (min)}$
+can be determined automatically by evaluating the ratio $\mathcal{R}_{\rm sig}$ between the central
+experimental intensity and the total uncertainty in each data point,
+\be
+\label{eq:pdlocation}
+\mathcal{R}_{\rm sig}(\Delta E_i)\equiv \frac{I_{{\rm ZLP}}^{(\rm exp)}(\Delta E_i)}{\sigma^{(\rm exp)}(\Delta E_i)} \, ,
+\ee
+which corresponds to the statistical significance for the $i$-th bin of $\Delta E$ to differ from the null hypothesis
+(zero intensity) taking into account the experimental uncertainties.
+%
+For sufficiently large energy loss this ratio approaches 1, which indicates that we are essentially
+fitting statistical noise. 
+%
+In order to avoid this and only fit data that is different from zero within errors, we determine the value
+of $\Delta E_{\rm pd}^{\rm (min)}$ from the condition that $ \mathcal{R}_{\rm sig}(\Delta E_i) \simeq$ 1. 
+%
+We keep the training data in the region $\Delta E \le \Delta E_{\rm pd}^{\rm (min)}$ and the pseudo-data
+points are added for $\lc \Delta E_{\rm pd}^{\rm (min)}, \Delta E_{\rm pd}^{\rm (max)}\rc$. 
+%
+The value of $\Delta E_{\rm pd}^{\rm (max)}$ can be chosen arbitrarily and can be as large as necessary
+to ensure that $I_{\rm ZLP}(\Delta E)\to 0$ as $|\Delta E| \to \infty$.
+
 We note that another important physical condition on the ZLP model, namely its positivity
 (since in EEL spectra the intensity is just a measure of the number of counts in the
 detector for a given value of the energy loss) is automatically satisfied since
 we use a ReLU activation function for the last layer.
+%
+A further obvious requirement is that the best fit is independent of any assumptions 
+made about the ZLP distribution. 
+%
+This requirement can be met by making sure the parametrisation is redundant: 
+the size of the neural network used, and therefore the number of optimizable parameters, 
+is much larger than the minimum required in order to reproduce the data. 
+%
+This redundancy can be verified {\it a posteriori}, that results are independent of 
+the size and architecture of the neural network.\\
 
 In this work we adopt the {\tt TensorFlow} neural-net libraries to assemble
-the architecture illustrated in  Fig.~\ref{fig:architecture}.
+the architecture illustrated in Fig.~\ref{fig:architecture}.
 %
 Before training, all weights and biases are initialized in a non-deterministic order
 by the built-in global variable initializer. 
@@ -456,14 +509,13 @@ The hyper-parameters of the optimisation algorithm such as the learning rate
 have been adjusted to ensure proper learning is reached in the shortest amount
 of time possible.
 %
-
 Given that we have a extremely flexible parametrisation, one should be careful
 to avoid overlearning the input data.
 %
 Here over-fitting is avoided by means of a cross-validation stopping criterion.
 %
 We separate the input data into training a validation subsets, with a 80\%/20\% splitting
-which varies randomly for each Monte Carlo replica.
+which partition varies randomly for each Monte Carlo replica.
 %
 We then run the optimiser for a very large number of iterations and store both
 the state of the network and the value
@@ -473,17 +525,21 @@ dataset, $E^{(k)}_{\rm val}$ (which is not used for the training).
 We are not looking for the absolute minimum of the error function, 
 but we rather search for an optimal stopping point to avoid overfitting. 
 %
-At this optimal stopping point, it reproduces the general features of the inputs, 
-but not some accidental fluctuations. 
+At this optimal stopping point, it reproduces the information contained in the dataset, 
+but not its statistical fluctuations.
 %
 This point can be determined by the formulation of a stopping criterion, 
 making it possible to, once the network completed the training, 
 choose the parametrization of the network weights right before it 
 entered the overlearning regime. 
 %
-The optimal stopping point is then determined {\it a posteriori} for each replica
-as the specific network configuration that leads to the deepest minimum of $E^{(k)}_{\rm val}$:
-this is called look-back stopping, a method that has been widely used in the context
+The optimal stopping point is determined  for each replica
+by keeping track of the figure of merit, which typically evolutes
+as depicted in Fig.~\ref{fig:costs}. 
+%
+The specific network configuration that leads to the deepest minimum of $E^{(k)}_{\rm val}$:
+is chosen {\it a posteriori}, that's why it is called look-back stopping, 
+a method that has been widely used in the context
 of neural networks.
 %
 The number of epochs should be chosen high enough to reach for each replica 
@@ -495,7 +551,7 @@ This corresponds to a serial running time of 60 seconds per replica when running
 single CPU for a set of 500 datapoints.
 %
 Once the training of all the $N_{\rm rep}$ neural network models for the ZLP has been carried
-out as specified above, we gauge the overal fit quality of the model by computing the
+out as specified above, we quantify the overal fit quality of the model by computing the
 $\chi^2$ defined as
 \begin{equation}
   \label{eq:chi2_final}
@@ -511,7 +567,9 @@ A value $\chi^2 \simeq 1$ indicates that a satisfactory description of the exper
 within the corresponding uncertainties, has been achieved.
 %
 Note that in realistic scenarios $\chi^2$ can deviate from unity, for instance when
-some source of correlation between the experimental uncertainties has been neglected.
+some source of correlation between the experimental uncertainties has been neglected
+or when the errors on the data points have been over- or underestimated.
+
 
 \paragraph{Training of sample spectra.}
 
@@ -519,43 +577,48 @@ The training strategy in the case of EEL spectra taken on samples (rather than o
 to account for the fact that the input data set, Eq.~(\ref{eq:IeelTot}), receives contributions
 both from the ZLP and from inelastic scatterings.
 %
-To avoid biasing the ZLP model, only the former contributions should be
-included in the training dataset.
+To avoid biasing the ZLP model, we should make sure to include only the former contributions 
+in the training dataset.
+%
+Else, if we were to train the neural network on data that contains also inelastic contributions,
+subsequent subtraction to the EEL spectra would make us lose important information.
 
-We can illustrate the situation here with the help of a toy model for the low-loss
+We can illustrate the situation at hand with the help of a toy model for the low-loss
 region of EEL spectra, represented in
 Fig.~\ref{fig:EELS_toy}.
 %
-Let us assume that the ZLP is described by a Gaussian distribution with a standard deviation of $\sigma_{\rm ZLP}=0.3$ eV,
+Let us use a general assumption that the ZLP is described by a 
+Gaussian distribution with a standard deviation of $\sigma_{\rm ZLP}=0.3$ eV,
 and that the contribution from the
-inelastic scatterings arising from the sample can be approximated in the low-loss
-region by $I_{\rm inel}(\Delta E)\propto \lp \Delta E - E_{\rm bg}\rp^b$ with $E_{\rm bg}=1.5$
-and $b=0.5$ -- the motivation for this
-choice will be spelled out in Sect.~\ref{sec:results_sample}.
+inelastic interactions with the sample can be approximated in the low-loss
+regime by $I_{\rm inel}(\Delta E)\propto \lp \Delta E - E_{\rm bg}\rp^b$ with $E_{\rm bg}=1.5$
+and $b=0.5$. 
+%
+The motivation for this
+choice will be explained in Sect.~\ref{sec:results_sample}.
 %
 We display the separate contributions from $I_{\rm ZLP}$
-and $I_{\rm inel}$, as well as their sum, 
+and $I_{\rm inel}$, as well as the total intensity,  
 with the inset showing the values of the corresponding derivatives, $dI/d\Delta E$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[t]
     \centering
-    \includegraphics[width=0.89\textwidth]{plots/EELS_toy.pdf}
-    \caption{A toy model for the EEL spectrum and its
-      derivative (in the inset).
+    \includegraphics[width=0.7\textwidth]{plots/Toy.pdf}
+    \caption{A toy model for a generic EEL spectrum and its
+      derivatives (in the inset).
       %
-      We display the separate contributions from $I_{\rm ZLP}$
+      We show the separate contributions from $I_{\rm ZLP}$
       and $I_{\rm inel}$ as well as their sum.
       %
       We indicate the two regions used for the model training ($I$ and $III$),
-      while as discussed in the text the trained model is then
-      extrapolated to region $II$, defined for $\Delta E_I \le \Delta E \le \Delta E_{II}$.
-    }
+      while the trained model is interpolated to region $II$, 
+      defined for $\Delta E_I \le \Delta E \le \Delta E_{II}$.}
     \label{fig:EELS_toy}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The toy model of Fig.~\ref{fig:EELS_toy} is general enough so that one can draw
+The toy model of Fig.~\ref{fig:EELS_toy} is sufficiently general to draw
 a number of useful considerations concerning the relation between $I_{\rm ZLP}$ and $I_{\rm inel}$
 in realistic spectra:
 
@@ -566,7 +629,7 @@ in realistic spectra:
 
 \item  The first local minimum of the total spectrum, $dI_{\rm EELS}/d\Delta E|_{\Delta E_{\rm min}}=0$, corresponds
   to a value of $\Delta E$ for which the contribution from the inelastic emissions is already
-  sizable.
+  significant.
 
 \item The value of $\Delta E$ for which $I_{\rm inel}$ starts to contribute to the total spectrum
   corresponds to the position where the intensity derivatives in-sample and in-vacuum  start to differ.
@@ -580,24 +643,25 @@ the following categorisation should de adopted:
 
 \begin{enumerate}
 
-\item For energy losses such that $\Delta E \le \Delta E_I$ (region $I$),
+\item For small energy losses such that $\Delta E \le \Delta E_I$ (region $I$),
   the model training  proceeds in the same way as for the vacuum case
-  via the minimisation of Eq.~(\ref{eq:chi2})
+  via the minimisation of Eq.~(\ref{eq:chi2}).
 
 \item  
   For $\Delta E \ge \Delta E_{II}$ (region $III$), we use instead Eq.~(\ref{eq:chi2modified})
   without the contribution from the input data, since for such values
   of $\Delta E$ one has that $I_{\rm inel}\gg I_{\rm ZLP}$.
   %
-  In other words, the only information that the region $III$ provides
+  In other words, we only fit on the pseudo data and therefore
+  the only information that the region $III$ provides
   on the model is the one arising from the implementation
   of the constraint that $I_{\rm ZLP}(\Delta E\to \infty)\to 0$.
 
-\item The EELS data  in region $II$, defined by  $\Delta E_I \le \Delta E \le \Delta E_{II}$,
+\item The EELS data in region $II$, defined by $\Delta E_I \le \Delta E \le \Delta E_{II}$,
   is excluded from the training dataset, given that in this region the contribution to $I_{\rm EEL}$
-  coming from $I_{\rm inel}$ is significant.
+  coming from $I_{\rm inel}$ is already significant.
   %
-  There the model predictions are obtained from an interpolation
+  The model predictions in this regime are obtained from an interpolation
   of the predictions obtained in regions $I$ and $III$.
 
 \end{enumerate}
@@ -608,9 +672,18 @@ $\Delta E_{II}$, that need to be specified before the training.
 They should satisfy $\Delta E_I \le \Delta E_{\rm min}$ and $\Delta E_{II} \ge \Delta E_{\rm min}$,
 with $\Delta E_{\rm min}$ being the position of the first local minimum of $I_{\rm EEL}$.
 %
+Let's interpret this physically: $\Delta E_{\rm min}$ is the first local minimum, which means that 
+the inelastic contributions are significantly present.
+%
+Training the data for higher than this value, we are sure that our training data includes
+at least some amount of inelastic scatterings.
+%
+Therefore, it is certain that we need to cut the training data already at a lower energy loss,
+so $\Delta E_I \le \Delta E_{\rm min}$.
+%
 As indicated by the toy spectra of Fig.~\ref{fig:EELS_toy}, a suitable value for $\Delta E_{I}$
-would be somewhat above the onset of the inelastic contributions, to maximise
-the amount of training data while ensuring that $I_{\rm EEL}$ is dominated
+would be somewhat above the onset of the inelastic contributions: this way we maximise
+the amount of training data while ensuring that $I_{\rm EEL}$ is still dominated
 by $I_{\rm ZLP}$.
 
 We can use the derivatives of the spectra, $dI_{\rm EEL}/d\Delta E$, to select suitable minimum and
@@ -618,9 +691,6 @@ maximum values for $\Delta E_I$.
 %
 Using first and second derivatives is an often-used feature extraction method to achieve a relatively 
 high accuracy with a low computational complexity. 
-%
-In order to select the value for $\Delta E_{II}$, we use the intensity
-profiles of the vacuum recorded spectra. 
 %
 In an ideal microscope the electron beam would be perfectly monochromatic, 
 correspondingly the ZLP would appear as a delta function in an EEL spectrum \cite{Rafferty:2000}. 
@@ -630,18 +700,32 @@ In practice the ZLP has a finite width defining the energy resolution of the sys
 Concerning $\Delta E_I $, its minimum possible value is selected as the value where the derivate taken on the sample
 data start to different significantly as compared to those spectra taken on vacuum.
 %
-This value is obtained by looking at the ratio of the derivatives of the spectra compared to the vacuum derivatives,
-$R_{dI/d \Delta E} =  \left( \frac{dI_{\rm ZLP}/d\Delta E}{dI_{\rm EEL}/d\Delta E}\right)$. 
+This value is obtained by looking at the ratio of the derivatives of the spectra compared to the vacuum derivatives:
+\be
+R_{dI/d \Delta E} =  \left( \frac{dI_{\rm ZLP}/d\Delta E}{dI_{\rm EEL}/d\Delta E}\right). 
+\ee
 %
-For low energy losses this ratio equals 1, but at some energy loss $\Delta E_{I,min}$ the
-sample stops monotonically decreasing and the ratio deviates from 1. 
+For low energy losses this ratio equals 1, which means that in the low-loss regime
+the spectra recorded in vacuum and on specimens behave similar.
 %
-We know that the hyper-parameter $\Delta E_I$ should satisfy $\Delta E_{I,min} \le \Delta E_I \le \Delta E_{\rm min}$,
+However, at some energy loss $\Delta E_{I,min}$ the
+sample spectrum stops monotonically decreasing and the ratio deviates from 1. 
+%
+It is this point where the contributions from the sample start to change the shape of
+the ZLP distribution and we can use this measure to mark the transition from 
+regime I to regime II in Fig.~\ref{fig:EELS_toy}.
+%
+We know that the hyper-parameter $\Delta E_I$ should satisfy 
+$\Delta E_{I,min} \le \Delta E_I \le \Delta E_{\rm min}$,
 which corresponds to the region where $R_{dI/d \Delta E} \ne  1$ and $R_{dI/d \Delta E} \ge 0$.
 %
-The neural network will be trained on an array of $\Delta E_I$ values within this interval and 
-the optimal choice will be determined {\it a posteriori} from the results.
+The neural network will be trained on a range of different $\Delta E_I$ values within this interval,
+and the optimal choice will be determined {\it a posteriori} from the results.
 %
+Also, generating results for different values of $\Delta E_I$ makes us able to 
+cross-validate on the stability of our results regardless of the exact choice of this
+hyperparameter.
+
 Another important difference as compared to the training of the vacuum spectra is that each of the sample
 spectra will have different values of $\Delta E_{\rm min}$ and thus of $\Delta E_I$. 
 %
@@ -649,17 +733,23 @@ For this reason we calculate $\Delta E_{\rm min}$  for each of the sample spectr
 as the maximum value for the hyper-parameter $\Delta E_I$. 
 %
 As we determine the best choice of $\Delta E_I$ after training for each of the spectra separately, 
-we are sure to capture all suitable results and select the best value for each individual spectrum. 
-%
+we are sure to capture all suitable results and select the best value for each individual spectrum. \\
+
 Concerning $\Delta E_{II}$, its minimum value should mark the region where $I_{\rm ZLP}(\Delta E\to \infty)\to 0$. 
 %
-In order to implement this constraint, similar to the previous section we look at the ratio 
-$I_{ZLP,i}^{(exp)}/ \sigma_i^{(exp)}$ to determine the energy loss $\Delta E_{\rm pd}$ at 
-which the contributions from the ZLP vanish. 
+It is the value where we start adding pseudo-data, so $\Delta E_{II}$ = $\Delta E_{\rm pd,min}$.
 %
-As a measure, we use the energy loss value where the ratio $I_{ZLP,io}^{(exp)}/\sigma_i^{(exp)}$ drops below 1. 
+In order to implement this constraint, similar to the previous section (Eq.~(\ref{{eq:pdlocation}}))
+we look at the ratio 
+$\mathcal{R}_{\rm sig}(\Delta E_i)$ to determine the energy loss $\Delta E_{\rm pd}$ at 
+which the contributions from the vacuum-recorded ZLP vanish. 
+%
+As a measure, we use the energy loss value where the ratio $\mathcal{R}_{\rm sig}(\Delta E_i)$ drops below 1,
+as in this regime we would be fitting statistical noise.
 %
 We set the value of $\Delta E_{II}$ equal to this energy loss and add pseudo-data points for $\Delta E \ge \Delta E_{II}$.
 %
 Note that in this region the intensity of the ZLP is several orders of magnitude smaller than the intensity 
 of the elastic emissions and therefore the exact choice of $\Delta E_{II}$ does not listen too closely.
+
+Now that we have parametrised the 
