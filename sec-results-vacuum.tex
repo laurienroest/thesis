@@ -1,4 +1,4 @@
-\section{ZLP parametrisation for vacuum spectra}
+\section{Results I. Vacuum spectra}
 \label{sec:results_vacuum}
 
 In this section we present the application of the previously presented strategy 
@@ -47,7 +47,7 @@ In Table~\ref{table:vacuumdata} we collect the main properties of the EELS spect
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{table}[h]
+\begin{table}[H]
   \begin{center}
             \renewcommand{\arraystretch}{1.50}
   \begin{tabular}{@{}ccccccccc}
@@ -95,7 +95,7 @@ associated to each energy loss bin by means of Eq.~(\ref{eq:sigmaiexp}).
 The resulting set of training points can be observed in Fig.~\ref{fig:training_points_vacuum}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=120mm]{plots/training_points_vacuum.pdf}
     \caption{Graphical representation of the four sets of training inputs
@@ -117,10 +117,10 @@ total uncertainty defined in Eq.~(\ref{eq:sigmaiexp}).
 
       
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=120mm]{plots/intensity_to_error_ratio.pdf}
-    \caption{\small The ratio between the central experimental value of the total
+    \caption{The ratio between the central experimental value of the total
       EELS intensity, $I_{{\rm EEL},i}^{(\rm exp)}$, and the corresponding
       total uncertainty defined in Eq.~(\ref{eq:sigmaiexp}).
       %
@@ -239,7 +239,7 @@ In Table~\ref{table:chi2summary} we indicate the values of the final $\chi^2$ pe
       affecting the original EEL spectra.
     
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[t]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.49\textwidth]{plots/chi2_distributions.pdf}
     \includegraphics[width=0.49\textwidth]{plots/train_val_error_271.pdf}
@@ -254,7 +254,7 @@ In Table~\ref{table:chi2summary} we indicate the values of the final $\chi^2$ pe
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%
 
-\begin{table}[h]
+\begin{table}[H]
   \begin{center}
             \renewcommand{\arraystretch}{1.35}
   \begin{tabular}{@{}cccc}
@@ -293,7 +293,7 @@ fluctuate about their "true" underlying values.
 \label{sec:depdeltae}
 
 Having demonstrated that our neural network model provides a satisfactory description
-of all the input EEL spectra, we now present its  predictions for specific
+of all the input EEL spectra, we now present its predictions for specific
 choices of the input parameters.
 %
 First of all, we investigate the dependence of the results as a function of the
@@ -305,20 +305,23 @@ of electron energy loss $\Delta E$
 evaluated using Eqns.~(\ref{eq:average}) and~(\ref{eq:standarddev}).
 %
 We display results corresponding to 
-three different values of $E_b$  and for both
+three different values of $E_b$ and for both
 $t_{\rm exp}=10$ ms (left)  and $t_{\rm exp}=100$ ms (right panel).
 %
-We emphasize that no training data with $E_b=120$ keV has been used and thus our prediction
-in that case arises purely from the model interpolation.
+We emphasize that only beam energies of 60 and 200 keV were included in the dataset,
+so the network is trained on these data.
+%
+It has never seen data with $E_b=120$ keV, and thus our prediction
+in this case arises purely from the model interpolation.
 %
 It is interesting to note how both the overall normalisation and the shape of
 the predicted ZLP depend on the specific operation conditions.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[t]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=170mm]{plots/deltaE_dependence_vacuum.pdf}
-    \caption{\small Top: the central value and 68\% confidence level uncertainty band
+    \includegraphics[width=150mm]{plots/deltaE_dependence_vacuum.pdf}
+    \caption{Top: the central value and 68\% confidence level uncertainty band
       for the ZLP model as a function
       of electron energy loss $\Delta E$
       evaluated using Eqns.~(\ref{eq:average}) and~(\ref{eq:standarddev}).
@@ -332,7 +335,8 @@ the predicted ZLP depend on the specific operation conditions.
       %
       Bottom: the corresponding relative uncertainty as a function of $\Delta E$
       for each of the three values of $E_b$.
-      \label{fig:EELS_vacuum_DeltaE}}
+      }
+      \label{fig:EELS_vacuum_DeltaE}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -340,27 +344,43 @@ In the bottom panel of Fig.~\ref{fig:EELS_vacuum_DeltaE} we show
 the corresponding relative uncertainty as a function of $\Delta E$
 for each of the three values of $E_b$.
 %
+The relative uncertainty is calculated as the absolute error in each point divided
+by the predicted intensity.
+%
 Recall that in this work we allow for non-Gaussian distributions and thus the central
 value is the mean of the distribution while the error band in general will
 be asymmetric.
 %
-In the case of the $t_{\rm exp}=10$ ms results, we see how the model prediction
-at $E_b=120$ keV typically exhibits larger uncertainties than the predictions
+Looking at the predictions for $t_{\rm exp}=10$ ms, we see how the model prediction
+at $E_b=120$ keV typically exhibits larger uncertainties and is therefore less stable than the predictions
 for the two values of $E_b$ for which we have training data.
 %
-In the case of $t_{\rm exp}=100$ ms instead the model predictions exhibit very similar
-uncertainties for the three values of $E_b$, which further more depend only mildly on $\Delta E$.
-
-It is interesting to assess how the model results are modified once a subset of the data points
-are excluded from the fit.
+In the case of $t_{\rm exp}=100$ ms instead, the model predictions exhibit very similar
+uncertainties for the three values of $E_b$, which furthermore depend only mildly on $\Delta E$.
 %
-As illustrated in Fig.~\ref{fig:EELS_toy}, when training the model on sample spectra, a region
+From these outcomes we can conclude that the network is well able to make predictions 
+on inputs it has never seen before. 
+
+It is interesting to assess how the model results change once a subset of the data points
+is excluded from the fit.
+%
+In other words, we remove data points in a certain region 
+[$\Delta E_{\rm cut}^{\rm (min)}$,$\Delta E_{\rm cut}^{\rm (max)}$]
+and train the model on the resulting dataset. 
+%
+Afterwards, we let the model make predictions on the full energy range and see what the
+effect of such a cut is. 
+%
+The reason to do this goes hand in hand with the fact that we will need this model later onwards
+for the prediction on sample data. 
+%
+As explained in Sect.~\ref{sec:methodology} and as
+illustrated in Fig.~\ref{fig:EELS_toy}, when training the model on sample spectra, a region
 with $\Delta E_I \le \Delta E \le \Delta E_{II}$ will be removed from the training dataset to avoid the
 contamination from the inelastic contributions.
 %
-To emulate the effects of such cut, 
-Fig.~\ref{fig:EELS_vacuum_DeltaE} displays
-the relative uncertainty in the model predictions for $I_{\rm ZLP}(\Delta E)$
+Fig.~\ref{fig:EELS_vacuum_DeltaE_abs} displays
+the predicted central value and uncertainty in the model predictions for $I_{\rm ZLP}(\Delta E)$
 as a function of the energy loss for $E_b=200$ keV and $t_{\rm exp}=10$ ms (left)
 and 100 ms (right panel).
 %
@@ -376,11 +396,12 @@ that enforce $I_{\rm EEL}(\Delta E)\to 0$ are present
 in all three cases in the region 800 meV $\le \Delta E \le 1 eV$. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[t]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.49\textwidth]{plots/prediction_with_cut_10ms.pdf}
-    \includegraphics[width=0.49\textwidth]{plots/prediction_with_cut_100ms.pdf}
-    \caption{\small The relative uncertainty in the model predictions for $I_{\rm EEL}(\Delta E)$
+    \includegraphics[width=0.49\textwidth]{plots/prediction_with_cut_10ms_absolute.pdf}
+    \includegraphics[width=0.49\textwidth]{plots/prediction_with_cut_100ms_absolute.pdf}
+    \caption{The central values and 68\% uncertainty bands 
+    in the model predictions for $I_{\rm EEL}(\Delta E)$
       as a function of the energy loss for $E_b=200$ keV and $t_{\rm exp}=10$ ms (left)
       and 100 ms (right panel).
       %
@@ -391,11 +412,42 @@ in all three cases in the region 800 meV $\le \Delta E \le 1 eV$.
       %
       Note that the same pseudo-data points that enforce $I_{\rm EEL}(\Delta E)\to 0$ are present
       in all three cases.
-      \label{fig:EELS_vacuum_cuts}}
+      }
+      \label{fig:EELS_vacuum_DeltaE_abs}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-From this comparison we can observe how the model predictions become markedly more uncertain
+
+At first sight, the removal of data from the training dataset doesn't introduce large
+uncertainties for the ZLP predictions: they are little noticed when the data is cut at 50meV,
+and for 100 meV the predictions seem to identical to the full range training.
+%
+To emulate the effects of such cut, one needs to look at the {\it relative} uncertainty rather
+than the absolute, that is, normalizing the uncertainty in each point to the predicted intensity.
+%
+The results can be observed in Fig.~\ref{fig:EELS_vacuum_cuts}. We show the relative uncertainty
+in the model predictions using two different x and y scales, to visualize the results
+as clearly as possible.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.49\textwidth]{plots/prediction_with_cut_10ms_zoomout.pdf}
+    \includegraphics[width=0.49\textwidth]{plots/prediction_with_cut_100ms_zoomout.pdf}
+    \includegraphics[width=0.49\textwidth]{plots/prediction_with_cut_10ms.pdf}
+    \includegraphics[width=0.49\textwidth]{plots/prediction_with_cut_100ms.pdf}
+    \caption{Top: The relative uncertainty in the model predictions for $I_{\rm EEL}(\Delta E)$
+      as a function of the energy loss for $E_b=200$ keV and $t_{\rm exp}=10$ ms (left)
+      and 100 ms (right panel).
+      %
+      Bottom: same results with different x and y scales for better visualization of the 
+      differences in relative uncertainties. 
+      }
+      \label{fig:EELS_vacuum_cuts}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+From this comparison we can observe how the model predictions become significantly more unstable
 once a subset of the training data is cut away, as expected due to the effect of the information
 loss.
 %
@@ -409,9 +461,8 @@ in the training set for the ZLP model, provided of course we can verify that the
 possible contributions to the spectra related to inelastic scatterings from the
 sample can be neglected.
 
-\subsection{Dependence on  beam energy  and exposure time }
-\label{eq:depebeam}
-
+\subsection{Dependence on beam energy and exposure time }
+\label{sec:depebeam}
 
 As indicated in Table~\ref{table:vacuumdata}, the training dataset contains
 spectra taken at two values of the electron beam energy, $E_b=60$ keV and 200 keV.
@@ -431,11 +482,11 @@ The left panel of Fig.~\ref{fig:extrapolbeam} displays  model predictions for th
       markedly in the extrapolation region above $E_b=200$ keV.
       
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[t]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.49\textwidth]{plots/Ebeam_extrapolation.pdf}
     \includegraphics[width=0.49\textwidth]{plots/time_extrapolation.pdf}
-    \caption{\small The model predictions for the FWHM of the zero loss peak
+    \caption{The model predictions for the FWHM of the zero loss peak
       (and its corresponding uncertainty) as a function of the beam energy $E_b$
       for two values of the exposure time (left panel)
       and as a function of $t_{\rm exp}$ for two values of $E_b$ (right panel).
@@ -443,7 +494,7 @@ The left panel of Fig.~\ref{fig:extrapolbeam} displays  model predictions for th
       The vertical dashed lines indicate the values of the
       corresponding parameter for which training data is available.
     }
-    \label{fig:extrapolbeam}
+\label{fig:extrapolbeam}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -500,10 +551,10 @@ The central value and 68\% confidence level band for the predicted ZLP distribut
 can be observed in Fig.~\ref{fig:EELS_vacuum_DeltaE_check} below, which can be directly
 compared to Fig.~\ref{fig:EELS_vacuum_DeltaE}. 
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
- \includegraphics[width=0.9\textwidth]{plots/Prediction_120keV_bignetwork.pdf}\label{first}
- \includegraphics[width=0.9\textwidth]{plots/Prediction_120keV_smallnetwork.pdf}\label{second}
+ \includegraphics[width=0.9\textwidth]{plots/Prediction_120keV_bignetwork.pdf}
+ \includegraphics[width=0.9\textwidth]{plots/Prediction_120keV_smallnetwork.pdf}
  \caption{Similar to Fig.~\ref{fig:EELS_vacuum_DeltaE} but now
     for a network with twice (up) and half (down) the architecture. 
     We see that the when doubling the network, predictions are
@@ -512,7 +563,8 @@ compared to Fig.~\ref{fig:EELS_vacuum_DeltaE}.
     that are a bit off from our default network. 
     Note that the predictions made for E$_b$=120 keV are purely
     interpolation results; the training set contains only data for beam 
-    energies of 60 and 200 keV.}
+    energies of 60 and 200 keV.
+    }
     \label{fig:EELS_vacuum_DeltaE_check}
 \end{figure}
 It can be observed that results are well
@@ -545,31 +597,39 @@ The results can be observed in Fig.~\ref{fig:EELS_vacuum_DeltaE_check2}.
 We find remarkable stability: the two sets yield to almost identical representations,
 both for the training data as for the interpolation regime. 
 %
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
  \includegraphics[width=0.9\textwidth]{plots/Prediction_120keV_100replicas_part1.pdf}
  \includegraphics[width=0.9\textwidth]{plots/Prediction_120keV_100replicas_part2.pdf}
  \caption{Similar to Fig.~\ref{fig:EELS_vacuum_DeltaE} but now for two subsets of 100 replicas
- instead of the full set of 500 replicas.}
-    \label{fig:EELS_vacuum_DeltaE_check2}
+ instead of the full set of 500 replicas.
+ }
+\label{fig:EELS_vacuum_DeltaE_check2}
 \end{figure}
 
 A final check is to see how uncertainties change with the number of replicas. 
 We have produced the same plot but now based on three different sizes of MC ensembles:
 N$_{rep}$=25, 100 and 400. 
 %
-It is clear that for a small subset (N$_{rep}$=25), in the peaks the predictions are
+Again, we have created plots similar to the ones before, now using each time
+a different size of replicas. 
+%
+We would expect that using a small subset introduces larger errors compared to 
+large ensembles of replicas.
+%
+It is clear that for the smallest subset (N$_{rep}$=25), in the peaks the predictions are
 already well produced, however uncertainties in the tails are significantly larger.
 %
 The difference between using either 100 or 400 replicas is hardly noticable, which
 confirms our statement given in Sect.~\ref{sec:uncertaintypropagation} that 500
 replicas is (more than) enough to obtain a faithful representation.
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
  \includegraphics[width=0.7\textwidth]{plots/Prediction_120keV_different_nrep.pdf}
- \caption{Predictions for three different number of replicas. See how uncertainties change..}
-    \label{fig:EELS_vacuum_DeltaE_check3}
+ \caption{Predictions for three different number of replicas. 
+ See how uncertainties change..}
+\label{fig:EELS_vacuum_DeltaE_check3}
 \end{figure}
 
 

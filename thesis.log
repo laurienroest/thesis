@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.8.26)  12 SEP 2020 17:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.8.26)  13 SEP 2020 17:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -545,27 +545,38 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 159
 (/usr/local/texlive/2020basic/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 205--208
-
- []
-
+! Missing } inserted.
+<inserted text> 
+                }
+l.172 \end{center}
+                  
+? 
 [1
 
 
 {/usr/local/texlive/2020basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-(./thesis.toc)
+Underfull \hbox (badness 10000) in paragraph at lines 175--176
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 199--202
+
+ []
+
+[2] (./thesis.toc)
 \tf@toc=\write4
 \openout4 = `thesis.toc'.
 
- (./sec-introduction.tex [2
+ [3
 
-]) [3] (./sec-eels.tex
+] (./sec-introduction.tex [4]) [5] (./sec-eels.tex
 Overfull \hbox (9.22765pt too wide) in paragraph at lines 1--1
 []\OT1/cmr/bx/n/17.28 Fundamentals of Elec-tron En-ergy Loss Spec-troscopy 
  []
 
 
-LaTeX Warning: Citation `Egertonbook' on page 4 undefined on input line 7.
+LaTeX Warning: Citation `Egertonbook' on page 6 undefined on input line 7.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 4--12
@@ -573,23 +584,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--12
  []
 
 
-LaTeX Warning: Citation `Hillier' on page 4 undefined on input line 14.
+LaTeX Warning: Citation `Hillier' on page 6 undefined on input line 14.
 
 
-LaTeX Warning: Citation `Holer' on page 4 undefined on input line 30.
+LaTeX Warning: Citation `Holer' on page 6 undefined on input line 30.
 
-<plots/EELS.pdf, id=201, 790.955pt x 329.23pt>
+<plots/EELS.pdf, id=210, 790.955pt x 329.23pt>
 File: plots/EELS.pdf Graphic file (type pdf)
 <use plots/EELS.pdf>
 Package pdftex.def Info: plots/EELS.pdf  used on input line 54.
 (pdftex.def)             Requested size: 409.71692pt x 170.54248pt.
-[4 <./plots/EELS.pdf>]
+[6 <./plots/EELS.pdf>]
 Underfull \hbox (badness 10000) in paragraph at lines 83--88
 
  []
 
 
-LaTeX Warning: Citation `egerton' on page 5 undefined on input line 98.
+LaTeX Warning: Citation `egerton' on page 7 undefined on input line 98.
 
 
 Package amsmath Warning: Foreign command \over;
@@ -602,26 +613,26 @@ Underfull \hbox (badness 10000) in paragraph at lines 114--118
  []
 
 
-LaTeX Warning: Citation `abajo' on page 5 undefined on input line 134.
+LaTeX Warning: Citation `abajo' on page 7 undefined on input line 134.
 
 
-LaTeX Warning: Citation `stoger' on page 5 undefined on input line 136.
+LaTeX Warning: Citation `stoger' on page 7 undefined on input line 136.
 
 
-LaTeX Warning: Citation `bruley' on page 5 undefined on input line 141.
+LaTeX Warning: Citation `bruley' on page 7 undefined on input line 141.
 
-[5]
-<plots/bandgap.png, id=279, 1138.2525pt x 462.72874pt>
+[7]
+<plots/bandgap.png, id=288, 1138.2525pt x 462.72874pt>
 File: plots/bandgap.png Graphic file (type png)
 <use plots/bandgap.png>
 Package pdftex.def Info: plots/bandgap.png  used on input line 160.
 (pdftex.def)             Requested size: 284.52756pt x 115.66777pt.
 
 
-LaTeX Warning: Citation `rafferty' on page 6 undefined on input line 161.
+LaTeX Warning: Citation `rafferty' on page 8 undefined on input line 161.
 
 
-LaTeX Warning: Citation `rafferty' on page 6 undefined on input line 161.
+LaTeX Warning: Citation `rafferty' on page 8 undefined on input line 161.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 165--178
@@ -629,17 +640,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 165--178
  []
 
 
-LaTeX Warning: Citation `Tiemeijer' on page 6 undefined on input line 198.
+LaTeX Warning: Citation `Tiemeijer' on page 8 undefined on input line 198.
 
-[6 <./plots/bandgap.png>]
+[8 <./plots/bandgap.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 235--243
 
  []
 
 
-LaTeX Warning: Citation `erni' on page 7 undefined on input line 248.
+LaTeX Warning: Citation `erni' on page 9 undefined on input line 248.
 
-<plots/monochromator.png, id=292, 425.59pt x 528.97626pt>
+<plots/monochromator.png, id=301, 425.59pt x 528.97626pt>
 File: plots/monochromator.png Graphic file (type png)
 <use plots/monochromator.png>
 Package pdftex.def Info: plots/monochromator.png  used on input line 265.
@@ -649,7 +660,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 278--320
 
  []
 
-[7 <./plots/monochromator.png>]) (./sec-tmd.tex
+[9 <./plots/monochromator.png>]) [10] (./sec-tmd.tex
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 1.
@@ -662,16 +673,15 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 1.
 
-[8]
 
-LaTeX Warning: Reference `' on page 9 undefined on input line 52.
+LaTeX Warning: Reference `' on page 11 undefined on input line 52.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 8--62
 
  []
 
-<plots/spectrumimage.pdf, id=325, 463.7325pt x 176.66pt>
+<plots/spectrumimage.pdf, id=334, 463.7325pt x 176.66pt>
 File: plots/spectrumimage.pdf Graphic file (type pdf)
 <use plots/spectrumimage.pdf>
 Package pdftex.def Info: plots/spectrumimage.pdf  used on input line 84.
@@ -680,9 +690,9 @@ Package pdftex.def Info: plots/spectrumimage.pdf  used on input line 84.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-LaTeX Warning: Citation `Li:2016' on page 9 undefined on input line 115.
+LaTeX Warning: Citation `Li:2016' on page 11 undefined on input line 115.
 
-[9]
+[11]
 ! Undefined control sequence.
 <recently read> \multirow 
                           
@@ -716,64 +726,67 @@ l.158 ....76\pm0.03 $      & direct    & \multirow
                                                   {}{}{Absorption edge coeff...
 
 ? 
-) (./sec-neuralnetworks.tex [10 <./plots/spectrumimage.pdf>]
-<plots/nn.png, id=366, 596.2275pt x 343.2825pt>
+) [12 <./plots/spectrumimage.pdf>] (./sec-neuralnetworks.tex
+<plots/nn.png, id=374, 596.2275pt x 343.2825pt>
 File: plots/nn.png Graphic file (type png)
 <use plots/nn.png>
 Package pdftex.def Info: plots/nn.png  used on input line 15.
 (pdftex.def)             Requested size: 284.52756pt x 163.82039pt.
-<plots/f(z).png, id=369, 682.55pt x 276.03125pt>
+<plots/f(z).png, id=377, 682.55pt x 276.03125pt>
 File: plots/f(z).png Graphic file (type png)
 <use plots/f(z).png>
 Package pdftex.def Info: plots/f(z).png  used on input line 48.
 (pdftex.def)             Requested size: 284.52756pt x 115.06888pt.
- [11 <./plots/nn.png> <./plots/f(z).png>]
+ [13 <./plots/nn.png> <./plots/f(z).png>]
 
-LaTeX Warning: Reference `fig:cost' on page 12 undefined on input line 163.
+LaTeX Warning: Reference `fig:cost' on page 14 undefined on input line 163.
 
-[12]
-<plots/train_val_error.pdf, id=392, 722.7pt x 325.215pt>
+[14]
+<plots/train_val_error.pdf, id=401, 722.7pt x 325.215pt>
 File: plots/train_val_error.pdf Graphic file (type pdf)
 <use plots/train_val_error.pdf>
 Package pdftex.def Info: plots/train_val_error.pdf  used on input line 168.
 (pdftex.def)             Requested size: 426.79134pt x 192.05879pt.
-) (./sec-methodology.tex
+) [15 <./plots/train_val_error.pdf>] (./sec-methodology.tex
 
-LaTeX Warning: Citation `Kiyohara:2018' on page 13 undefined on input line 42.
+LaTeX Warning: Citation `Kiyohara:2018' on page 16 undefined on input line 42.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 29--47
 
  []
 
-[13 <./plots/train_val_error.pdf>]
+[16]
 Underfull \hbox (badness 10000) in paragraph at lines 107--115
 
  []
 
-[14]
+
 Underfull \hbox (badness 10000) in paragraph at lines 137--152
 
  []
 
-<plots/architecture.pdf, id=468, 670.505pt x 604.2575pt>
+<plots/architecture.pdf, id=474, 670.505pt x 604.2575pt>
 File: plots/architecture.pdf Graphic file (type pdf)
 <use plots/architecture.pdf>
 Package pdftex.def Info: plots/architecture.pdf  used on input line 168.
 (pdftex.def)             Requested size: 281.68228pt x 253.85095pt.
 
-LaTeX Warning: Reference `sec:neuralnetworks' on page 15 undefined on input lin
+LaTeX Warning: Reference `sec:neuralnetworks' on page 17 undefined on input lin
 e 204.
 
-[15 <./plots/architecture.pdf>]
-<plots/MCscheme.pdf, id=609, 1019.81pt x 764.8575pt>
+[17]
+<plots/MCscheme.pdf, id=489, 1019.81pt x 764.8575pt>
 File: plots/MCscheme.pdf Graphic file (type pdf)
 <use plots/MCscheme.pdf>
 Package pdftex.def Info: plots/MCscheme.pdf  used on input line 240.
 (pdftex.def)             Requested size: 318.66948pt x 239.0057pt.
 
 
-LaTeX Warning: Reference `fig:MCschema' on page 16 undefined on input line 250.
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: Reference `fig:MCschema' on page 18 undefined on input line 250.
 
 
 
@@ -781,13 +794,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 250--257
 
  []
 
-[16 <./plots/MCscheme.pdf>]
-<plots/MC.pdf, id=669, 1300.86pt x 505.89pt>
+[18 <./plots/architecture.pdf>] [19 <./plots/MCscheme.pdf>]
+<plots/MC.pdf, id=686, 1300.86pt x 505.89pt>
 File: plots/MC.pdf Graphic file (type pdf)
 <use plots/MC.pdf>
 Package pdftex.def Info: plots/MC.pdf  used on input line 332.
 (pdftex.def)             Requested size: 450.69417pt x 175.26556pt.
- [17]
+ [20 <./plots/MC.pdf>]
 Underfull \hbox (badness 10000) in paragraph at lines 398--407
 
  []
@@ -797,7 +810,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 417--424
 
  []
 
-[18 <./plots/MC.pdf>]
+[21]
 Underfull \hbox (badness 10000) in paragraph at lines 483--497
 
  []
@@ -807,32 +820,45 @@ Package caption Warning: \label without proper reference on input line 166.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `fig:costs' on page 19 undefined on input line 538.
+LaTeX Warning: Reference `fig:costs' on page 22 undefined on input line 538.
 
-[19] [20]
-<plots/Toy.pdf, id=771, 430.60875pt x 298.11375pt>
+[22]
+<plots/Toy.pdf, id=776, 430.60875pt x 298.11375pt>
 File: plots/Toy.pdf Graphic file (type pdf)
 <use plots/Toy.pdf>
 Package pdftex.def Info: plots/Toy.pdf  used on input line 607.
 (pdftex.def)             Requested size: 318.66948pt x 220.62346pt.
- [21 <./plots/Toy.pdf>]
+ [23 <./plots/Toy.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 669--688
+
+ []
+
+[24]
 Underfull \hbox (badness 10000) in paragraph at lines 729--737
 
  []
 
 
-LaTeX Warning: Reference `{eq:pdlocation}' on page 22 undefined on input line 7
+LaTeX Warning: Reference `{eq:pdlocation}' on page 25 undefined on input line 7
 42.
 
-[22]) (./sec-results-vacuum.tex
 
-LaTeX Warning: Reference `eq:depdeltae' on page 23 undefined on input line 88.
+Underfull \hbox (badness 10000) in paragraph at lines 738--754
 
-[23]
+ []
 
-LaTeX Warning: Reference `eq:sigmaiexp' on page 24 undefined on input line 93.
+) [25] (./sec-results-vacuum.tex
 
-<plots/training_points_vacuum.pdf, id=805, 505.89pt x 289.08pt>
+LaTeX Warning: Reference `eq:depdeltae' on page 26 undefined on input line 88.
+
+
+LaTeX Warning: Reference `eq:depebeam' on page 26 undefined on input line 88.
+
+[26]
+
+LaTeX Warning: Reference `eq:sigmaiexp' on page 27 undefined on input line 93.
+
+<plots/training_points_vacuum.pdf, id=817, 505.89pt x 289.08pt>
 File: plots/training_points_vacuum.pdf Graphic file (type pdf)
 <use plots/training_points_vacuum.pdf>
 Package pdftex.def Info: plots/training_points_vacuum.pdf  used on input line 1
@@ -847,234 +873,328 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 104.
 
 
-LaTeX Warning: Reference `eq:sigmaiexp' on page 24 undefined on input line 116.
+LaTeX Warning: Reference `eq:sigmaiexp' on page 27 undefined on input line 116.
 
 
-<plots/intensity_to_error_ratio.pdf, id=806, 361.35pt x 252.945pt>
+<plots/intensity_to_error_ratio.pdf, id=818, 361.35pt x 252.945pt>
 File: plots/intensity_to_error_ratio.pdf Graphic file (type pdf)
 <use plots/intensity_to_error_ratio.pdf>
 Package pdftex.def Info: plots/intensity_to_error_ratio.pdf  used on input line
  122.
 (pdftex.def)             Requested size: 341.43306pt x 239.0034pt.
 
-LaTeX Warning: Reference `eq:sigmaiexp' on page 24 undefined on input line 133.
+LaTeX Warning: Reference `eq:sigmaiexp' on page 27 undefined on input line 133.
 
 
 
-LaTeX Warning: Reference `eq:sigmaiexp' on page 24 undefined on input line 133.
+LaTeX Warning: Reference `eq:sigmaiexp' on page 27 undefined on input line 133.
 
 
+[27 <./plots/training_points_vacuum.pdf> <./plots/intensity_to_error_ratio.pdf
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[24 <./plots/training_points_vacuum.pdf>] [25 <./plots/intensity_to_error_ratio
-.pdf>]
-<plots/chi2_distributions.pdf, id=924, 542.025pt x 361.35pt>
+pdfTeX warning: pdflatex (file ./plots/intensity_to_error_ratio.pdf): PDF inclu
+sion: multiple pdfs with page group included in a single page
+>] [28]
+<plots/chi2_distributions.pdf, id=936, 542.025pt x 361.35pt>
 File: plots/chi2_distributions.pdf Graphic file (type pdf)
 <use plots/chi2_distributions.pdf>
 Package pdftex.def Info: plots/chi2_distributions.pdf  used on input line 244.
 (pdftex.def)             Requested size: 223.07211pt x 148.71686pt.
-<plots/train_val_error_271.pdf, id=925, 433.62pt x 289.08pt>
+<plots/train_val_error_271.pdf, id=937, 433.62pt x 289.08pt>
 File: plots/train_val_error_271.pdf Graphic file (type pdf)
 <use plots/train_val_error_271.pdf>
 Package pdftex.def Info: plots/train_val_error_271.pdf  used on input line 245.
 
 (pdftex.def)             Requested size: 223.07211pt x 148.71686pt.
- [26 <./plots/chi2_distributions.pdf> <./plots/train_val_error_271.pdf
+ [29 <./plots/chi2_distributions.pdf> <./plots/train_val_error_271.pdf
 
 pdfTeX warning: pdflatex (file ./plots/train_val_error_271.pdf): PDF inclusion:
  multiple pdfs with page group included in a single page
 >]
-<plots/deltaE_dependence_vacuum.pdf, id=1029, 1011.78pt x 650.43pt>
+<plots/deltaE_dependence_vacuum.pdf, id=1039, 1011.78pt x 650.43pt>
 File: plots/deltaE_dependence_vacuum.pdf Graphic file (type pdf)
 <use plots/deltaE_dependence_vacuum.pdf>
 Package pdftex.def Info: plots/deltaE_dependence_vacuum.pdf  used on input line
- 320.
-(pdftex.def)             Requested size: 483.69684pt x 310.95233pt.
-
-Overfull \hbox (28.45273pt too wide) in paragraph at lines 320--335
- [][] 
- []
-
-[27 <./plots/deltaE_dependence_vacuum.pdf>]
-<plots/prediction_with_cut_10ms.pdf, id=1088, 433.62pt x 289.08pt>
+ 323.
+(pdftex.def)             Requested size: 426.79134pt x 274.3697pt.
+ [30 <./plots/deltaE_dependence_vacuum.pdf>]
+<plots/prediction_with_cut_10ms_absolute.pdf, id=1099, 505.89pt x 325.215pt>
+File: plots/prediction_with_cut_10ms_absolute.pdf Graphic file (type pdf)
+<use plots/prediction_with_cut_10ms_absolute.pdf>
+Package pdftex.def Info: plots/prediction_with_cut_10ms_absolute.pdf  used on i
+nput line 401.
+(pdftex.def)             Requested size: 223.07211pt x 143.40271pt.
+<plots/prediction_with_cut_100ms_absolute.pdf, id=1100, 505.89pt x 325.215pt>
+File: plots/prediction_with_cut_100ms_absolute.pdf Graphic file (type pdf)
+<use plots/prediction_with_cut_100ms_absolute.pdf>
+Package pdftex.def Info: plots/prediction_with_cut_100ms_absolute.pdf  used on 
+input line 402.
+(pdftex.def)             Requested size: 223.07211pt x 143.40271pt.
+<plots/prediction_with_cut_10ms_zoomout.pdf, id=1102, 505.89pt x 325.215pt>
+File: plots/prediction_with_cut_10ms_zoomout.pdf Graphic file (type pdf)
+<use plots/prediction_with_cut_10ms_zoomout.pdf>
+Package pdftex.def Info: plots/prediction_with_cut_10ms_zoomout.pdf  used on in
+put line 435.
+(pdftex.def)             Requested size: 223.07211pt x 143.40271pt.
+<plots/prediction_with_cut_100ms_zoomout.pdf, id=1103, 505.89pt x 325.215pt>
+File: plots/prediction_with_cut_100ms_zoomout.pdf Graphic file (type pdf)
+<use plots/prediction_with_cut_100ms_zoomout.pdf>
+Package pdftex.def Info: plots/prediction_with_cut_100ms_zoomout.pdf  used on i
+nput line 436.
+(pdftex.def)             Requested size: 223.07211pt x 143.40271pt.
+<plots/prediction_with_cut_10ms.pdf, id=1104, 433.62pt x 289.08pt>
 File: plots/prediction_with_cut_10ms.pdf Graphic file (type pdf)
 <use plots/prediction_with_cut_10ms.pdf>
 Package pdftex.def Info: plots/prediction_with_cut_10ms.pdf  used on input line
- 381.
+ 437.
 (pdftex.def)             Requested size: 223.07211pt x 148.71686pt.
-<plots/prediction_with_cut_100ms.pdf, id=1089, 433.62pt x 289.08pt>
+<plots/prediction_with_cut_100ms.pdf, id=1105, 433.62pt x 289.08pt>
 File: plots/prediction_with_cut_100ms.pdf Graphic file (type pdf)
 <use plots/prediction_with_cut_100ms.pdf>
 Package pdftex.def Info: plots/prediction_with_cut_100ms.pdf  used on input lin
-e 382.
+e 438.
 (pdftex.def)             Requested size: 223.07211pt x 148.71686pt.
- [28 <./plots/prediction_with_cut_10ms.pdf> <./plots/prediction_with_cut_100ms.
-pdf
+ [31 <./plots/prediction_with_cut_10ms_absolute.pdf> <./plots/prediction_with_c
+ut_100ms_absolute.pdf
+
+pdfTeX warning: pdflatex (file ./plots/prediction_with_cut_100ms_absolute.pdf):
+ PDF inclusion: multiple pdfs with page group included in a single page
+>]
+<plots/Ebeam_extrapolation.pdf, id=1219, 361.35pt x 252.945pt>
+File: plots/Ebeam_extrapolation.pdf Graphic file (type pdf)
+<use plots/Ebeam_extrapolation.pdf>
+Package pdftex.def Info: plots/Ebeam_extrapolation.pdf  used on input line 487.
+
+(pdftex.def)             Requested size: 223.07211pt x 156.1527pt.
+<plots/time_extrapolation.pdf, id=1220, 361.35pt x 252.945pt>
+File: plots/time_extrapolation.pdf Graphic file (type pdf)
+<use plots/time_extrapolation.pdf>
+Package pdftex.def Info: plots/time_extrapolation.pdf  used on input line 488.
+(pdftex.def)             Requested size: 223.07211pt x 156.1527pt.
+ [32 <./plots/prediction_with_cut_10ms_zoomout.pdf> <./plots/prediction_with_cu
+t_100ms_zoomout.pdf
+
+pdfTeX warning: pdflatex (file ./plots/prediction_with_cut_100ms_zoomout.pdf): 
+PDF inclusion: multiple pdfs with page group included in a single page
+> <./plots/prediction_with_cut_10ms.pdf
+
+pdfTeX warning: pdflatex (file ./plots/prediction_with_cut_10ms.pdf): PDF inclu
+sion: multiple pdfs with page group included in a single page
+> <./plots/prediction_with_cut_100ms.pdf
 
 pdfTeX warning: pdflatex (file ./plots/prediction_with_cut_100ms.pdf): PDF incl
 usion: multiple pdfs with page group included in a single page
 >]
-<plots/Ebeam_extrapolation.pdf, id=1199, 361.35pt x 252.945pt>
-File: plots/Ebeam_extrapolation.pdf Graphic file (type pdf)
-<use plots/Ebeam_extrapolation.pdf>
-Package pdftex.def Info: plots/Ebeam_extrapolation.pdf  used on input line 436.
-
-(pdftex.def)             Requested size: 223.07211pt x 156.1527pt.
-<plots/time_extrapolation.pdf, id=1200, 361.35pt x 252.945pt>
-File: plots/time_extrapolation.pdf Graphic file (type pdf)
-<use plots/time_extrapolation.pdf>
-Package pdftex.def Info: plots/time_extrapolation.pdf  used on input line 437.
-(pdftex.def)             Requested size: 223.07211pt x 156.1527pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 478--480
+Underfull \hbox (badness 10000) in paragraph at lines 529--531
 
  []
 
-[29 <./plots/Ebeam_extrapolation.pdf> <./plots/time_extrapolation.pdf
+[33 <./plots/Ebeam_extrapolation.pdf> <./plots/time_extrapolation.pdf
 
 pdfTeX warning: pdflatex (file ./plots/time_extrapolation.pdf): PDF inclusion: 
 multiple pdfs with page group included in a single page
 >]
-<plots/Prediction_120keV_bignetwork.pdf, id=1286, 1300.86pt x 433.62pt>
+<plots/Prediction_120keV_bignetwork.pdf, id=1517, 1300.86pt x 433.62pt>
 File: plots/Prediction_120keV_bignetwork.pdf Graphic file (type pdf)
 <use plots/Prediction_120keV_bignetwork.pdf>
 Package pdftex.def Info: plots/Prediction_120keV_bignetwork.pdf  used on input 
-line 505.
+line 556.
 (pdftex.def)             Requested size: 409.71692pt x 136.57117pt.
-<plots/Prediction_120keV_smallnetwork.pdf, id=1287, 1300.86pt x 433.62pt>
+<plots/Prediction_120keV_smallnetwork.pdf, id=1518, 1300.86pt x 433.62pt>
 File: plots/Prediction_120keV_smallnetwork.pdf Graphic file (type pdf)
 <use plots/Prediction_120keV_smallnetwork.pdf>
 Package pdftex.def Info: plots/Prediction_120keV_smallnetwork.pdf  used on inpu
-t line 506.
+t line 557.
 (pdftex.def)             Requested size: 409.71692pt x 136.57117pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 529--539
+Underfull \hbox (badness 10000) in paragraph at lines 581--591
 
  []
 
-<plots/Prediction_120keV_100replicas_part1.pdf, id=1292, 1300.86pt x 433.62pt>
+<plots/Prediction_120keV_100replicas_part1.pdf, id=1523, 1300.86pt x 433.62pt>
 File: plots/Prediction_120keV_100replicas_part1.pdf Graphic file (type pdf)
 <use plots/Prediction_120keV_100replicas_part1.pdf>
 Package pdftex.def Info: plots/Prediction_120keV_100replicas_part1.pdf  used on
- input line 550.
+ input line 602.
 (pdftex.def)             Requested size: 409.71692pt x 136.57117pt.
-<plots/Prediction_120keV_100replicas_part2.pdf, id=1293, 1300.86pt x 433.62pt>
+<plots/Prediction_120keV_100replicas_part2.pdf, id=1524, 1300.86pt x 433.62pt>
 File: plots/Prediction_120keV_100replicas_part2.pdf Graphic file (type pdf)
 <use plots/Prediction_120keV_100replicas_part2.pdf>
 Package pdftex.def Info: plots/Prediction_120keV_100replicas_part2.pdf  used on
- input line 551.
+ input line 603.
 (pdftex.def)             Requested size: 409.71692pt x 136.57117pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[30 <./plots/Prediction_120keV_bignetwork.pdf> <./plots/Prediction_120keV_small
+[34 <./plots/Prediction_120keV_bignetwork.pdf> <./plots/Prediction_120keV_small
 network.pdf
 
 pdfTeX warning: pdflatex (file ./plots/Prediction_120keV_smallnetwork.pdf): PDF
  inclusion: multiple pdfs with page group included in a single page
 >]
-<plots/Prediction_120keV_different_nrep.pdf, id=1390, 833.1125pt x 798.985pt>
+<plots/Prediction_120keV_different_nrep.pdf, id=1622, 833.1125pt x 798.985pt>
 File: plots/Prediction_120keV_different_nrep.pdf Graphic file (type pdf)
 <use plots/Prediction_120keV_different_nrep.pdf>
 Package pdftex.def Info: plots/Prediction_120keV_different_nrep.pdf  used on in
-put line 570.
+put line 629.
 (pdftex.def)             Requested size: 318.66948pt x 305.61687pt.
+ [35 <./plots/Prediction_120keV_100replicas_part1.pdf> <./plots/Prediction_120k
+eV_100replicas_part2.pdf
+
+pdfTeX warning: pdflatex (file ./plots/Prediction_120keV_100replicas_part2.pdf)
+: PDF inclusion: multiple pdfs with page group included in a single page
+>]) [36 <./plots/Prediction_120keV_different_nrep.pdf>]
+(./sec-results-sample.tex
+<plots/Spectra_location2.pdf, id=1722, 556.0775pt x 529.98pt>
+File: plots/Spectra_location2.pdf Graphic file (type pdf)
+<use plots/Spectra_location2.pdf>
+Package pdftex.def Info: plots/Spectra_location2.pdf  used on input line 59.
+(pdftex.def)             Requested size: 396.06015pt x 377.47717pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) (./sec-results-sample.tex
-Overfull \hbox (8.70644pt too wide) in paragraph at lines 1--1
-[]\OT1/cmr/bx/n/17.28 ZLP sub-trac-tion and bandgap de-ter-mi-na-tion in WS$[]$
- 
+
+Underfull \hbox (badness 10000) in paragraph at lines 80--95
+
+ []
+
+[37] [38 <./plots/Spectra_location2.pdf>]
+<plots/Derivatives_sample_A.pdf, id=1848, 505.89pt x 361.35pt>
+File: plots/Derivatives_sample_A.pdf Graphic file (type pdf)
+<use plots/Derivatives_sample_A.pdf>
+Package pdftex.def Info: plots/Derivatives_sample_A.pdf  used on input line 164
+.
+(pdftex.def)             Requested size: 223.07211pt x 159.33633pt.
+<plots/Derivatives_sample_B.pdf, id=1849, 505.89pt x 361.35pt>
+File: plots/Derivatives_sample_B.pdf Graphic file (type pdf)
+<use plots/Derivatives_sample_B.pdf>
+Package pdftex.def Info: plots/Derivatives_sample_B.pdf  used on input line 165
+.
+(pdftex.def)             Requested size: 223.07211pt x 159.33633pt.
+<plots/delta2_sampleA.pdf, id=1862, 361.35pt x 252.945pt>
+File: plots/delta2_sampleA.pdf Graphic file (type pdf)
+<use plots/delta2_sampleA.pdf>
+Package pdftex.def Info: plots/delta2_sampleA.pdf  used on input line 232.
+(pdftex.def)             Requested size: 223.07211pt x 156.1527pt.
+<plots/delta2_sampleB.pdf, id=1863, 361.35pt x 252.945pt>
+File: plots/delta2_sampleB.pdf Graphic file (type pdf)
+<use plots/delta2_sampleB.pdf>
+Package pdftex.def Info: plots/delta2_sampleB.pdf  used on input line 233.
+(pdftex.def)             Requested size: 223.07211pt x 156.1527pt.
+ [39 <./plots/Derivatives_sample_A.pdf> <./plots/Derivatives_sample_B.pdf
+
+pdfTeX warning: pdflatex (file ./plots/Derivatives_sample_B.pdf): PDF inclusion
+: multiple pdfs with page group included in a single page
+>]
+Underfull \hbox (badness 10000) in paragraph at lines 251--255
+
  []
 
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1.
+LaTeX Warning: Reference `fig:rder' on page 40 undefined on input line 291.
 
+<plots/Derivatives_ratio_A.pdf, id=1954, 814.04124pt x 604.2575pt>
+File: plots/Derivatives_ratio_A.pdf Graphic file (type pdf)
+<use plots/Derivatives_ratio_A.pdf>
+Package pdftex.def Info: plots/Derivatives_ratio_A.pdf  used on input line 298.
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 1.
+(pdftex.def)             Requested size: 223.07211pt x 165.58583pt.
+<plots/Derivatives_ratio_B.pdf, id=1955, 505.89pt x 375.804pt>
+File: plots/Derivatives_ratio_B.pdf Graphic file (type pdf)
+<use plots/Derivatives_ratio_B.pdf>
+Package pdftex.def Info: plots/Derivatives_ratio_B.pdf  used on input line 299.
 
+(pdftex.def)             Requested size: 223.07211pt x 165.7098pt.
+[40 <./plots/delta2_sampleA.pdf> <./plots/delta2_sampleB.pdf
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1.
-
-[31 <./plots/Prediction_120keV_100replicas_part1.pdf> <./plots/Prediction_120ke
-V_100replicas_part2.pdf
-
-pdfTeX warning: pdflatex (file ./plots/Prediction_120keV_100replicas_part2.pdf)
-: PDF inclusion: multiple pdfs with page group included in a single page
+pdfTeX warning: pdflatex (file ./plots/delta2_sampleB.pdf): PDF inclusion: mult
+iple pdfs with page group included in a single page
 >]
-<plots/Spectra_location.pdf, id=1486, 556.0775pt x 529.98pt>
-File: plots/Spectra_location.pdf Graphic file (type pdf)
-<use plots/Spectra_location.pdf>
-Package pdftex.def Info: plots/Spectra_location.pdf  used on input line 46.
-(pdftex.def)             Requested size: 396.06015pt x 377.47717pt.
- [32 <./plots/Prediction_120keV_different_nrep.pdf>] [33 <./plots/Spectra_locat
-ion.pdf>]
-Overfull \hbox (2.77216pt too wide) in alignment at lines 256--264
+Underfull \hbox (badness 10000) in paragraph at lines 308--334
+
+ []
+
+[41 <./plots/Derivatives_ratio_A.pdf> <./plots/Derivatives_ratio_B.pdf>]
+Overfull \hbox (2.77216pt too wide) in alignment at lines 387--395
  [][][] []
  []
 
-[34]
-<plots/SubtractedEELS_plot_sp14.pdf, id=1639, 1300.86pt x 505.89pt>
+[42]
+<plots/SubtractedEELS_plot_sp14.pdf, id=2096, 650.43pt x 505.89pt>
 File: plots/SubtractedEELS_plot_sp14.pdf Graphic file (type pdf)
 <use plots/SubtractedEELS_plot_sp14.pdf>
 Package pdftex.def Info: plots/SubtractedEELS_plot_sp14.pdf  used on input line
- 342.
-(pdftex.def)             Requested size: 450.69417pt x 175.26556pt.
- [35]
-<plots/Stability_plots_sp14.pdf, id=1662, 1011.78pt x 361.35pt>
-File: plots/Stability_plots_sp14.pdf Graphic file (type pdf)
-<use plots/Stability_plots_sp14.pdf>
-Package pdftex.def Info: plots/Stability_plots_sp14.pdf  used on input line 413
-.
+ 479.
+(pdftex.def)             Requested size: 223.07211pt x 173.49785pt.
+<plots/SubtractedEELS_plot_sp15.pdf, id=2097, 650.43pt x 505.89pt>
+File: plots/SubtractedEELS_plot_sp15.pdf Graphic file (type pdf)
+<use plots/SubtractedEELS_plot_sp15.pdf>
+Package pdftex.def Info: plots/SubtractedEELS_plot_sp15.pdf  used on input line
+ 480.
+(pdftex.def)             Requested size: 223.07211pt x 173.49785pt.
+<plots/Stability_plots_sp14_smooth.pdf, id=2105, 1011.78pt x 361.35pt>
+File: plots/Stability_plots_sp14_smooth.pdf Graphic file (type pdf)
+<use plots/Stability_plots_sp14_smooth.pdf>
+Package pdftex.def Info: plots/Stability_plots_sp14_smooth.pdf  used on input l
+ine 550.
 (pdftex.def)             Requested size: 450.69417pt x 160.96289pt.
- [36 <./plots/SubtractedEELS_plot_sp14.pdf>]
-<plots/SubtractedEELS_plot_sp4.pdf, id=1732, 650.43pt x 505.89pt>
+ [43 <./plots/SubtractedEELS_plot_sp14.pdf> <./plots/SubtractedEELS_plot_sp15.p
+df
+
+pdfTeX warning: pdflatex (file ./plots/SubtractedEELS_plot_sp15.pdf): PDF inclu
+sion: multiple pdfs with page group included in a single page
+>]
+<plots/bg_stability.pdf, id=2196, 722.7pt x 252.945pt>
+File: plots/bg_stability.pdf Graphic file (type pdf)
+<use plots/bg_stability.pdf>
+Package pdftex.def Info: plots/bg_stability.pdf  used on input line 600.
+(pdftex.def)             Requested size: 409.71692pt x 143.4005pt.
+ [44 <./plots/Stability_plots_sp14_smooth.pdf> <./plots/bg_stability.pdf
+
+pdfTeX warning: pdflatex (file ./plots/bg_stability.pdf): PDF inclusion: multip
+le pdfs with page group included in a single page
+>]
+<plots/SubtractedEELS_plot_sp4.pdf, id=2266, 650.43pt x 505.89pt>
 File: plots/SubtractedEELS_plot_sp4.pdf Graphic file (type pdf)
 <use plots/SubtractedEELS_plot_sp4.pdf>
 Package pdftex.def Info: plots/SubtractedEELS_plot_sp4.pdf  used on input line 
-460.
+624.
 (pdftex.def)             Requested size: 273.14923pt x 212.44919pt.
- [37 <./plots/Stability_plots_sp14.pdf> <./plots/SubtractedEELS_plot_sp4.pdf
-
-pdfTeX warning: pdflatex (file ./plots/SubtractedEELS_plot_sp4.pdf): PDF inclus
-ion: multiple pdfs with page group included in a single page
->]
-<plots/subtracted_spectra_comp.pdf, id=1827, 722.7pt x 252.945pt>
+<plots/subtracted_spectra_comp.pdf, id=2278, 722.7pt x 252.945pt>
 File: plots/subtracted_spectra_comp.pdf Graphic file (type pdf)
 <use plots/subtracted_spectra_comp.pdf>
 Package pdftex.def Info: plots/subtracted_spectra_comp.pdf  used on input line 
-508.
+672.
 (pdftex.def)             Requested size: 450.69417pt x 157.74286pt.
-) (./sec-summary.tex [38 <./plots/subtracted_spectra_comp.pdf>])
-(./app-code.tex) (./thesis.bbl [39] [40] [41] [42])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 247.
- [43]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 247.
+ [45 <./plots/SubtractedEELS_plot_sp4.pdf>]) [46 <./plots/subtracted_spectra_co
+mp.pdf>] (./sec-summary.tex [47]) (./app-code.tex [48] [49
+
+]
+
+LaTeX Warning: Reference `sec:MCreplicas' on page 50 undefined on input line 15
+0.
+
+[50] [51]) (./thesis.bbl [52] [53] [54] [55])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 248.
+ [56]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 248.
  (./thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 247.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 247.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 248.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 248.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 025BAD765712AB79675815229992702D;1721.
+(rerunfilecheck)             Checksum: 415F591B9AB434B8F7229BED3F0FADBC;1686.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 247.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 248.
  ) 
 Here is how much of TeX's memory you used:
- 9501 strings out of 482056
- 144571 string characters out of 5937675
- 417463 words of memory out of 5000000
- 24746 multiletter control sequences out of 15000+600000
- 548396 words of font info for 83 fonts, out of 8000000 for 9000
+ 9602 strings out of 482056
+ 147785 string characters out of 5937675
+ 420304 words of memory out of 5000000
+ 24814 multiletter control sequences out of 15000+600000
+ 548703 words of font info for 84 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 41i,16n,63p,815b,454s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,16n,63p,867b,452s stack positions out of 5000i,500n,10000p,200000b,80000s
  </Users/laurienroest/Library/texlive/2020basic/texmf-var/fonts/pk/ljfour/jkn
 appen/ec/tcrm1200.600pk></usr/local/texlive/2020basic/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2020basic/texmf-dist/fonts/type
@@ -1087,20 +1207,21 @@ texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2020bas
 ic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2020
 basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2
 020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texliv
-e/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texl
-ive/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/te
-xlive/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loca
-l/texlive/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/l
-ocal/texlive/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></us
-r/local/texlive/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-</usr/local/texlive/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.
-pfb></usr/local/texlive/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
-t12.pfb></usr/local/texlive/2020basic/texmf-dist/fonts/type1/public/amsfonts/sy
-mbols/msbm10.pfb>
-Output written on thesis.pdf (43 pages, 5012467 bytes).
+e/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/tex
+live/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/t
+exlive/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local
+/texlive/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/l
+ocal/texlive/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></us
+r/local/texlive/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><
+/usr/local/texlive/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.p
+fb></usr/local/texlive/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti
+12.pfb></usr/local/texlive/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmtt12.pfb></usr/local/texlive/2020basic/texmf-dist/fonts/type1/public/amsfonts
+/symbols/msbm10.pfb>
+Output written on thesis.pdf (56 pages, 5554877 bytes).
 PDF statistics:
- 2037 PDF objects out of 2073 (max. 8388607)
- 1126 compressed objects within 12 object streams
- 203 named destinations out of 1000 (max. 500000)
- 343 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2566 PDF objects out of 2984 (max. 8388607)
+ 1282 compressed objects within 13 object streams
+ 224 named destinations out of 1000 (max. 500000)
+ 403 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,3 +1,11 @@
+%\vspace{1cm}
+%\hrule
+%\vspace{1cm}
+
+\clearpage
+\begin{center}
+  {\bf \LARGE Supplementary Material}
+ \end{center}
 
 \section{Installation and usage of {\tt EELSfitter}}
 \label{sec:installation}
@@ -6,8 +14,314 @@ In this appendix we provide some instructions about the installation
 and the usage of the {\tt EELSfitter} code developed
 in this work.
 %
-The code is publicly available from its GitHub repository
+The code is available from its GitHub repository
 \begin{center}
 \url{https://github.com/LHCfitNikhef/EELSfitter}
 \end{center}
-and can be installed as follows:
+and is composed by a number of {\tt Python} scripts.
+%
+The code requires a working installation of {\tt Python3} and the following
+libraries: {\tt NumPy}, {\tt TensorFlow} (v2), {\tt pandas}, {\tt SciPy} and {\tt scikit-learn}.  
+
+
+\noindent
+\paragraph{\tt Load\_data.py}
+%
+This script reads the spectrum
+intensities and create data-frames to be used for training the neural network.
+%
+It reads out the EEL spectra intensities, automatically selects the energy loss
+at which the peak intensity occurs and shifts the dataset such that
+the peak intensity is centered at $\Delta E =$0. 
+%
+Further, for each spectrum it returns the normalized intensity by normalizing
+over the total area under the spectrum. 
+%
+The output is two datasets, {\tt df} and {\tt df\_vacuum} which contain the 
+information on the in-sample and in-vacuum recorded spectra respectively. 
+%
+The user needs to upload the spectral data in .txt format to the 'Data' folder
+and make sure that the vacuum and in-sample spectra are added to the appropriate one.
+%
+For each of the spectra the minimum and maximum value of the recorded energy 
+loss need to be set manually in {\tt Eloss\_min} and {\tt Eloss\_max}.
+
+\noindent
+\paragraph{\tt Fitter.ipynb}
+%
+This script is used to run the neural network training on the data that was 
+uploaded using {\tt load\_data.py}.
+%
+It involves a number of pre-processing steps to determine the hyper-parameters $\Delta E_{\rm I}$
+and $\Delta E_{\rm II}$ and then
+it automatically prepares and cuts the data before it is fed
+to the neural network to start the training.
+%
+It is structured as follows:
+
+\begin{itemize}
+  
+\item {\it Importing libraries and spectral data} from the {\bf load\_data.py} script.
+
+\item {\it Evaluate  $\Delta E_{\rm I}$ from the intensity derivatives}.
+  %
+  In order to determine the value for the hyper-parameter
+  $\Delta E_{\rm I}$, a dataframe {\tt df\_dx} is created
+and it calculates the derivatives of each of the in-sample recorded spectra, 
+stored as {\tt df\_dx['derivative y*']}, where {\tt *} is any of the in-sample recorded spectra.
+%
+The first crossing of any of the derivatives with zero is determined 
+and stored as the value of $\Delta E_{\rm I}$. 
+
+\item {\it Evaluate $\Delta E_{\rm II}$ for the pseudo-data.}
+  %
+It calculates the mean over all vacuum spectra, {\tt df\_mean}, and the ratio of the 
+intensity to the experimental uncertainty for each value of
+$\Delta E$, {\tt df\_mean['ratio']}. 
+%
+The value of $\Delta E_{\rm II}$ is then determined as the energy loss at which this ratio
+drops below 1 and  is stored together with the value of $\Delta E_{\rm I}$
+as the hyper-parameters for training. 
+%
+However, if one wishes to use other values for these parameters, for instance for 
+cross-validating the best value for $\Delta E_{\rm I}$, these can also be adjusted manually.
+
+\item {\it Experimental data processing.}
+%
+  The next step is to keep only
+  the data points with $\Delta E \le \Delta E_{\rm I}$  
+and dropping the points with higher energy losses.
+%
+Experimental central values and uncertainties are calculated by means of equal width 
+discretization, for which the number of bins has to be set as {\tt nbins}. 
+%
+The default value is 32, which means that 32 training inputs are spread equally
+over the range [$ \Delta E_{\rm min}, \Delta E_{\rm I}$]. 
+%
+Note that the logarithm of the intensity is used as training inputs, because this facilitates
+the optimization of the neural network ($I_{\rm EEL}$ being a steeply falling function
+of $\Delta E$).
+%
+The code translates this back to the original intensity values after the training.
+%
+$N_{\rm pd}$
+pseudo datapoints are added in the range $[\Delta E_{\rm II}, \Delta E_{\rm max}]$, where
+$ \Delta E_{\rm max}$
+is the maximum energy loss value of the recorded spectra. 
+%
+The values for $N_{\rm pd}$ and $\Delta E_{\rm max}$ should be changed manually by 
+setting them in {\tt max\_x} and {\tt N\_pseudo}. 
+%
+The output is a dataframe {\tt df\_full} containing all training data and pseudo data points, 
+corresponding to a total of $N_{\rm in}$ (= $n_{\rm bins}$ + $N_{\rm pd}$) training inputs.
+
+\item {\it Initialize the NN model,} where the code
+  defines the neural network architecture and prepares the
+data inputs to feed them to the neural network for training. 
+%
+The function {\tt make\_model()} allows to define the number of hidden layers and 
+nodes per layer. The default  architecture is 1-10-15-5-1.
+
+\item {\it Initialize data for NN training.}
+  %
+  Here the code prepares the recorded spectra to be used
+as inputs for the neural network. 
+%
+First, we initiate placeholders for the variables
+{\tt x}, {\tt y} and {\tt sigma} which
+allow us to create our operations and 
+build our computation graph, without needing the data itself. 
+%
+The dimension of the placeholder is defined by {\tt $[{\bf None}, dim]$} where 'dim'
+should be set to the dimension of the corresponding variable. In this case the input is 
+one-dimensional, so dim=1. 
+%
+These placeholders are used to define {\tt predictions}, which is in fact a placeholder that is used 
+later to make predictions on inputs {\tt x}. 
+%
+Also, we define a vector {\tt predict\_x} that is used to make a direct prediction after training
+on each of the replicas. It consists of $N_{\rm pred}$ data points in the energy loss range
+{\tt [pred\_min, pred\_max]}. 
+
+\item {\it Create the Monte Carlo replicas.}
+  %
+  The final step to be taken before we can start training is the creation of
+  sample of $N_{\rm rep}$ Monte Carlo replicas of the original EEL spectra,
+  following the procedure described in Sect.~\ref{sec:MCreplicas}.
+%
+This is done automatically using the experimental intensities {\tt train\_y} and uncertainties
+{\tt train\_sigma} for a total of {\tt Nrep} replicas. The output is an ($N_{\rm in}, N_{\rm rep}$) 
+vector containing all the MC replicas. 
+
+\item {\it Train the neural networks.}
+  %
+  The final part of the script, where the NN training is  carried out,
+  is based on the function {\tt function\_train()} that
+  implements the strategy presented in Sect.~\ref{sec:training}.
+%
+The cost function, optimizer and learning rate are defined here, together with a 'saver' used to 
+save the network parameters after each optimization. 
+%
+We start a loop over {\tt Nrep} replicas to initiate a training session on each of the individual replicas
+in series. 
+%
+For each iteration, the $k$-th replica is selected from the sample of $N_{\rm rep}$ replicas.
+%
+The data is split into 80\% training and 20\% validation data, this partition is done 
+at random for each replica. The resulting {\tt train\_y} and {\tt test\_y} arrays are used
+as training and validation labels.
+%
+The total number of training epochs per session is defined in {\tt training\_epochs}.
+%
+The script displays intermediate 
+results after each number of epochs defined by {\tt display\_step}. 
+%
+Running the session object over the optimizer and cost function requires knowledge about the values of {\tt x} and {\tt sigma}, which 
+are defined inside the {\tt feed\_dict} argument. 
+%
+After each epoch the average training  validation costs are evaluated
+and the network parameters  updated accordingly.
+
+Once the maximum number of epochs 
+had been reached, the optimal stopping point is determined by 
+taking the absolute minimum of the validation cost
+and restoring the corresponding network parameters by means of the 'saver' function.
+%
+From this network graph, one can directly output the prediction on the values of {\tt train\_x} and
+the results are stored in the array {\tt predictions\_values}.
+%
+It is also possible to make predictions on any input vector of choice by feeding 
+the vector {\tt predict\_x} to the 
+network, which outputs an array {\tt extrapolation}.
+
+\end{itemize}
+
+The datafiles that are stored upon successfully
+executing this script are the following:
+
+\begin{itemize}
+
+\item {\tt Prediction\_k} contains the energy loss {\tt train\_x}, the MC training data {\tt train\_y}
+and the ZLP prediction made on the array {\tt train\_x}, where {\tt k} is the $k$-th replica. 
+\item {\tt Cost\_k} contains the training and validation error for the
+  $k$-th replica
+stored after each display step. 
+The minimum of the the validation array is used to restore the optimal
+neural network parameters.
+\item {\tt Extrapolation\_k} contains the arrays {\tt predict\_x} and the ZLP predictions made on these values. 
+\end{itemize}
+These text files can be retrieved later to make new ZLP predictions
+without the need to repeat the training procedure.
+%
+Futher, we store the optimal network parameters after each training session in the folder
+'Models/Best\_models'. 
+%
+These can be loaded at a later stage
+to make predictions for an arbitrary set of input variables. 
+
+Running the loop over all replicas in series, using an input array of $\sim$50 training points 
+and a total number of training epochs of 25000 per session,
+takes approximately 20 seconds per optimization ($\sim$200 replicas per hour).
+
+
+
+
+
+\noindent
+\paragraph{\tt predictions.ipynb}
+This script is used to analyse the predictions from the trained
+neural networks that have been stored in the text files indicated above.
+
+\begin{itemize}
+  
+\item {\it Import libraries and spectral data} from the {\bf load\_data.py} script.
+
+\item {\it Create dataframes with all individual spectra.}
+In order to later subtract all the predictions from the original individual spectra, we create a datafile
+{\tt original} which contains the intensity values for each of the original input spectra restricted to the region between
+ {\tt E\_min} and {\tt E\_max}.
+
+\item {\it Load result files.}
+  %
+In order to import the files that were stored during the NN training, 
+one should input to this script the right directions to find the prediction .txt files
+by adjusting the lines {\tt path\_to\_data} and {\tt path\_predict}, {\tt path\_cost} and {\tt path\_extrapolate}, 
+containing the predictions, cost function data and the extrapolation predictions respectively.
+
+\item {\it Post-selection criteria.}
+  %
+  Here one select the datafiles that satisfy suitable post-fit selection
+  criteria, such as the final error function being smaller
+  than a certain threshold. 
+ %
+Once these datasets have been selected and stored in an array called {\tt use\_files},
+we move on to the evaluation of the ZLP predictions. 
+
+\item {\it Subtraction.}
+ At this step the code uses the function {\tt matching()} to
+  implement the matching procedure
+  described in Sect.~\ref{sec:results_sample}.
+  %
+  It also automatically selects the
+  values of $\Delta E_{\rm I}$ and $\Delta E_{\rm II}$ for the training session.
+  %
+  If the user aims to extract the bandgap properties
+  from the onset of $I_{\rm inel}$, 
+  the  {\tt bandgap()} function can be used to
+  fit Eq.~\ref{eq:I1} to the onset region.
+
+Here the code loops over the $N_{\rm rep}$ replicas and reads each prediction from the extrapolation data file {\tt predict\_x}.
+%
+For each replica {\tt k}, the code creates a datafile containing the original spectra intensities 
+({\tt original['x*']} and {\tt original['y*']}), the predicted ZLP for this replica ({\tt prediction y}) 
+and the predicted ZLP after matching with each spectrum ({\tt match *}). 
+%
+For each replica we subtract the matched spectrum from the original spectrum 
+to obtain the desired subtraction: {\tt dif * = original * - match *}. 
+%
+This is done for each of the total of the replicas and all these results are stored in the  {\tt total\_replicas} dataframe. 
+%
+This file is saved in `Data/results/replica\_files' such that a user
+can retrieve them  at any time to calculate the
+statistical estimators such as prediction means and uncertainties. 
+
+\item {\it Evaluate the subtracted spectra.}
+%
+Here the code creates a {\tt mean\_rep} file that contains
+all the median predictions and the upper and lower bounds of the 68\% confidence intervals for 
+the predicted ZLP, matched spectra and the subtracted spectra, for each of the original recorded
+spectra originally given as an input. 
+%
+A graphical representation
+of the result is then produced, showing the original spectrum, the matched
+ZLP and the ZLP-subtracted spectrum including uncertainty bounds. 
+
+\end{itemize}
+
+We emphasize that the {\tt predictions\_pretrained\_net.ipynb} script is similar to the 
+{\tt predictions.ipynb} script, but 
+can be executed stand-alone
+without the need to train again the neural networks, provided that
+the model parameters corresponding to some previous training with
+the desired input settings are available.
+The item {\bf load result files} is now replaced by {\bf create result files}, 
+which can be done by importing the pre-trained nets from the {\tt Models} folder. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
