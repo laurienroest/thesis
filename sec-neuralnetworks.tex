@@ -1,14 +1,17 @@
-\section{Fundamentals of Neural Networks}
+\section{Fundamentals of neural networks}
 \label{sec:nn}
-
-Artificial neural networks (NN) are based on the idea of simulating 
+One of the most successful machine learning techniques, 
+artificial neural networks, are based on the idea of simulating 
 the functioning of neuron connections of the human brain. 
 %
 This machine learning technique is trained in a fashion similar to 
 human learning with the goal to process complex inputs and conclude correct outputs \cite{greplova}.
 %
-A neural network is defined by a (usually large) number of neurons 
+A neural network (NN) is defined by a (usually large) number of neurons 
 interconnected with strength parameters called weights. 
+%
+A typical multilayer neural network architecture is schematically shown below in Fig.~\ref{fig:nn}.
+%
 
 \begin{figure}[H]
     \centering
@@ -19,8 +22,15 @@ interconnected with strength parameters called weights.
 
 %
 Each neuron, represented in the above figure with a circle, 
-is connected to a number of neurons in the previous layer and 
-its output is the result of an activation function to its inputs:
+is connected to a number of neurons in the previous layer.  
+%
+The far left neurons are the input neurons, they represent an input vector where 
+each neuron holds one dimension of the vector, {\it e.g.} an energy loss bin in an EEL spectrum. 
+%
+The far right neurons are the output neurons and they can be be either
+real-valued numbers or classification labels (1 or 0).
+%
+For each neuron, its output is the result of an activation function to its inputs:
 
 \begin{equation}
     z = \sum_j w_j x_j + b,
@@ -33,12 +43,15 @@ It is the latter two that will be optimized by training.
 A nonlinear activation function $f(z)$ is applied to come to the output value for each neuron; 
 this procedure is called forward propagation. 
 %
+Through the use of these nonlinear functions, the neural network graph 
+resembles an efficient nonlinear regression model.
+% 
 Typical examples for $f(z)$ are the Rectified Linear Unit (ReLU) 
 and sigmoid function, as depicted in Fig. \ref{activation}. 
 %
 Note that these are two often-used, but not the only possible activation functions. 
 %
-The choice of non-linear activation function influences computational and 
+The choice of nonlinear activation function influences computational and 
 training properties of the neural nets \cite{juan}.
 %
 For example, choice for the ReLU function ensures absolute positivity. 
@@ -50,21 +63,34 @@ For example, choice for the ReLU function ensures absolute positivity.
     \label{activation}
 \end{figure}
 
+The input vector is passed through each layer of the neural network and is transformed
+by the nonlinear operations until it arrives at the output layer.
+%
+For a certain set of inputs \textbf{$x_0$} and a collection of weights and biases $(w^{\rm l}_{\rm jk}, b^{\rm l}_j)$, 
+where $w^{\rm l}_{\rm jk}$ is the connection between the j-th neuron in the l-th layer and the k-th 
+neuron in the (l+1)-th layer, $b^{\rm l}_{\rm j}$ being the corresponding bias,
+the neural network gives an output $y$ that can be compared to the desired (target) output $\hat{y}$. 
+%
+A cost function $C(y, \hat{y})$
+is used to quantify how far we are from our desired output.
+%
+It is for this reason that this type of machine learning is called supervised learning: after
+each iteration, under supervision of the correct output, the model parameters are adjusted.
+%
+This is in contrast to unsupervised learning, 
+where one only has a collection of data, and is looking to find structure without knowing the desired outcome.
 
-For a certain set of inputs \textbf{$x_0$} and a collection of weights and biases $(w^l_j,b^l_j)$, 
-with $w^l_j$ being the j-th neuron in the l-th layer.
+Training the algorithm is done by minimizing the cost function with respect to all tunable parameters
+$(w^{\rm l}_{\rm jk}, b^{\rm l}_j)$ of the system. 
 %
-The neural network gives an output $y$ that can be compared to the desired output $y_{target}$. 
+This minimization is done by means of the gradient descent method, a first-order optimization algorithm
+for finding a local minimum of a differentiable function, in this case the cost function $C$.
 %
-A cost function $C(y, y_{target})$ is used to quantify how 'far' we are from our desired output, 
-and training the algorithm is done by minimizing the cost function with respect to all $(w^l_j,b^l_j)$ of the system. 
-%
-This minimization is done by means of the gradient descent method, which means 
-that after each iteration the weights and biases are adjusted a bit towards 
-the minimum of the cost function. 
+To find the local minimum, after each iteration the weights and biases are adjusted a bit proportional
+to the negative of the gradient of the cost function at the current point. 
 %
 To make this minimization computationally tractable, 
-the so-called back-propagation algorithm is being used \cite{hn}, 
+the so-called back-propagation algorithm is used \cite{Hecht:1992}, 
 allowing us to approximate the derivative of the cost function by averaging over the training set. 
 %
 All together, training the network relies on the following four fundamental equations:
@@ -82,10 +108,13 @@ All together, training the network relies on the following four fundamental equa
 \end{split}
 \end{align}
 
-Here, $\delta_j^l$ is the error and $a_j^l$ the output of neuron $j$ in layer $l$, 
-$C$ is the cost, $b$ is the bias and $w$ is the weight of each neuron. 
+Here, $\delta_j^l$ is the error and $a_j^l$ is the output of neuron $j$ in layer $l$; 
+$C$ is the cost function; $b$ is the bias and $w$ is the weight of each neuron. 
 %
-It is the error $\delta_j^L$ that represents the total cost of the network.
+It is the error $\delta_j^L$ in the first line that represents the total cost of the network.
+%
+The second line presents the backpropagation: from layer $(l+1)$, the error is propagated
+back through the network until the very first layer.
 %
 The last two equations evaluate the gradient of the model parameters 
 with the gradient of the cost function. 
@@ -101,13 +130,13 @@ With this info one can update the model parameters by
 \end{align}
 where $\eta$ is the pre-defined learning rate, a measure for the size 
 of the step taken with each iteration.
-From equations (\ref{eqs3}), one can see that the choice of non-linear 
-activation function ($f(z)$) influences the learning of the network. 
 %
-This can already be deduced from the shape of the functions in Fig.~\ref{activation}: 
+From Eqns.~(\ref{eqs3}), one can see that the choice of nonlinear 
+activation function $f(z)$ affects the learning of the network. 
+%
+This could already be deduced from the shape of the functions in Fig.~\ref{activation}: 
 since $\sigma$(z) saturates for large inputs $z\gg0$, 
 $d\sigma/dz\rightarrow0$ and the network loses sensitivity~\cite{juan}.
-
 
 
 We use the definition {\it epoch} for each time that
@@ -143,15 +172,15 @@ increasing the size or increasing the tunability of the model usually goes with 
 validation set. 
 %
 The validation subset is left out of the training set on purpose and the model
-can not learn on this data points.
+can not learn on these inputs.
 %
 After each epoch, the total performance of the
 system can be validated by feeding this subset to the network and calculating
-the total error on this data.
+the total corresponding error.
 %
 Tracing the cost function on both the training and the validation set 
 gives insight in if the network is overfitting the training data.
-First, both the training and validation error will be decreasing, 
+First, both the training and validation error will decrease, 
 but at a certain point the network will start overfitting and the
 validation error slowly starts to increase. 
 %
@@ -160,17 +189,16 @@ error of the validation sample, computed over a large fixed number of
 iterations.
 %
 A typical progress of the training and validation error over the 
-course of the optimization can be observed in Fig.~\ref{fig:cost}.
+course of the optimization can be observed in Fig.~\ref{fig:costs}.
 
 \begin{figure}[H]
-    \label{fig:costs}
-    \centering
-    \includegraphics[width=150mm]{plots/train_val_error.pdf}
-    \caption{Progress of both the training and validation error over 
-    one training session as a function of the number of epochs. 
+\centering
+\includegraphics[width=150mm]{plots/train_val_error.pdf}
+\caption{Progress of both the training and validation error over 
+one training session as a function of the number of epochs. 
 The optimal stopping point is where the validation error is at
 its absolute minimum, here after 43,500 epochs.}
-
+\label{fig:costs}
 \end{figure}
 
 %

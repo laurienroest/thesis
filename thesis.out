@@ -1,10 +1,10 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
-\BOOKMARK [1][-]{section.2}{Fundamentals of Electron Energy Loss Spectroscopy}{}% 2
+\BOOKMARK [1][-]{section.2}{Fundamentals of EELS}{}% 2
 \BOOKMARK [2][-]{subsection.2.1}{EEL spectra}{section.2}% 3
 \BOOKMARK [2][-]{subsection.2.2}{Energy resolution}{section.2}% 4
 \BOOKMARK [2][-]{subsection.2.3}{ZLP subtraction}{section.2}% 5
 \BOOKMARK [1][-]{section.3}{Transition metal dichalcogenides and WS2}{}% 6
-\BOOKMARK [1][-]{section.4}{Fundamentals of Neural Networks}{}% 7
+\BOOKMARK [1][-]{section.4}{Fundamentals of neural networks}{}% 7
 \BOOKMARK [1][-]{section.5}{Neural network determination of the ZLP}{}% 8
 \BOOKMARK [2][-]{subsection.5.1}{ZLP parametrisation}{section.5}% 9
 \BOOKMARK [2][-]{subsection.5.2}{Uncertainty propagation}{section.5}% 10
@@ -19,6 +19,6 @@
 \BOOKMARK [2][-]{subsection.7.1}{Training dataset}{section.7}% 19
 \BOOKMARK [2][-]{subsection.7.2}{Subtraction procedure}{section.7}% 20
 \BOOKMARK [2][-]{subsection.7.3}{Bandgap analysis of sample A}{section.7}% 21
-\BOOKMARK [2][-]{subsection.7.4}{Bandgap analysis of sample B}{section.7}% 22
+\BOOKMARK [2][-]{subsection.7.4}{Mapping excitonic transitions in sample B}{section.7}% 22
 \BOOKMARK [1][-]{section.8}{Summary and outlook}{}% 23
 \BOOKMARK [1][-]{appendix.A}{Installation and usage of EELSfitter}{}% 24

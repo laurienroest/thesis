@@ -4,7 +4,7 @@
 \label{sec:methodology}
 
 In this section we present our strategy to parametrise, predict and subtract 
-the zero loss peak by means of machine learning.
+the zero-loss peak by means of machine learning.
 %
 As mentioned in the introduction, our strategy will be inspired by the 
 NNPDF method~\cite{Rojo:2018qdd} originally developed in the context of high-energy physics
@@ -19,7 +19,7 @@ fragmentation functions of partons into neutral and charged
 hadrons~\cite{Bertone:2017tyb,Bertone:2018ecm}.
 %
 Neural networks benefit from the ability to parametrise 
-multidimensional input data with arbitrarily non-linear dependencies:
+multidimensional input data with nonlinear dependencies:
 even with a single hidden layer, a neural network can reproduce arbitrary 
 functional dependencies provided it has a large enough number of neurons.
 %
@@ -42,7 +42,7 @@ machine learning has been put forward for the prediction
 of spectral features in the core-loss regime~\cite{Kiyohara:2018}.
 %
 To the best of our knowledge, this is the first time that neural networks are used as 
-unbiased background-removal interpolators and that they are used combined with 
+unbiased background-removal interpolators and combined with 
 Monte Carlo sampling to construct an estimate of the model uncertainties.\\
 
 In this section, we discuss the parametrisation of the ZLP in terms of neural networks.
@@ -53,9 +53,9 @@ and subsequently to subtract this distribution from the spectrum to isolate the 
 scattering contributions.
 %
 In order to do so, we first need to develop a model that is able to predict the general
-shape of the zero loss peak as a function of its input parameters. 
+shape of the zero-loss peak as a function of its input parameters. 
 %
-For this we use in-vacuum zero loss peak recordings, which function as a baseline to 
+For this we use in-vacuum zero-loss peak recordings, which function as a baseline to 
 create this generic, multidimensional model.
 %
 In this regard we also
@@ -70,31 +70,31 @@ WS$_2$ specimens and how one can select the hyper-parameters that appear in the 
 \subsection{ZLP parametrisation}
 \label{sec:parametrisation}
 
-Without any loss of generality, we can decompose recorded the intensity profile
+Without any loss of generality, we can decompose the recorded intensity profile
 in any EEL spectrum as
 \be
 \label{eq:IeelTot}
 I_{\rm EEL}(\Delta E) =I_{\rm ZLP}(\Delta E) + I_{\rm inel}(\Delta E) \, ,
 \ee
-where $\Delta E$ is the measured electron energy loss; $I_{\rm ZLP}$ is the zero loss
+where $\Delta E$ is the measured electron energy loss; $I_{\rm ZLP}$ is the zero-loss
 distribution arising both from instrumental origin and from elastic interactions; and
 $I_{\rm inel}(\Delta E)$ contains the contributions from the electrons that have undergone
 inelastic scattering with the specimen. 
 %
 It is the latter contribution that we're particularly interested in, but in order 
-to get hold of it we need to disentangle it from the zero loss contribution.
+to get hold of it we need to disentangle it from the zero-loss contribution.
 %
 As shown by the representative example of Fig.~\ref{fig:EELS}, there are two limits
 for which one can straightforwardly separate the two contributions.
 %
-The first region is for sufficiently high energy losses, where
+The first is for sufficiently high energy losses, where
 $I_{\rm ZLP}$ vanishes and $I_{\rm EEL} \to I_{\rm inel}$.
 %
 Secondly, in the region close to zero, all emission can be associated to
 the ZLP such that $I_{\rm EEL}\to  I_{\rm ZLP}$.
 %
 It is the region in between that is of particular interest, 
-the ultra-low-loss region where $I_{\rm ZLP}$ and $I_{\rm inel}$
+the very-low-loss region where $I_{\rm ZLP}$ and $I_{\rm inel}$
 become of comparable order of magnitude.
 
 Our goal is to construct a parametrisation of $I_{\rm ZLP}$ based on artificial
@@ -108,7 +108,7 @@ I_{\rm inel}(\Delta E) \simeq I_{\rm EEL}(\Delta E) - I_{\rm ZLP}^{\rm (mod)}(\D
 Isolating $I_{\rm inel}$ from the total spectrum makes us able to exploit 
 the physical information contained in the low-loss region.
 %
-Crucially, we aim toestimate and propagate all the relevant sources of uncertainty associated
+Crucially, we aim to estimate and propagate all the relevant sources of uncertainty associated
 both to the input data and to methodological choices. 
 %
 This helps us to verify our results and to separate lucky findings from real insights.\\
@@ -119,7 +119,7 @@ conditions of the microscope, such as the electron beam energy $E_b$ and the exp
 $t_{\rm exp}$.
 %
 Therefore we want to construct a multidimensional model which can theoretically take any number of relevant variables
-as input, in order to reproduce the predicted zero loss peak.
+as input, in order to reproduce the predicted zero-loss peak.
 %
 This means that in general Eq.~(\ref{eq:ZLPseparation}) can be written as
 \be
@@ -130,7 +130,7 @@ where we note that the subtracted spectrum $I_{\rm inel}(\Delta E)$ should depen
 Ideally, the ZLP model should be able to accomodate as many input variables as possible.
 %
 The output of the ZLP model is parametrised by means of multi-layer feed-forward artificial neural networks.
-This means that the predicted zero loss peak intensity can be expressed as 
+This means that the predicted zero-loss peak intensity can be expressed as 
 \be
 \label{eq:ZLPmodelNN}
 I_{\rm ZLP}^{\rm (mod)}(\Delta E, E_{b},t_{\rm exp}, \ldots)  = \xi^{(n_l)}_1(\Delta E, E_{b},t_{\rm exp}, \ldots) \, ,
@@ -141,29 +141,27 @@ that represent the relevant information about the operating conditions during th
 %
 Note that for this work, we have used spectra recorded under the known conditions $\{ \Delta E, E_{b},t_{\rm exp}\}$. 
 %
-This set of inputs could potentially be extended by including extra variablesm, 
-{\it e.g.} arperture width, abberation correction and temperature. 
+This set of inputs could potentially be extended by including extra variables, 
+{\it e.g.} arperture width, aberration correction and temperature. 
 %
-The neural network is then trained by means of supervised learning and non-linear regression on these  
+The neural network is then trained by means of supervised learning and nonlinear regression on these  
 $n_I$ inputs, using the known corresponding ZLP intensities $I_{\rm ZLP}^{\rm (mod)}$ as training outcomes. 
 %
 Each iteration, the weights and thresholds of this neural network model are optimized
 from the minimization of the error on this training dataset.\\
 
-The number of hidden layers and neurons that is optimal is very task depenend and
+The number of hidden layers and neurons that is optimal is very task dependent and
 should therefore be decided arbitrarily, 
 there is no general rule of thumb. 
 %
 We have chosen to use an $n_I$-10-15-5-1 architecture with three hidden layers, wich corresponds to a total
 number of 289~(271) free parameters for $n_I=3$~($n_I=1$) to be optimised.
 %
-However, we have verified that results are fairly independent of this exact choice:
-predictions on the training data did not change significantly when the architecture 
-was increased by a factor of two.
-
+However, we have verified that results are fairly independent of this exact choice;
+we will elaborate on this later onwards.
   
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[t]
+\begin{figure}[H]
     \centering
     \includegraphics[width=99mm]{plots/architecture.pdf}
     \caption{Schematic representation of our ML model for the ZLP, Eq.~(\ref{eq:ZLPmodelNN}).
@@ -185,9 +183,9 @@ A schematic representation of this model
 is displayed in Fig.~\ref{fig:architecture}.
 %
  The input is an $n_I$ array containing $\Delta E$ and the rest of
- operation variables of the microscope, and
+ operating variables of the microscope, and
  the output is the value of the intensity of the ZLP distribution
- associated to those input variables.
+ associated to those inputs.
  %
  We use a sigmoid activation function for the three hidden layers and a ReLU
  for the final one.
@@ -201,11 +199,10 @@ is displayed in Fig.~\ref{fig:architecture}.
  the network can over-fit on the training inputs.
  %
  However, the final results should be evaluated before the network starts overfitting,
- as described in Sect.~\ref{sec:neuralnetworks}. 
+ as described in Sect.~\ref{sec:nn}. 
  %
  This means that we need to define a suitable regularisation strategy, which 
  will be explained later onwards in Sect.~\ref{sec:training}.
-
 
 
 \subsection{Uncertainty propagation}
@@ -247,13 +244,14 @@ signal from background signals, while the MC samples handles the fluctuations wi
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
-The MC strategy is schematically summarized in figure \ref{fig:MCschema} and it involves two stages.
-In the first, we generate an ensemble of replicas of the original training set. 
+The MC strategy is schematically summarized in figure \ref{fig:MCscheme} and it involves two stages.
+In the first, we generate an ensemble of replicas of the original training set using the
+experimental central values and errors. 
 %
-Then, each replica
-is passed through an individual neural network, which thereby outputs a parametrisation of the ZLP.
+Then, each replica is used to train 
+an individual neural network, which thereby outputs a prediction of the ZLP.
 %
-Any physical observables can be calculated over the set of computed ZLP distributuions.\\
+Any physical observables can be calculated over the set of computed ZLP distributions.\\
 
 Let us assume that we have $n_{\rm dat}$ independent measurements of the ZLP intensity, 
 so our training dataset contains $n_{\rm dat}$ data points, all with different combinations of input parameters. 
@@ -284,7 +282,7 @@ The strategy of the generation of Monte Carlo replicas goes as follows: we creat
 In the end, each $k$-th replica contains exactly
 as many data points as the original set.
 
-In our case we have no information on experimental correlations betweem the measurements and
+In our case we have no information on experimental correlations between the measurements and
 for this reason we assume that there is only one single source of point-by-point systematic
 uncertainty, which is uncorrelated. 
 %
@@ -296,14 +294,14 @@ discard covariances between datapoints, which means that we drop the last term i
 and it reduces to
 \be
 \label{eq:MCreplicaGen2}
-  I_{{\rm ZLP},i}^{{\rm (art)}(k)}  =  I^{\rm (exp)}_{{\rm ZLP},i} + r_i^{({\rm stat},k)}\sigma_i^{\rm (stat)}
+  I_{{\rm ZLP},i}^{{\rm (art)}(k)}  =  I^{\rm (exp)}_{{\rm ZLP},i} + r_i^{({\rm stat},k)}\sigma_i^{\rm (stat)}.
 \ee
 
 These statistical errors on the training data can be derived by means of what is called
 equal width discretization (EWD) and it works as follows.
 %
 The input measurements will be composed in general on subsets of EEL
-spectra taken with identical operation conditions.
+spectra taken with identical operating conditions.
 %
 For example, we have one specific set of $N_{sp}$ spectra all recorded with 
 the same exposure time and beam energy. 
@@ -313,11 +311,12 @@ is usually not the same in each case, first of
 we uniformise a common binning in $\Delta E$ with $n_{\rm dat}$ entries.
 %
 Then we evaluate the total experimental uncertainty in one of these bins as
-\be
+\begin{equation}
+\label{eq:sigmaiexp}
 \sigma_i^{\rm (exp)} = \lp \frac{1}{N_{\rm sp}-1} \sum_{l=1}^{N_{\rm sp}}
 \lp I_{{\rm ZLP},i}^{ ({\rm exp}),l}  - \la I_{{\rm ZLP},i}^{ ({\rm exp})}\ra_{N_{\rm sp}} \rp \rp^{1/2} \, ,\,
 i=1,\ldots, n_{\rm dat} \, ,
-\ee
+\end{equation}
 that is, $\sigma_i^{\rm (exp)}$ is the standard deviation in bin $i$ calculated over the $N_{\rm sp}$ spectra.
 %
 This uncertainty is separately evaluated for each set of microscope operation conditions
@@ -329,7 +328,7 @@ models accurately the probability distribution of original training data.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[t]
     \centering
-    \includegraphics[width=0.99\textwidth]{plots/MC.pdf}
+    \includegraphics[width=0.99\textwidth]{plots/MC-Copy1.pdf}
     \caption{Comparison between the original experimental central values
       $I_{\rm ZLP,i}^{\rm exp}$ (left panel) and the corresponding statistical
       uncertainties $\sigma_i^{(\rm stat)}$ with the results of averaging over
@@ -346,7 +345,7 @@ Fig.~\ref{fig:MC} displays a comparison between the original experimental centra
 $I_{{\rm ZLP},i}^{\rm (exp)}$ (left) and the corresponding 
 total uncertainties $\sigma_i^{(\rm exp)}$ (right panel) with the results of averaging over
 a sample of $N_{\rm rep}$ Monte Carlo replicas generated by means of
-Eq.~(\ref{eq:MCreplicaGen}) for different number of replicas.
+Eq.~(\ref{eq:MCreplicaGen}) for different numbers of replicas.
 %
 We find that $N_{\rm rep}=500$ is a value that ensures that both
 the central values and uncertainties are reasonably well reproduced,
@@ -367,7 +366,7 @@ to the sample might still receive inelastic contributions coming from the specim
 When we talk about vacuum spectra, we consider exclusively those taken 
 reasonably far from the surface of the analysed nanostructures.
 %
-In the latter case, we need to find a training strategy to make predictions
+In the case of spectra recorded on specimens, we need to find a training strategy to make predictions
 about the ZLP distribution in the low-loss regime, while we can not directly
 train on data in this region.
 %
@@ -537,8 +536,8 @@ The optimal stopping point is determined  for each replica
 by keeping track of the figure of merit, which typically evolutes
 as depicted in Fig.~\ref{fig:costs}. 
 %
-The specific network configuration that leads to the deepest minimum of $E^{(k)}_{\rm val}$:
-is chosen {\it a posteriori}, that's why it is called look-back stopping, 
+The specific network configuration that leads to the deepest minimum of $E^{(k)}_{\rm val}$
+is chosen after training, that's why it is called look-back stopping, 
 a method that has been widely used in the context
 of neural networks.
 %
@@ -639,7 +638,7 @@ in realistic spectra:
 \end{itemize}
 
 These considerations suggest that when training the ML model on EEL spectra taken on samples,
-the following categorisation should de adopted:
+the following categorisation of training regions should be adopted:
 
 \begin{enumerate}
 
@@ -652,8 +651,8 @@ the following categorisation should de adopted:
   without the contribution from the input data, since for such values
   of $\Delta E$ one has that $I_{\rm inel}\gg I_{\rm ZLP}$.
   %
-  In other words, we only fit on the pseudo data and therefore
-  the only information that the region $III$ provides
+  In other words, we only train on the pseudo data and therefore
+  the only information that region $III$ provides
   on the model is the one arising from the implementation
   of the constraint that $I_{\rm ZLP}(\Delta E\to \infty)\to 0$.
 
@@ -675,7 +674,7 @@ with $\Delta E_{\rm min}$ being the position of the first local minimum of $I_{\
 Let's interpret this physically: $\Delta E_{\rm min}$ is the first local minimum, which means that 
 the inelastic contributions are significantly present.
 %
-Training the data for higher than this value, we are sure that our training data includes
+Training on data with energy loss higher than this value, we are sure that our training data includes
 at least some amount of inelastic scatterings.
 %
 Therefore, it is certain that we need to cut the training data already at a lower energy loss,
@@ -739,7 +738,7 @@ Concerning $\Delta E_{II}$, its minimum value should mark the region where $I_{\
 %
 It is the value where we start adding pseudo-data, so $\Delta E_{II}$ = $\Delta E_{\rm pd,min}$.
 %
-In order to implement this constraint, similar to the previous section (Eq.~(\ref{{eq:pdlocation}}))
+In order to implement this constraint, similar to the previous section (Eq.~(\ref{eq:pdlocation}))
 we look at the ratio 
 $\mathcal{R}_{\rm sig}(\Delta E_i)$ to determine the energy loss $\Delta E_{\rm pd}$ at 
 which the contributions from the vacuum-recorded ZLP vanish. 

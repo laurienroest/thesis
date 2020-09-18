@@ -19,6 +19,11 @@ M.~Haider, S.~Uhlemann, E.~Schwan, H.~Rose, B.~Kabius, and K.~Urban, {\it
 J.~Geiger, {\it {Inelastic Electron Scattering in Thin Films at Oblique
   Incidence}},  {\em Phys. Stat. Sol.} {\bf 24} (1967) 457--460.
 
+\bibitem{Daniels:2003}
+H.~R. Daniels, R.~Brydson, A.~Brown, and B.~Rand, {\it {Quantitative valence
+  plasmon mapping in the TEM: viewing physical properties at the nanoscale}},
+  {\em Ultramicroscopy} {\bf 96} (2003) 547--558.
+
 \bibitem{Schaffer:2008}
 B.~Schaffer, K.~Riegler, G.~Kothleitner, W.~Grogger, and F.~Hofer, {\it
   {Monochromated, spatially resolved electron energy-loss spectroscopic
@@ -29,6 +34,11 @@ B.~Schaffer, K.~Riegler, G.~Kothleitner, W.~Grogger, and F.~Hofer, {\it
 R.~Erni, N.~D. Browning, Z.~Rong~Dai, and J.~P. Bradley, {\it {Analysis of
   extraterrestrial particles using monochromated electron energy-loss
   spectroscopy}},  {\em Micron} {\bf 35} (2005) 369–379.
+
+\bibitem{Ibach:1980}
+H.~Ibach and D.~Bruchmann, {\it {Observation of Surface Phonons on Ni(111) by
+  Electron Energy-Loss Spectroscopy}},  {\em Physical Review Letters} {\bf 44}
+  (1980) 36--39.
 
 \bibitem{Rafferty:1998}
 B.~Rafferty and L.~Brown, {\it {Direct and indirect transitions in the region
@@ -124,14 +134,21 @@ S.~E. van Heijst, M.~Masaki, E.~Okunishi, H.~Kurata, and S.~Conesa-Boj, {\it A
   nanoscale tulip garden: Fingerprinting plasmons and excitons in the petals of
   2h/3r - ws2 nanoflowers}, .
 
-\bibitem{krivanek}
-O.~Krivanek, N.~Dellby, J.~Hachtel, and M.~Hotz, {\it Progress in ultrahigh
-  energy resolution eels},  {\em Ultramicroscopy} {\bf 203} (2019) 60--67.
+\bibitem{Hillier:1944}
+J.~Hillier and R.~Baker, {\it {Microanalysis by Means of Electrons}},  {\em
+  Journal of Applied Physics} {\bf 15} (1944) 663.
 
-\bibitem{gu}
-L.~Gu, V.~Srot, and W.~Sigle~et al., {\it Band-gap measurements of direct and
-  indirect semiconductors using monochromated electrons},  {\em Physical Review
-  B - Condensed Matter and Materials Physics} {\bf 75} (2007).
+\bibitem{Rose:2008}
+H.~Rose, {\it {Optics of high-performance electron microscopes}},  {\em Science
+  and Technology of Advanced Materials} {\bf 9} (2008).
+
+\bibitem{Bruley:1987}
+J.~Bruley and L.~Brown, {\it {Analytical Electron Microscopy Workshop}},  The
+  Institute of Metals, London, Edited by G.W. Lorimer, 1987.
+
+\bibitem{Krivanek:2009}
+O.~Krivanek, N.~Dellby, J.~Hachtel, and M.~Hotz, {\it {Progress in ultrahigh
+  energy resolution EELS}},  {\em Ultramicroscopy} {\bf 203} (2009) 60--67.
 
 \bibitem{Bangert:2003}
 U.~Bangert, A.~Harvey, D.~Freundt, and R.~Keyse, {\it {Highly spatially
@@ -212,7 +229,7 @@ E.~Greplova~et al., {\it Quantum parameter estimation with a neural network}, .
 J.~Rojo, ``Machine learning: a new toolbox for theoretical physics.''
   University Study Guide, 2019.
 
-\bibitem{hn}
+\bibitem{Hecht:1992}
 R.~Hecht-Nielsen, {\em Neural Networks for Perception}.
 \newblock Elsevier, 1992.
 
@@ -300,6 +317,11 @@ K.~de~Haan, Z.~S. Ballard, Y.~Rivenson, Y.~Wu, and A.~Ozcan, {\it Resolution
   enhancement in scanning electron microscopy using deep learning},  {\em
   Scientific Reports} {\bf 9} (2019), no.~1 12050.
 
+\bibitem{Kiyohara:2018}
+S.~Kiyohara, T.~Miyata, K.~Tsuda, and T.~Mizoguchi, {\it {Data-driven approach
+  for the prediction and interpretation of core-electron loss spectroscopy}},
+  {\em Nature Scientific Reports} {\bf 8} (2018) 13548.
+
 \bibitem{Forte:2002fg}
 S.~Forte, L.~Garrido, J.~I. Latorre, and A.~Piccione, {\it Neural network
   parametrization of deep-inelastic structure functions},  {\em JHEP} {\bf 05}
@@ -321,5 +343,15 @@ A.~Hanbicki, M.Currie, G.Kioseoglou, A.L.Friedman, and B.T.Jonker, {\it
 B.~Kaviraj and D.~Sahoo, {\it {Physics of excitons and their transport in two
   dimensional transition metal dichalcogenide semiconductors}},  {\em RSC
   Advances} (2019).
+
+\bibitem{nanowalls}
+M.~Tinoco, L.~Maduro, and S.~Conesa-Boj, {\it Metallic edge states in zig-zag
+  vertically-oriented mos2 nanowalls},  {\em Scientific Reports} {\bf 9}
+  (2019), no.~1 15602.
+
+\bibitem{Bolhuis:2020}
+M.~Bolhuis, J.~Hernandez-Rueda, S.~E. van Heijst, M.~Tinoco~Rivas, L.~Kuipers,
+  and S.~Conesa-Boj, {\it Vertically-oriented mos2 nanosheets for nonlinear
+  optical devices},  {\em Nanoscale} {\bf 12} (2020) 10491--10497.
 
 \end{thebibliography}\endgroup

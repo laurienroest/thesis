@@ -4,7 +4,7 @@
 \usepackage[colorlinks=true, linkcolor=black!50!blue, urlcolor=blue, citecolor=blue, anchorcolor=blue]{hyperref}
 \usepackage[font=small,labelfont=bf,margin=0mm,labelsep=period,tableposition=top]{caption}
 
-\usepackage[a4paper,top=4cm,bottom=4cm,left=2.5cm,right=2.5cm,bindingoffset=0mm]{geometry}
+\usepackage[a4paper,top=2cm,bottom=2cm,left=2.5cm,right=2.5cm,bindingoffset=0mm]{geometry}
 
 \usepackage{graphicx}
 \usepackage{float}
@@ -20,6 +20,8 @@
 \usepackage{float}
 \usepackage{afterpage}
 \usepackage{ulem}
+\usepackage{afterpage}
+
 
 \usepackage{url}
 \usepackage{hyperref}
@@ -91,6 +93,12 @@
 \newcommand{\Mll}{M_{ll}}
 \newcommand{\extra}{\mathrm{extra}}
 \newcommand{\draft}[1]{}
+\newcommand\blankpage{
+    \null
+    \thispagestyle{empty}
+    \addtocounter{page}{-1}
+    \newpage
+    }
 % Added by MU 
 \def \a{\alpha}
 \def \b{\beta}
@@ -133,69 +141,106 @@
 \usepackage{tabularx}
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
 \begin{document}
-\newgeometry{top=1.5cm,bottom=1.5cm,left=2.5cm,right=2.5cm,bindingoffset=0mm}
-
-%\title[Charting Electron Energy Loss Spectroscopy with machine learning]{Charting the low-loss region in Electron Energy Loss Spectroscopy with machine learning}
-
-%\author{}
-%\address{}
-
-%\ead{s.conesaboj@tudelft.nl}
-%\vspace{10pt}
-%\begin{indented}
-%\item[]September 2020
-%\end{indented}
+\newgeometry{top=5cm,bottom=2.5cm,left=2.5cm,right=2.5cm,bindingoffset=0mm}
 
 
-\begin{flushright}
-Nikhef/2020-022\\
-\end{flushright}
-\vspace{0.3cm}
+
+\vspace{5cm}
+
+\begin{center}
+  {\Huge \bf Charting the low-loss region in \\[0.3cm] Electron Energy Loss Spectroscopy \\[0.4cm] with machine learning}
+\vspace{1.4cm}
+
+{\LARGE Laurien Roest}
+
+\vspace{1.0cm}
+ 
+
+
+\vspace{5cm}
+\end{center}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.3\linewidth]{plots/TUDelft_logo.png} 
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.3\linewidth]{plots/Nikhef_logo.png}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty}
+\afterpage{\blankpage}
+
+\newpage
+\newgeometry{top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm,bindingoffset=0mm}
+\vspace{3cm}
+
 
 \begin{center}
   {\Large \bf Charting the low-loss region in Electron Energy \\[0.3cm] Loss Spectroscopy with machine learning}
 \vspace{1.4cm}
 
-Laurien Roest$^{1,2}$
+{\large \bf Laurien Roest \\[0.3cm]
+4287320
+}
 
 \vspace{1.0cm}
  
-{\it \small
+{ to obtain the degree of Master of Science in Applied Physics \\[0.2cm]
+at Delft University of Technology, \\[0.2cm]
+to be defended publicly on Thursday October 1st, 2020.}
 
-$^{1}$Kavli Institute of Nanoscience, Delft University of Technology, 2628CJ Delft, The
+\vspace{5cm}
+
+{\it \small Kavli Institute of Nanoscience, Delft University of Technology, 2628CJ Delft, The
   Netherlands\\[0.1cm]
-$^{2}$Nikhef Theory Group, Science Park 105, 1098 XG Amsterdam, The
-  Netherlands \\[0.1cm]$^{3}$Department of Physics and Astronomy, VU,
-    1081 HV Amsterdam, The Netherlands
-
-\vspace{1.0cm}
+Nikhef Theory Group, Science Park 105, 1098 XG Amsterdam, The
+  Netherlands\\[0.1cm] }
+  
 \end{center}
+\vspace{4cm}
+Thesis committee: \\[0.1cm]
+\indent Dr. S. Conesa-Boj (Supervisor, QN) \\[0.1cm]
+\indent Dr. E. Greplova (QN) \\[0.1cm]
+\indent Dr. ir. J.P. Hoogenboom (ImPhys)
+\thispagestyle{empty}
+
 \newpage
 
-{\bf \large Abstract}\\[1.0cm]
-
-Electron energy-loss spectroscopy (EELS) within the
-transmission electron microscope  provides valuable information on the structural, chemical, and electronic properties of materials at the nanoscale.
+\noindent {\bf \large Abstract}\\[1.0cm]
+Electron energy loss spectroscopy (EELS) 
+provides valuable information on the structural, chemical, 
+and electronic properties of materials at the nanoscale.
 %
 Exploiting the information contained in EEL spectra requires
-reliable access to the
-low-loss region ($\Delta E\lsim 5$ eV),
+reliable access to the low-loss region ($\Delta E\lsim $ few eV),
 where the contribution from the zero-loss peak (ZLP) overwhelms
-that from
-the inelastic scatterings off the sample.
+those from the inelastic interactions between the incident
+electrons and the specimen.
 %
-Here we deploy machine learning techniques, inspired in particle physics applications,
-to realise a model-independent multidimensional determination of the ZLP
- with a faithful uncertainty estimate.
-%
-Our method is then used to disentangle
-ZLP from the sample contributions in  low-loss EEL spectra acquired
-in WS$_2$ nanostructures.
-%
-This makes possible determining the value and type of the WS$_2$ bandgap
-as a function of the underlying crystalline morphology of the nanostructures.
+An accurate removal of the ZLP contribution is crucial 
+in order to efficiently chart and identify these low-loss features.
 
-\vspace{0.4cm}
+In this work, we deploy machine learning techniques, inspired by particle physics applications,
+to realise a model-independent multidimensional determination of the ZLP
+with a faithful uncertainty estimate,
+which can be used to subtract its contribution to EEL spectra while
+propagating the associated uncertainties.
+%
+Our method is then used to disentangle the 
+ZLP from the sample contributions in low-loss EEL spectra acquired
+in WS$_2$ nanostructures of different thicknesses.
+%
+This makes it possible to determine not only the value and type of the WS$_2$ bandgap
+as a function of the underlying crystalline morphology of the nanostructures,
+but also to characterise exciton features arising in the ultra-low-loss region.
+
+\vspace{0.6cm}
 \noindent{\it Keywords:} {\small Transmission Electron Microscopy,
 Electron Energy Loss Spectroscopy, Neural Networks, Bandgap, Transition
 Metal Dichalcogenides.}\\
@@ -242,7 +287,51 @@ Metal Dichalcogenides.}\\
 
 \appendix
 \input{app-code.tex}
+\newpage
 
-\section*{Bibliography}
 \bibliography{thesis}
+\newpage
+
+\noindent {\bf \large Acknowledgements}\\[1.0cm]
+
+\noindent My endless gratitude goes to my official and unofficial supervisors
+Sonia and Juan.
+%
+Sonia, your incredible enthusiasm, support and optimism
+have been a driving force throughout my project.
+%
+Unfortunately, due to Covid, it only lasted one month that
+we could spend our coffee breaks 
+in real life together with Luigi. 
+%
+I'm glad that we shared many more virtually.\\
+
+\noindent Thank you also for introducing a mysterious professor from 
+Amsterdam to my project, who would later become 
+my most-dialed contact in my contact list.
+%
+Juan, I'm so thankful for your engagement and 
+never-ending pool of ideas, for all the time that you put
+in our collaboration, and also for being critical and
+down to earth. 
+%
+I think we made a super good team.\\
+
+\noindent Luigi, thank you for regularly checking up on me, sending me
+random memes and introducing me in the PhD bar when it was 
+still allowed, although still I wasn't allowed there.\\
+
+\noindent Finally, I want to thank my parents, brother and friends 
+for their support along the way, always there to offer some love and distraction
+when my eyes were squared. \\
+
+Laurien
+
+
+
+
+
+\vspace{0.6cm}
+
+
 \end{document}

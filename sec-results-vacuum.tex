@@ -24,9 +24,11 @@ of training settings and model hyperparameters.
 %
 Then we validate the model training by assessing the fit quality.
 %
-Lastly, we study the dependence of the model predictions in its various input
+Afterwards, we study the dependence of the model predictions in its various input
 variables, and study the dependence of the model uncertainties upon
 the removal of a subset of the training dataset.
+%
+Lastly, we perform some checks to assess the reliance and stability of our results.
 
 \subsection{Training initialization}
 
@@ -36,9 +38,6 @@ In Table~\ref{table:vacuumdata} we collect the main properties of the EELS spect
     bins in each spectrum, the range in electron energy loss $\Delta E$,
     and the average full width at half maximum (FWHM)
     evaluated over the $N_{\rm sp}$ spectra with the corresponding variance.
-    %
-    All the spectra listed on Table~\ref{table:vacuumdata}
-    were acquired with a Titan TEM equipped with a Schottky field emitter.
     %
     We point out that since here
     we are interested in the low-loss region, $\Delta E_{\rm max}$ does not need
@@ -76,31 +75,40 @@ $ 34\pm 2$         \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     The energy resolution of these spectra, quantified by the value of their FWHM, ranges
-    from 26 meV to 50 meV depending on the specific operation conditions of the microscope,
-    with an standard deviation between 2 and 7 meV.
+    from 26 meV to 50 meV depending on the specific operating conditions of the microscope,
+    with a standard deviation between 2 and 7 meV.
     %
-    The value of the FWHM varies only mildly with the value of the beam energy $E_b$
+    The value of the FWHM varies only slightly with the value of the beam energy $E_b$
     but grows by around a factor two for spectra collected at larger exposure times $t_{\rm exp}$.
     %
-    A total of almost $7\times 10^4$ independent measurements will be thus used for the ZLP model
+    A total of almost $7\times 10^4$ independent measurements will be used for the ZLP model
     training on the vacuum spectra.
     %
-    As will be highlighted in Sects.~\ref{eq:depdeltae} and~\ref{eq:depebeam}, one of the advantages of our ZLP model is that it can extrapolate its predictions
+    As will be highlighted in Sects.~\ref{sec:depdeltae} and~\ref{sec:depebeam}, one of the advantages of our ZLP model is that it can extrapolate its predictions
     to other operation conditions beyond those used for the training.
 
 Following the strategy presented in Sect.~\ref{sec:methodology}, first of all we combine the $N_{\rm sp}$ spectra
 corresponding to each of the four sets of operation conditions and determine the statistical uncertainty
 associated to each energy loss bin by means of Eq.~(\ref{eq:sigmaiexp}).
 %
-The resulting set of training points can be observed in Fig.~\ref{fig:training_points_vacuum}.
+The resulting set of training points can be observed in Fig.~\ref{fig:training_points_vacuum}. 
+%
+Note that the intensities of each set have been normalized by the corresponding maximum intensity.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[H]
     \centering
     \includegraphics[width=120mm]{plots/training_points_vacuum.pdf}
     \caption{Graphical representation of the four sets of training inputs
-    that have been calculated as means and standard deviations over the
-    $N_{\rm sp}$ four each set of operating conditions \{t$_{exp}$(ms), E$_b$(keV)\}.
+    that have been calculated as the central experimental value of the total
+      EELS intensity, $I_{{\rm EEL},i}^{(\rm exp)}$, and the corresponding
+      total uncertainty defined in Eq.~(\ref{eq:sigmaiexp}).
+      %
+      Each set is represented by its operating conditions (t$_{exp}$, E$_b$)
+      given in ms and keV respectively.
+      %
+      Note that the intensites of each set have been normalized
+      by the maximum intensity.
       }
 \label{fig:training_points_vacuum}
 \end{figure}
@@ -147,7 +155,7 @@ consistent with zero within uncertainties and can thus be discarded and replaced
 by the pseudo-data constraints.
 %
 Thus the cross-over value of $\Delta E$  where the ratio satisfies $I/\sigma\simeq 1$
-is a reasonable choice for $\Delta E_{\rm pd}^{\rm (min)}$
+is a reasonable choice for $\Delta E_{\rm pd}^{\rm (min)}$.
 %
 The total uncertainty of the pseudo-data points is chosen to be
 \be
@@ -166,7 +174,7 @@ for our training samples $\Delta E_{\rm pd}^{\rm (min)} \simeq 200$ meV for $t_{
 and $\simeq  900$ meV for 100 ms, roughly independent on the value of $E_b$.
 
 The input experimental measurements listed in Table~\ref{table:vacuumdata} are used
-to to generate a sample of $N_{\rm rep}=500$ Monte Carlo replicas
+to generate a sample of $N_{\rm rep}=500$ Monte Carlo replicas
 and train an individual neural network model to each of these replicas.
 %
 The end result of the procedure is a set of model replicas,
@@ -180,7 +188,7 @@ for arbitrary values of $\Delta E$,  $E_{b}$, and $t_{\rm exp}$.
 Eq~(\ref{eq:modelreplicas})
 provides the sought-for representation of the probability density in the space of ZLP models.
 %
-For this sample of replicas one can evaluate
+From the emsemble of replicas one can evaluate
 statistical estimators such as averages, variances, and correlations (as well
 as higher moments) by means of
 the usual expressions, for instance
@@ -214,45 +222,13 @@ In Table~\ref{table:chi2summary} we indicate the values of the final $\chi^2$ pe
     We recall that for a satisfactory training one expects $\chi^2 \simeq 1$
     and $\la E_{\rm tr}\ra \simeq \la E_{\rm val}\ra \simeq 2 $~\cite{Forte:2002fg}.
     %
-    From the results of this table we can see that these expectations are satisfied,
-    both for the individual sets and for the total dataset.
-
-    Then Fig.~\ref{fig:chi2_distributions} displays  the $\chi^2$  distributions
-    evaluated for the training and validation sets
-      of the $N_{\rm rep}=500$ replicas of the sample trained on the spectra
-      listed in Table~\ref{table:vacuumdata}.
-      %
-      Note that the training/validation partition differs at random for each replica.
-      %
-      The $\chi^2_{\rm tr}$ distribution peaks at $\simeq .7$, indicating that a satisfactory model training
-      has been achieved, however that the errors on our data points have been slightly overestimated.
-      %
-      We emphasize that the stopping criterion for the neural net training adopted here never considers
-      the numerical values of the error function and determines proper learning entirely from
-      the global minima of $E_{\rm val}^{(k)}$.
-      %
-      From Fig.~\ref{fig:chi2_distributions} we also observed that  $\chi^2_{\rm tr}$ distribution peaks at
-      a slighter higher value, $\simeq 1$, and is broader that its corresponding training counterpart.
-      %
-      These results confirm both that a satisfactory model training that prevents overlearning
-      has been achieved as well as an appropriate estimate of the statistical uncertainties
-      affecting the original EEL spectra.
-    
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.49\textwidth]{plots/chi2_distributions.pdf}
-    \includegraphics[width=0.49\textwidth]{plots/train_val_error_271.pdf}
-    \caption{Left: The $\chi^2$ (per data point) distribution evaluated for the training and validation sets
-      of the $N_{\rm rep}=500$ replicas of the sample trained on the spectra
-      listed in Table~\ref{table:vacuumdata}. Right: the progress of the training and validation error over
-      the course of the optimization. Number of replicas is taken small for clarity.
-      The final $\chi^2$ is marked on the y-axis and shows how the distribution of training errors
-      is more narrow and centered at a lower value compared to the validation errors. }
-    \label{fig:chi2_distributions}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%
+From the results of this table we find that, while our values
+are  consistent with a reasonably good training,
+somewhat lower values than expected are obtained,
+for instance $\chi^2_{\rm tot}\simeq 0.8$ for the total dataset.
+%
+This suggests that correlations between the input data points might be partially missing, since neglecting
+them often results into a moderate overestimate of the experimental uncertainties.
 
 \begin{table}[H]
   \begin{center}
@@ -279,6 +255,47 @@ Total    &           0.771        &    1.470            &  1.853  \\
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+The left panel in Fig.~\ref{fig:chi2_distributions} shows the $\chi^2$  distributions
+evaluated for the training and validation sets
+of the $N_{\rm rep}=500$ replicas of the sample trained on the spectra
+listed in Table~\ref{table:vacuumdata}.
+%
+Note that the training/validation partition differs at random for each replica.
+%
+The $\chi^2_{\rm tr}$ distribution peaks at $\chi^2_{\rm tr}\simeq 0.7$,
+indicating that a satisfactory model training
+has been achieved, but also that the errors on the input data points might have
+been slightly overestimated.
+%
+We emphasize that the stopping criterion for the neural net training adopted here never considers
+the numerical values of the error function and determines proper learning entirely from
+the global minima of $E_{\rm val}^{(k)}$.
+%
+From Fig.~\ref{fig:chi2_distributions} we also observed that  $\chi^2_{\rm tr}$ distribution peaks at
+a slighter higher value, $\simeq 1$, and is broader that its corresponding training counterpart.
+%
+These results confirm both that a satisfactory model training that prevents overlearning
+has been achieved as well as an appropriate estimate of the statistical uncertainties
+affecting the original EEL spectra.
+    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.49\textwidth]{plots/chi2_distributions.pdf}
+    \includegraphics[width=0.49\textwidth]{plots/train_val_error_271.pdf}
+    \caption{Left panel: The $\chi^2$ (per data point) distribution evaluated for the training and validation sets
+      of the $N_{\rm rep}=500$ replicas of the sample trained on the spectra
+      listed in Table~\ref{table:vacuumdata}. Right: the progress of the training and validation error over
+      the course of the optimization. Number of replicas is taken small for clarity.
+      The final $\chi^2$ is marked on the y-axis and shows how the distribution of training errors
+      is more narrow and centered at a lower value compared to the validation errors. }
+    \label{fig:chi2_distributions}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%
+
+
 From Table~\ref{table:chi2summary} we observe that the $\chi^2$ of the central fit is about half the size 
 the error, which measures the quality of the fit for each MC replica. 
 %
@@ -286,6 +303,16 @@ This is what we would expect a fit which correctly represents the fluctuations o
 of experimental data:
 given that replicas fluctuate about the experimental measurements, these measurements themselves 
 fluctuate about their "true" underlying values. 
+
+The right panel in Fig.~\ref{fig:chi2_distributions} displays the evolution of the training and validation
+error over the course of the optimization, and the ultimate $\chi^2_{\rm tr}$ and $\chi^2_{\rm val}$ outcomes
+on the vertical axis. 
+%
+It can be observed that the collection of $\chi^2_{\rm tr}$ values end up closer to each other and centered around 
+a lower value than $\chi^2_{\rm val}$, which visualizes the origin of the difference between the two 
+histogram given in the left panel of the same figure. 
+%
+Note that the amount of replicas is greatly reduced here (N$_{\rm rep}=$10) for better visualization.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -420,7 +447,7 @@ in all three cases in the region 800 meV $\le \Delta E \le 1 eV$.
 
 At first sight, the removal of data from the training dataset doesn't introduce large
 uncertainties for the ZLP predictions: they are little noticed when the data is cut at 50meV,
-and for 100 meV the predictions seem to identical to the full range training.
+and for 100 meV the predictions seem identical to the full range training.
 %
 To emulate the effects of such cut, one needs to look at the {\it relative} uncertainty rather
 than the absolute, that is, normalizing the uncertainty in each point to the predicted intensity.
@@ -467,7 +494,11 @@ sample can be neglected.
 As indicated in Table~\ref{table:vacuumdata}, the training dataset contains
 spectra taken at two values of the electron beam energy, $E_b=60$ keV and 200 keV.
 %
-The left panel of Fig.~\ref{fig:extrapolbeam} displays  model predictions for the FWHM of the zero loss peak
+The multi-dimensionality of our model allows for the interpolation and extrapolation 
+between these settings, and in this section we evaluate how the FWHM of the model predictions varies
+for different values of $E_b$.
+%
+The left panel of Fig.~\ref{fig:extrapolbeam} displays  model predictions for the FWHM of the zero-loss peak
       (and its corresponding uncertainty) as a function of the beam energy $E_b$
       for two values of the exposure time, $t_{\rm exp}=10$ ms and 100 ms.
       %
@@ -478,15 +509,15 @@ The left panel of Fig.~\ref{fig:extrapolbeam} displays  model predictions for th
       and the extrapolation regions (for $E_b$ below 60 keV and above 200 keV).
       %
       For $t_{\rm exp}=100$ ms, we observe that the model interpolates reasonably well
-      between the measured values of $E_b$ and then uncertainties increase
-      markedly in the extrapolation region above $E_b=200$ keV.
+      between the measured values of $E_b$ and that uncertainties start increasing
+      in the extrapolation region above $E_b=200$ keV.
       
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.49\textwidth]{plots/Ebeam_extrapolation.pdf}
     \includegraphics[width=0.49\textwidth]{plots/time_extrapolation.pdf}
-    \caption{The model predictions for the FWHM of the zero loss peak
+    \caption{The model predictions for the FWHM of the zero-loss peak
       (and its corresponding uncertainty) as a function of the beam energy $E_b$
       for two values of the exposure time (left panel)
       and as a function of $t_{\rm exp}$ for two values of $E_b$ (right panel).
@@ -498,12 +529,12 @@ The left panel of Fig.~\ref{fig:extrapolbeam} displays  model predictions for th
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-For this comparison one can observe that as expected the uncertainty in the  prediction for FWHM
+For this comparison one can observe that - as expected - the uncertainty in the  prediction for FWHM
 of the ZLP is the smallest close to the values of $E_b$ for which one has training data.
 %
-The uncertainties increase but only in a moderate way in in the interpolation region, indicating that
-the model can be reliable applied to predict the features of the ZLP other values of the electron
-energy beam (assuming that all other operation conditions of the microscope are unchanged).
+The uncertainties increase but only in a moderate way in the interpolation region, indicating that
+the model can be applied to reliably predict the features of the ZLP for other values of the electron
+beam energy (assuming that all other operating conditions of the microscope are unchanged).
 %
 The errors increase rapidly in the extrapolation region, which is a characteristic feature of
 these neural network models.
@@ -513,16 +544,19 @@ number of different functional form models for $I_{\rm ZLP}(\Delta E)$ that can 
 the training dataset, and hence a blow up of the extrapolation uncertainties is generically expected.
 
 The network was trained on data with exposure times of $10$ and $100$ ms,
-so interpolation and extrapolation is possible. Similar to the predictions for varying beam energy, also for exposure time the uncertainties grow bigger as the value deviates more from the training inputs.
+so also for this input variable interpolation and extrapolation is possible. 
+%
+Similar to the predictions for varying beam energy, also for exposure time the uncertainties 
+grow bigger as the value deviates more from the training inputs.
 %
 The right panel of Fig.~\ref{fig:extrapolbeam} displays a similar model
-comparison as in the left one but now and as a function of $t_{\rm exp}$ for two values of $E_b$ (right panel).
+comparison as in the left panel but now and as a function of $t_{\rm exp}$ for two values of $E_b$.
 %
-We observe that the FWHM increases roughly in a linear manner with the exposure time, indicating
+We observe that the FWHM increases almost linearly with the exposure time, indicating (deservedly!)
 that lower values of $t_{\rm exp}$ allow for an improved spectral resolution.
 %
-Further, also in this case we find that the model uncertainties grow rapidly in the
-extrapolation region beyond that covered for the training dataset.
+Also in this case we find that the model uncertainties grow rapidly in the
+extrapolation region beyond those covered in the training dataset.
 
 
 \subsection{Stability and reliability checks}
@@ -536,11 +570,11 @@ is sufficiently large to parametrise the ZLP.
 In order to check that this is indeed the case, we have both increased and decreased the
 number of neurons, so that we can assess the stability of results for both cases.
 %
-Throughout this work, the default architecture is 3-10-15-5-1. 
+Throughout this work, the default architecture has been 3-10-15-5-1. 
 The "big" architecture was chosen as a 3-15-25-10-1, increasing the number of free
 parameters from 289 to 731. 
 %
-The "small" network corresponds to an architecture of 3-5-8-6-1, which introduces 129
+The "small" network corresponds to an architecture of 3-5-8-5-1, which brings only 119
 free parameters to be optimised. 
 
 We have followed a similar procedure as presented in Sect.~\ref{sec:depdeltae} to investigate
@@ -549,12 +583,12 @@ E$_b$ = 60, 120 and 200 keV.
 %
 The central value and 68\% confidence level band for the predicted ZLP distributions
 can be observed in Fig.~\ref{fig:EELS_vacuum_DeltaE_check} below, which can be directly
-compared to Fig.~\ref{fig:EELS_vacuum_DeltaE}. 
+compared to Fig.~\ref{fig:EELS_vacuum_DeltaE} for the default network.
 
 \begin{figure}[H]
 \centering
- \includegraphics[width=0.9\textwidth]{plots/Prediction_120keV_bignetwork.pdf}
- \includegraphics[width=0.9\textwidth]{plots/Prediction_120keV_smallnetwork.pdf}
+ \includegraphics[width=0.95\textwidth]{plots/Prediction_120keV_bignetwork.pdf}
+ \includegraphics[width=0.95\textwidth]{plots/Prediction_120keV_smallnetwork.pdf}
  \caption{Similar to Fig.~\ref{fig:EELS_vacuum_DeltaE} but now
     for a network with twice (up) and half (down) the architecture. 
     We see that the when doubling the network, predictions are
@@ -568,7 +602,7 @@ compared to Fig.~\ref{fig:EELS_vacuum_DeltaE}.
     \label{fig:EELS_vacuum_DeltaE_check}
 \end{figure}
 It can be observed that results are well
-reproduced for both smaller and bigger graphs, . 
+reproduced for both smaller and bigger graphs. 
 %
 Particularly for the large network, both the central values and the uncertainty bands are 
 in almost perfect correspondence with the results presented in Sect.~\ref{sec:depdeltae}. 
@@ -582,6 +616,9 @@ This becomes more evident when we substantially decrease the size of the neural 
 Predictions on the training data (E$_b$=60 and 200 keV) are still consistent, however the uncertainty
 bands have grown remarkably bigger, indicating that the neural network outcomes are less 
 stable than before. 
+%
+Also, using the smaller architecture,  the network needs a significantly longer computation time 
+to come to the lowest value of $\chi^2_{\rm val}$.
 %
 When we look at the prediction for the interpolation (E$_b$=120 keV), the central 
 values differ (however only moderately) from the ones obtained on bigger networks.
@@ -599,8 +636,8 @@ both for the training data as for the interpolation regime.
 %
 \begin{figure}[H]
 \centering
- \includegraphics[width=0.9\textwidth]{plots/Prediction_120keV_100replicas_part1.pdf}
- \includegraphics[width=0.9\textwidth]{plots/Prediction_120keV_100replicas_part2.pdf}
+ \includegraphics[width=0.95\textwidth]{plots/Prediction_120keV_100replicas_part1.pdf}
+ \includegraphics[width=0.95\textwidth]{plots/Prediction_120keV_100replicas_part2.pdf}
  \caption{Similar to Fig.~\ref{fig:EELS_vacuum_DeltaE} but now for two subsets of 100 replicas
  instead of the full set of 500 replicas.
  }
@@ -626,9 +663,12 @@ replicas is (more than) enough to obtain a faithful representation.
 
 \begin{figure}[H]
 \centering
- \includegraphics[width=0.7\textwidth]{plots/Prediction_120keV_different_nrep.pdf}
- \caption{Predictions for three different number of replicas. 
- See how uncertainties change..}
+ \includegraphics[width=0.95\textwidth]{plots/Prediction_120keV_different_nrep.pdf}
+ \caption{Predictions for three three different sizes of MC ensembles:
+N$_{rep}$=25, 100 and 400. For the smallest subset (N$_{rep}$=25), 
+uncertainties in the tails are significantly larger, but
+the difference between using either 100 or 400 replicas is hardly noticable.
+}
 \label{fig:EELS_vacuum_DeltaE_check3}
 \end{figure}
 

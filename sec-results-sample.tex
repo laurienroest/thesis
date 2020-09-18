@@ -11,8 +11,8 @@ The resulting ZLP parametrisation will be applied to isolate the inelastic
 contribution in each spectrum.
 %
 We will use these subtracted spectra first to determine the bandgap type and energy 
-value from the behaviour of the onset region and second to identify excitonic
-transitions at very low energy losses.
+value from the behaviour of the onset region and second to study features
+in the very-low-loss region.
 
 We start this section by presenting the training dataset, which consists of two groups of EEL spectra recorded
 in thick and thin regions of the WS$_2$  nanoflowers respectively.
@@ -48,13 +48,13 @@ While sample A is a relatively thick region of WS$_2$, sample B corresponds to a
 of thin petals, which is only one or a few monolayers thick. 
 %
 In other words, sample A is composed by bulk WS$_2$ while in sample B some specific regions
-are much thinner, down to the few monolayers level.
+are much thinner, down to the a few or single monolayer level.
 %
 This thickness information has been be determined
 by means of the {\tt Digital~Micrograph} software.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[h]
+\begin{figure}[H]
 \begin{centering}
   \includegraphics[width=0.87\linewidth]{plots/Spectra_location2.pdf}
   \caption{Low-magnification TEM images (left) and the corresponding
@@ -91,7 +91,7 @@ the EELS analysis.
 The corresponding measurements on specimen B were recorded instead
 using a JEM ARM200F monochromated microscope operated at 60 kV, equipped with a GIF quantum ERS filter.
 %
-See Methods at the end of this work for more details.\\
+See the Methods section at the end of this work for more details.\\
 
 In Table~\ref{table:sampledata} we collect the most relevant properties of the spectra collected
 in the locations indicated in Fig.~\ref{fig:ws2positions} using the same format as
@@ -153,9 +153,9 @@ on all the spectra to set a bound for $\Delta E_I$ and $\Delta E_{II}$.
 The representative plots can be observed in Fig.~\ref{fig:derivatives} and here it becomes
 clear how much information is contained within the intensity derivatives of the spectra.
 %
-One can observe how the derivatives recorded in vacuum (for both specimens at locations
-\#1, \#2 and \#3) are monotonically decreasing and slowly convergate to zero, whereas
-the derivatives recorded on different regions of a sample behave very similar, capturing fluctuations
+One can observe how the derivatives recorded in vacuum (corresponding to locations
+\#1, \#2, and \#3 for both samples) are monotonically decreasing and slowly converge towards zero, whereas
+the derivatives recorded on different positions over a specimen behave very similar, capturing fluctuations
 that are typical for the corresponding sample.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -163,9 +163,14 @@ that are typical for the corresponding sample.
 \begin{centering}
   \includegraphics[width=0.49\linewidth]{plots/Derivatives_sample_A.pdf}
   \includegraphics[width=0.49\linewidth]{plots/Derivatives_sample_B.pdf}
-  \caption{Plot of the first intensity derivatives of the spectra
+  \caption{Plot of the first derivatives of the intensity profile over the energy loss, 
+  corresponding to the spectra
   recorded over Sample A (left) and B (right) at the locations
-  indicated in Fig.~(\ref{fig:ws2positions}). }
+  indicated in Fig.~\ref{fig:ws2positions}.
+  %
+  The derivatives have been normalized to the corresponding intensity in order to 
+  capture the relative size of the fluctuations.
+  }
 \label{fig:derivatives}
 \end{centering}
 \end{figure}
@@ -214,8 +219,8 @@ the corresponding values of the hyper-parameters
 $\Delta E_{\rm I}$ and $\Delta E_{\rm II}$ defined in Fig.~\ref{fig:EELS_toy}.
 %
 Recall that only
-the data points with $\Delta E \le \Delta E_{\rm I}$ is used for the training
-of the neural network model.
+the data points with $\Delta E \le \Delta E_{\rm I}$ are used for training
+the neural network model.
 %
 For $\Delta E \ge \Delta E_{\rm II}$ instead, the training set includes only the pseudo-data
 that implements the $I_{\rm ZLP}(\Delta E)\to 0$ constraint.
@@ -224,7 +229,7 @@ The values for $\Delta E_{\rm II}$ were determined from the vacuum recorded spec
 following the same procedure as explained 
 in Sect.~\ref{sec:results_vacuum} and a plot similar to Fig.~\ref{fig:intensityratio} 
 can be observed in  Fig.~\ref{fig:pdlocsample}, where we show the ratio between the central
-experimental value of the vacuum EEL intensity and their corersponding uncertainty.
+experimental value of the vacuum EEL intensity and their corresponding uncertainty.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[H]
@@ -297,10 +302,13 @@ positions.
 \begin{centering}
   \includegraphics[width=0.49\linewidth]{plots/Derivatives_ratio_A.pdf}
   \includegraphics[width=0.49\linewidth]{plots/Derivatives_ratio_B.pdf}
-  \caption{Plot of the first intensity derivatives of the spectra
-  recorded over Sample A (left) and B (right) at the locations
-  indicated in Fig.~(\ref{fig:ws2positions}).}
-\label{fig:red}
+  \caption{Plot of the ratio
+between the derivative of the intensity distribution 
+acquired on the specimen over the
+same quantity recorded in vacuum,
+  for spectrum position \#4 in Sample A (left) and \#4 in Sample B (right),
+  indicated in Fig.~\ref{fig:ws2positions}.}
+\label{fig:rder}
 \end{centering}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -326,7 +334,7 @@ the physical interpretation: after this point,
 the derivative of the intensity distributions acquired on samples starts 
 to approximate zero much faster than the derivatives in vacuum.
 %
-when the effect of the sample kicks in, the intensity profile should flatten or increase rather than
+When the effect of the sample kicks in, the intensity profile should flatten or increase rather than
 continue decreasing, which means the derivatives ratio should be {\it smaller} than unity. 
 %
 For this reason we choose $\Delta E_I$=1.4 eV as hyper-parameter for specimen B. 
@@ -398,12 +406,12 @@ In Eq.~(\ref{eq:matching}), $\xi_1^{(n_l)(k)}$ indicates the output of the $k$-t
  %
 This matching procedure might look complex at first sight, however it states just the following:
 \begin{itemize}
-\item For $\Delta E < \Delta E_0$, the modeled ZLP is exactly the same as the original spectrum;
+\item For $\Delta E < \Delta E_0$, the modeled ZLP is exactly the same as the original spectrum.
 \item Between $\Delta E_0$ and $\Delta E_1$, the transition sets in to the ZLP model prediction. $\mathcal{F}(\Delta E)$ represents a matching factor
  that ensures that the ZLP model prediction smoothly interpolates
  between $\Delta E=\Delta E_0$ (where $\mathcal{F}\ll 1$ and the original spectrum should
  be reproduced) and $\Delta E=\Delta E_1$
- (where $\mathcal{F}=1$ leaving the neural network output unaffected);
+ (where $\mathcal{F}=1$ leaving the neural network output unaffected).
 \item At energy loss higher dan $\Delta E_I$, the modeled ZLP is exactly the network prediction.
 \end{itemize}
 
@@ -510,7 +518,7 @@ which in this case turns out to be $\mathcal{R}_{\rm abs} = 0.98$.
 %
 It is important to verify that $\mathcal{R}_{\rm abs}\lp \Delta E_1\rp$ is not too far from unity,
 indicating that the training dataset has not been contaminated by the inelastic contributions.
-%
+
 By requiring that $\mathcal{R}^{(j)}_{\rm der}(\Delta E_{\rm I})\simeq 0.9$ we obtain
 the value $\Delta E_{\rm I}=1.8$ eV, which is used as baseline for the analysis.
 %
@@ -572,25 +580,25 @@ cannot be excluded within uncertainties.
 This result is consistent with the theoretical expectations of the local
 electronic properties of bulk WS$_2$.
 %
-Further, the value of $E_{\rm BG}$ is consistent with previous determinations
+Further, the value of $E_{\rm BG}$ is in agreement with previous determinations
 in the same material at the bulk level, such as those collected in Table~\ref{table:bgvalues}.
 %
-Consistent results are obtained for other locations of Fig.~\ref{fig:ws2positions}
+Consistent results are obtained for other locations over the specimen
 where spectra have been recorded. 
 %
 To demonstrate this, we show in Fig.~\ref{fig:bgstability} the fitted values 
 for $E_{\rm BG}$ and $b$ for all spectra 
 in Sample A, all evaluated using $\Delta E_I$=1.8 eV for the model training.
 %
-The uncertainty of the bandgap fit varies between the spectra, however
-what is important is the fact that central values are stable within 
+The error of the bandgap fit is different between the spectra, however
+what is most important is the fact that central values are stable within 
 uncertainty bands.
 %
-This implies that we find a consistent favor for an indirect bandgap for each of
+This implies that we find a favor for an indirect bandgap for each of
 the locations on Sample A, which is what we would expect from 
 theoretical expectations of bulk WS$_2$.
-%
-To the best of our knowledge
+
+To the best of our knowledge,
 these results represent the first EELS bandgap analysis of WS$_2$ nanostructures
 whose crystalline structure is based on mixed 2H/3R polytypes.
 
@@ -608,69 +616,182 @@ whose crystalline structure is based on mixed 2H/3R polytypes.
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+One final remark to make is that the polynomial fit to the bandgap onset
+comes with the introduction of new parameters to be tuned:
+one has to define the fitting range and bounds of the fit, 
+introducing some degree of arbitrariness to the procedure.
+%
+The influence of the chosen fit regime to the polynomial fit
+can be observed in Fig~\ref{fig:fitregime} below.
+%
+Here, we have performed the polynomial fit using three different
+upper values of the energy loss: $\Delta E_I$ + 0.5, 0.7, and 0.9 eV. 
+%
+The results for the exponents $b$ are 1.37, 1.76 and 1.63 respectively. 
+%
+These values show a clear preference for an indirect bandgap, 
+irrespective of the fitting regime. 
+%
+Values for E$_{\rm bg}$ are stable and equal to 1.6 eV for all cases.
 
-\subsection{Bandgap analysis of sample B}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H]
+\begin{centering}
+  \includegraphics[width=0.7\linewidth]{plots/bandgap_different_regimes.pdf} 
+  \caption{Bandgap fits for different fitting regimes: 
+  $\Delta E_{\rm fit}= [0, \Delta E_{\rm lim,up}]$ 
+  with $\Delta E_{\rm lim,up}$ = $\Delta E_I$ + 0.5 (green), 0.7 (red), and 0.9 (blue). 
+  We find for the exponent $b$ = 1.37 (green), 1.76 (red), and 1.63 (blue).
+  The bandgap energy is 1.6 eV irrespective of the fitting regime.
+  }
+\label{fig:fitregime}
+\end{centering}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+
+It is important to note that up to the subtraction procedure, 
+methods are almost completely free of manual finetuning
+of parameters.
+%
+It is only for the analysis of the bandgap onset that 
+few new tuning parameters are introduced, necessary to perform 
+the bandgap onset fit, and changing these parameters
+yields to slightly different fit results.
+%
+This is a general flaw of the bandgap fitting procedure 
+which is separate from our subtraction method.
+
+
+\subsection{Mapping excitonic transitions in sample B}
 
 We now discuss the results of the bandgap analysis of sample B,
-taking location sp4 in Fig.~\ref{fig:ws2positions} as representative spectrum; compatible results
-are found for the rest of locations.
+taking location \#4 in Fig.~\ref{fig:ws2positions} as representative spectrum; 
+again, compatible results are found for the rest of positions.
 %
-In Fig.~\ref{fig:SubtractedEELS_plot_sp4} we present the analogous
-result to that of Fig.~\ref{fig:sp14_subtracted_spectrum}.
-
+For the application of our ZLP subtraction strategy to the EEL spectra recorded in specimen B
+of the WS$_2$ nanoflowers (bottom panels
+in Fig.~\ref{fig:ws2positions}), the same criterion
+based on the derivative ratio Eq.~(\ref{eq:rder}) to select the hyper-parameter $\Delta E_{\rm I}$ was
+used.
+%
+In this case, one finds a value of $\Delta E_{\rm I}\simeq 1.45$ eV,
+which is somewhat lower than the corresponding value obtained for sample A.
+%
+The left panel of Fig.~\ref{fig:SubtractedEELS_sampleB} displays
+the original and subtracted spectra corresponding to the representative
+location \#4 of sample B together with the predictions of the ZLP model.
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[H]
 \begin{centering}
-  \includegraphics[width=0.60\linewidth]{plots/SubtractedEELS_plot_sp4.pdf}
-  \caption{Same as Fig.~\ref{fig:sp14_subtracted_spectrum}
-    now for sp4 (sample B) from Fig.~\ref{fig:ws2positions}.
+  \includegraphics[width=0.98\linewidth]{plots/subtractedEELS_plot_sampleB_sp4.pdf}
+  \caption{Left: the original
+     and subtracted EEL spectra corresponding to location \#4 of sample B in Fig.~\ref{fig:ws2positions},
+     together with the predictions of the ZLP model.
+     %
+     The bands indicate the 68\% confidence level uncertainties.
+     %
+     Right: comparison of the ZLP-subtracted spectra from locations \#4, \#5, and \#6 in sample B
+     together with the corresponding model uncertainties.
+    %
+     Note how several features of the subtracted spectra, in particular
+     the peaks at $\Delta E\simeq 1.5$,
+    1.7 and 2.0 are eV, are common across the three locations.
   }
-\label{fig:SubtractedEELS_plot_sp4}
+\label{fig:SubtractedEELS_sampleB}
 \end{centering}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Fig.~\ref{fig:subtracted_spectra_comp} displays the
-the ZLP-subtracted spectra from sample B corresponding to locations sp4, sp5, and sp6
-    from Fig.~\ref{fig:ws2positions} together with the corresponding model uncertainties.
-    %
-    Results are shown for two values of the hyperparameter $\Delta E_{\rm I}$,
-    1.45 eV (left) and 1.55 eV (right panel).
-    %
-    Note how features of the subtracted spectra such as the peaks as $\Delta E\simeq 1.5$,
-    1.7 and 2.0 are common across the three spectra, demonstrating that there
-    are genuine physical features of the ultra-low-loss region rather than statistical
-    fluctuations.
-    %
-The research on fundamental optical properties of TMDs has led to the discovery of different 
-types of exciton transitions in the ultra-low-loss region of WS$_2$ nanostructures. 
+The main difference with respect to the spectra recorded in sample A is that in sample B,
+well-defined features (peaks) appear in the subtracted spectrum already for
+very small values of $\Delta E$.
 %
-The origin of these peaks can be attributed to the formation of an electron-hole pair mitigated
-by the dielectric screening from the surrounding lattice~\cite{Hanbicki:2016}.
+In particular, we observe two pronounced peaks at $\Delta E\simeq 1.5$ and 2.0 eV and a
+softer one near $\Delta E \simeq 1.7$ eV.
 %
-In reduced dimensions as in single layers of TMDs, exciton peaks arise with binding energies
-up to ten times larger than for bulk structures.
+Additional features arise also for higher energy losses.
 %
-In the optical spectra of TMDs, two strongly pronounced resonances denoted by A and B
-excitons are often observed, appearing at binding energies of 300-500 meV below the true band gap~\cite{Karivaj:2019}.
+There are two main explanations for the observed differences between the spectra recorded
+in sample A and B.
 %
-This is in accordance with the features observed in Fig.~\ref{fig:subtracted_spectra_comp} at 
-$\Delta E\simeq 1.5$ and 1.7 eV, which is exactly 300-500 meV below the true bandgap value
-expected for 2D structures of WS$_2$. 
+The first one is that, while sample A is much thicker (bulk), sample B corresponds
+to thin, overlapping petals whose thicknesses can be as small as a few monolayers.
 %
-The presence of these low loss features makes the bandgap analysis on this sample 
-non-trivial, since one can only fit Eq.~(\ref{eq:I1}) to the onset region of the 
-bandgap excitation. 
+The second is that the EELS measurements taken in sample A used a TEM without monochromator,
+while those in sample B were recorded with a monochromator, thereby achieving a superior
+spectral resolution.
 %
-Nevertheless, the ZLP-subtracted spectra in Fig.~\ref{fig:subtracted_spectra_comp} show that
-we have been able to cleanly resolve exciton features down to 1.5 eV within appropriate
-uncertainty.
+The average FWHM on Sample B is 87 meV, to be compared with 470 meV of sample A (see
+Table~\ref{table:sampledata}).
+%
+This difference in morphology between the specimens, together
+with the operation conditions of the TEM, could account for 
+the observed differences between the two sets of spectra.
+
+It is worth noting that our ZLP parametrisation and subtraction strategy performs well
+for all the spectra under consideration, irrespective of the spectral resolution of the TEM used
+for their acquisition.
+%
+By comparing the left panel of Fig.~\ref{fig:SubtractedEELS_sampleB} with Fig.~\ref{fig:sp14_subtracted_spectrum}, 
+one observes that  model uncertainties are larger in the latter case (sample A) 
+than in the former (sample B), as expected from the
+superior spectral resolution of the EELS measurements taken on sample B.
+%
+Nevertheless, the same approach has been used in both cases without the need of any fine-tuning
+or adjustments: of course, if the input
+spectra have been recorded with higher spectral resolution, the resulting ZLP model uncertainties
+will improve accordingly without the need for changing the procedure itself.\\
+
+Given that the
+well-defined spectral features present in Fig.~\ref{fig:SubtractedEELS_sampleB}
+appear close to the onset of the inelastic emissions, $I_{\rm inel}(\Delta E)$,
+these spectra are not suitable for bandgap determination analyses.
+%
+The reason is that the method of~\cite{Rafferty:2000}
+used in sample A is only applicable under the assumption that there is a sufficiently wide region in $\Delta E$
+after the onset of $I_{\rm inel}$ to perform the polynomial fit of Eq.~(\ref{eq:I1}).
+%
+This is clearly not possible  for the spectra recorded in sample B, and indeed model fits restricted to $\Delta E\le 1.4$ eV
+are numerically very unstable.
+%
+Instead of studying the bandgap properties, it is interesting to exploit the ZLP-subtracted results of sample B
+to characterise the local
+excitonic transitions of polytypic 2H/3R WS$_2$
+that are known to arise in the ultra-low-loss region of the spectra.
+
+Before being able to do this, however, one has to deal with the possible objection
+that the peaks present in the left panel of Fig.~\ref{fig:SubtractedEELS_sampleB} are not
+genuine features, but rather fluctuations due to insufficient statistics
+that should be smoothed out before this region can be analysed.
+%
+To tackle this concern, the right panel of Fig.~\ref{fig:SubtractedEELS_sampleB}
+displays a comparison of the ZLP-subtracted spectra recorded in the 
+(spatially separated) locations \#4, \#5 and \#6
+in sample B together with their model uncertainties.
+%
+Both the position and the widths of the peaks at $\Delta E\simeq 1.5$,
+1.7 and 2.0 eV remain stable, confirming that these
+are genuine physical features rather than fluctuations.
+%
+In order to even further establish the presence of these peaks, 
+we have created the right panel of Fig.~\ref{fig:SubtractedEELS_sampleB}
+but now for a higher value of $\Delta E_{\rm I}$. 
+%
+Results are shown in Fig.~\ref{fig:subtracted_spectra_comp}, now for two values of the 
+hyperparameter $\Delta E_{\rm I}$, 1.45 eV (left) and 1.55 eV (right panel).
+%
+Note how these low-loss features of the subtracted spectra 
+are still common across the three spectra, demonstrating that these
+peaks are constantly present
+also when using different hyper-parameters.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[H]
 \begin{centering}
   \includegraphics[width=0.99\linewidth]{plots/subtracted_spectra_comp.pdf}
-  \caption{The ZLP-subtracted spectra from sample B corresponding to locations sp4, sp5, and sp6
+  \caption{The ZLP-subtracted spectra from sample B corresponding to locations \#4, \#5, and \#6
     from Fig.~\ref{fig:ws2positions} together with the corresponding model uncertainties.
     %
     Results are shown for two values of the hyperparameter $\Delta E_{\rm I}$,
@@ -684,5 +805,31 @@ uncertainty.
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+These peaks in the ultra-low-loss region of the ZLP-subtracted EELS spectra recorded on thin, polytypic
+WS$_2$ nanostructures can be traced back to excitonic transitions.
+%
+Their origin can be attributed to the formation of an electron-hole pair mitigated
+by the dielectric screening from the surrounding lattice~\cite{Hanbicki:2016}.
+%
+In nanostructures with reduced dimensionality as well as in single layers of TMDs, 
+exciton peaks arise with binding energies
+up to ten times larger than for bulk structures.
+%
+In the optical spectra of TMDs, two strongly pronounced resonances denoted by A and B
+excitons are often observed, appearing at binding energies of 300 and
+500 meV below the true band gap of the material~\cite{Karivaj:2019}.
+%
+Interestingly, this is in agreement with the features observed in Fig.~\ref{fig:subtracted_spectra_comp} at 
+$\Delta E\simeq 1.5$ and 1.7 eV, which is exactly 300-500 meV below the true bandgap value
+expected for 2D structures of WS$_2$, see Table~\ref{table:bgvalues}.  
 
+We  conclude that ZLP-subtracted spectra in sample B allow for
+a clean mapping of the exciton peaks present in the WS$_2$ nanoflowers
+down to $\Delta E\simeq 1.5$ eV together with
+the associated uncertainty estimate.
+%
+Further insights concerning the relationship between the exciton peaks in the ultra-low-loss region
+and the underlying crystalline structure and specimen morphology could be obtained
+by combining our findings with {\it ab initio} calculations such as those based on
+density functional theory.
 

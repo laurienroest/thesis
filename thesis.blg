@@ -2,63 +2,47 @@ This is BibTeX, Version 0.99d (TeX Live 2020)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: thesis.aux
 The style file: JHEP.bst
-Case mismatch error between cite keys egertonbook and Egertonbook
----line 54 of file thesis.aux
- : \citation{egertonbook
- :                      }
-I'm skipping whatever remains of this command
 Database file #1: thesis.bib
-Warning--I didn't find a database entry for "Egertonbook"
-Warning--I didn't find a database entry for "Hillier"
-Warning--I didn't find a database entry for ""
-Warning--I didn't find a database entry for "Holer"
-Warning--I didn't find a database entry for "egerton"
-Warning--I didn't find a database entry for "abajo"
-Warning--I didn't find a database entry for "stoger"
-Warning--I didn't find a database entry for "bruley"
-Warning--I didn't find a database entry for "rafferty"
-Warning--I didn't find a database entry for "Tiemeijer"
-Warning--I didn't find a database entry for "erni"
-Warning--I didn't find a database entry for "Li:2016"
-You've used 63 entries,
+Warning--empty booktitle in Bruley:1987
+You've used 70 entries,
             2195 wiz_defined-function locations,
-            943 strings with 14879 characters,
-and the built_in function-call counts, 20681 in all, are:
-= -- 2072
-> -- 752
+            971 strings with 15916 characters,
+and the built_in function-call counts, 22914 in all, are:
+= -- 2292
+> -- 828
 < -- 0
-+ -- 275
-- -- 212
-* -- 1378
-:= -- 2830
-add.period$ -- 67
-call.type$ -- 63
-change.case$ -- 61
++ -- 303
+- -- 233
+* -- 1520
+:= -- 3140
+add.period$ -- 74
+call.type$ -- 70
+change.case$ -- 68
 chr.to.int$ -- 0
-cite$ -- 63
-duplicate$ -- 1221
-empty$ -- 1874
-format.name$ -- 212
-if$ -- 5377
+cite$ -- 71
+duplicate$ -- 1353
+empty$ -- 2090
+format.name$ -- 233
+if$ -- 5959
 int.to.chr$ -- 0
-int.to.str$ -- 63
-missing$ -- 235
-newline$ -- 195
-num.names$ -- 63
-pop$ -- 286
+int.to.str$ -- 70
+missing$ -- 260
+newline$ -- 216
+num.names$ -- 70
+pop$ -- 322
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 923
+skip$ -- 1014
 stack$ -- 0
-substring$ -- 1016
-swap$ -- 603
+substring$ -- 1134
+swap$ -- 661
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 0
-while$ -- 135
-width$ -- 65
-write$ -- 639
-(There was 1 error message)
+warning$ -- 1
+while$ -- 151
+width$ -- 72
+write$ -- 708
+(There was 1 warning)

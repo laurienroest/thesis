@@ -1,17 +1,17 @@
-\section{Fundamentals of Electron Energy Loss Spectroscopy}
+\section{Fundamentals of EELS}
 \label{sec:eels}
 
 Electron energy loss spectroscopy (EELS) is a method used in combination with 
 transmission electron microscopy (TEM), which analyses the 
 energy distribution of initially monoenergetic electrons after
-they have interacted with a specimen~\cite{Egertonbook}. 
+they have interacted with a specimen~\cite{Egerton:1996}. 
 %
-In this introductory chapter, we present an introduction to the basics
+In this chapter, we present an introduction to the basics
 of EELS, followed by an overview of energy loss spectra and 
 the limitations of the technique.\\
 
-Electron energy loss spectroscopy was developed by James Hillier and RF Baker in 
-the mid-1940s~\cite{Hillier},% https://doi.org/10.1063%2F1.1707491
+Electron energy loss spectroscopy was developed by James Hillier and R.F. Baker in 
+the mid-1940s~\cite{Hillier:1944},
 but it was only becoming more widespread in research in the 1990s 
 due to improvements in microscope instrumentation. 
 %
@@ -20,14 +20,14 @@ mid-1990s, the scientific developments regarding electron microscopes grew rapid
 %
 Especially since the introduction of modern aberration correctors
 and monochromated electron sources, energy resolutions of 100 meV
-or even higher could be achieved~\cite{}, % https://doi.org/10.1088%2F0031-8949%2F9%2F1%2F014107
+or even higher could be achieved~\cite{Rose:2008},
 which enabled measurements of single (columns of) atoms. 
 %
 Transmission electron microscopy can provide structural information 
 with excellent spatial resolution down to atomic dimensions. 
 These structural data can be supplemented by chemical information 
 from the same specimen region, obtained using analytical techniques
-such as EELS~\cite{Holer}.
+such as EELS.
 %
 EELS instrumentation is typically incorporated into a scanning
 transmission electron microscope (STEM) or in a conventional TEM (c-TEM).
@@ -49,9 +49,9 @@ A schematic illustration of a typical EELS setup is shown in the left panel of F
 %
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{plots/EELS.pdf}
+    \includegraphics[width=0.97\textwidth]{plots/EELS.pdf}
     \caption{Left: in STEM-EELS, a magnetic
       prism is used to deflect the electron beam after crossing the sample
       so that the distribution of their energy losses $\Delta E$ can be recorded.
@@ -72,7 +72,7 @@ EELS analyses benefit from
 a highly competitive energy (spectral) resolution combined with an unparalleled spatial resolution.
 %
 Especially scanning transmission electron microscopy (STEM) equipped with a monochromator 
-is extremely useful for high resolution imaging \cite{krivanek}.
+is extremely useful for high resolution imaging.
 %%
 The right panel of Fig.~\ref{fig:EELS} displays
 a representative EELS spectrum in the region $\Delta E \le 35$ eV, recorded
@@ -92,10 +92,10 @@ measurable energy loss.
 %
 Provided the thickness of the sample is small, the greatest part of the 
 incident electron beam transfers through the sample elastically, 
-implicating the energy exchange is too less than the experimental energy resolution. 
+implicating the energy exchange is less than the experimental energy resolution. 
 %
-A strong and narrow intensity peak around 0 eV loss can be observed called the zero loss peak (ZLP) or "elastic" peak. 
-The width of the ZLP, typically 0.2-2 eV, reflects the energy distribution of the electron source~\cite{egerton}.
+A strong and narrow intensity peak around 0 eV loss can be observed called the zero-loss peak (ZLP) or elastic peak. 
+The width of the ZLP, typically 0.2-2 eV, reflects the energy distribution of the electron source.
 
 The inset in Fig~\ref{fig:EELS} displays the ZLP, illustrating how nearby $\Delta E\simeq 0$
 its magnitude is larger than the contribution from the inelastic interactions
@@ -121,24 +121,24 @@ $\Delta E \lsim 50$ eV, which contains information
 about several important features such as plasmons, excitons, phonons, and
 inter- and intra-band transitions.
 %
-Of particular relevance in this context is the ultra-low loss region, characterised by $\Delta E \simeq$ few eV.
+Of particular relevance in this context is the ultra-low-loss region, characterised by $\Delta E \simeq$ few eV.
 Here, the contributions of the ZLP and those from the inelastic interactions
 with the sample are of the same order of magnitude.
-%
 %
 Ranging between electron energy losses of 1 and 5 eV, 
 difficultly distinctive features are the presence of 
 relatively narrow exciton peaks, located close to the ZLP. 
-%%
+%
 The intensity of these valence features is over two orders of magnitude lower 
-than the ZLP~\cite{abajo}. These peaks can be interpreted as arising from
+than the ZLP~\cite{Abajo:2010}. These peaks can be interpreted as arising from
 indirect and direct exciton transitions, the latter of which allows for
-bandgap determination~\cite{stoger}.\\
-The  band gap  refers  to  the  energy  difference between the top of the valence band 
+bandgap determination~\cite{Stoger:2008}.
+
+The  bandgap  refers  to  the  energy  difference between the top of the valence band 
 and the bottom of the conduction band and the corresponding peak is expected to appear 
 at energy losses where the joint density of states (JDOS) exhibits maxima. 
 %
-It has been shown by Bruley and Brown \cite{bruley} that for parabolic bands, 
+It has been shown by Bruley and Brown~\cite{Bruley:1987} that for parabolic bands, 
 the JDOS probed by the electrons can be described by
 \begin{equation}
 \label{eq:bandgap}
@@ -151,14 +151,17 @@ convergence angle of the electron beam.
 The nature (direct of indirect) and the band gap energy can be deduced 
 from the first few eV of the energy-loss function. 
 %
-From a fit of the band gap onset to equation~\ref{eq:bandgap}, 
-the value of (3/2) for an indirect bandgap switches to (1/2) for a direct bandgap,
+From a fit of the band gap onset to Eq.~\ref{eq:bandgap}, 
+the value of (1/2) for a direct bandgap switches to (3/2) for an indirect bandgap,
 as demonstrated in Fig.~\ref{fig:bandgap}.
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=100mm]{plots/bandgap.png}
-    \caption{Schematic diagrams showing the contributions from the JDOS and matrix elements for (a) direct and (b) indirect transitions \cite{rafferty}.}
+    \includegraphics[width=0.8\textwidth]{plots/bandgap.png}
+    \caption{Schematic diagrams showing the contributions from the JDOS and matrix elements for (a) direct and (b) indirect transitions. From a fit of the bandgap onset to Eq.~\ref{eq:bandgap}, the power of (1/2) for a direct bandgap switches
+    to (3/2) for an indirect transition.
+    %
+    Retrieved directly from~\cite{Rafferty:1998}.}
     \label{fig:bandgap}
 \end{figure}
 
@@ -172,9 +175,9 @@ which requires very high resolution spectroscopy to record it.
 Limited vibrational spectroscopy becomes possible in an electron microscope at around 30 meV 
 energy resolution. 
 %
-Vibrational spectroscopy, a field that didn't exist 5 years ago, includes vibrational mapping, 
-analyzing the momentum dependence of vibrational states and determining local
-temperature from the ratio of energy gains to losses~\cite{krivanek}.\\
+Vibrational spectroscopy, a field that didn't exist five years ago, includes vibrational mapping, 
+analyzing the momentum dependence of vibrational states and determining the local
+temperature from the ratio of energy gains to losses~\cite{Krivanek:2009}.\\
 
 {\bf Core-loss region.} The regime for $\Delta E \gsim 50$ eV is the core-loss region,
 which provides compositional information
@@ -192,13 +195,13 @@ therefore we will not go into more detail regarding the core ionisation peaks.
 
 
 \subsection{Energy resolution}
-The energy resolution of an EELS spectrum is determined by several factors. 
+The energy resolution of an EEL spectrum is determined by several factors. 
 %
 Firstly, aberrations of the electron spectrometer cause blur of the incoming 
-electron beam~\cite{Tiemeijer}. 
+electron beam~\cite{Freitag:2005}. 
 %
 In general, the spectrometer dispersion becomes worse for higher electron losses,
-and therefore the resolution at ionization edges can be worse than close to the
+and therefore the resolution at ionization edges suffers more than close to the
 ZLP.
 %
 Imaging quality can be improved by the implementation of an aberration corrector, 
@@ -208,19 +211,19 @@ The energy resolution is then mainly determined by the angular distribution
 provided by the electron beam, usually expressed as the full width at half maximum (FWHM) of the ZLP. 
 %
 The peak width depends strongly on the electron source. 
-An  electron  microscope  equipped  with  a  thermally  assisted  
-Schottky  field-emission source typically has an energy resolution of about 800 meV 
-under normal operation conditions~\cite{gu}.  
+An  electron  microscope  equipped  with  a  cold
+field emission gun typically has an energy resolution of about 300-800 meV 
+under normal operation conditions.  
 %
 While this width is small compared to the operating voltage of the STEM (usually between 60-300 keV), 
 it sets a limit for the energy resolution of EELS and thereby hinders the ability to distinguish 
 between peaks separated by less than this value. 
 %
-Furthermore, for low-loss phenomena such as excitons and intraband transitions, 
+Furthermore, for low-loss phenomena such as excitons and intra-band transitions, 
 excitation probabilities can be quite low and these signals can be lost in the tails of the ZLP.
 %
 The resolution can be drastically improved by implementation of a monochromator 
-after the electric source. 
+in the TEM. 
 %
 In monochromators, a small magnetic prism and energy-selecting slit are installed 
 directly after the electron source.
@@ -231,36 +234,35 @@ before going through a narrow slit, restricting the energy distribution of the i
 After compressing it back into the electron probe, the width of the electron beam 
 and the tail intensity are greatly reduced.  
 %
-
-In a recent studies~\cite{krivanek}, a monochromated zero loss peak was obtained 
+In a recent studies~\cite{Krivanek:2009}, a monochromated zero-loss peak was obtained 
 with a FWHM as small as 4.2 meV and, maybe even more importantly, 
 the tail intensity at 20 meV loss has dropped below $10^{-3}$ of its maximum, 
 allowing features in the very low-loss region to be resolved. 
 %
 The improving energy resolution opens new possibilities for accurate measurements
 on the bandgap and the 
-dielectric function.\\
+dielectric function.
 
 Apart from the increase in resolution, another advantage of a monochromated 
 electron beam is its symmetric energy distribution. 
 %
-Asymmetries of absorption peaks in the spectrum can thus 
-unambiguously be attributed to the response of the material~\cite{erni}.
+This directly implies that asymmetries of absorption peaks in the spectrum can 
+unambiguously be attributed to the response of the material~\cite{Erni:2005}.
 %
-What is more, the reduction of the energy spread of the incident electron beam often 
+The reduction of the energy spread of the incident electron beam often 
 comes at the expense of the beam intensity. 
 %
 
 In Fig~\ref{fig:monochromation}, one can observe the effect of a monochromator 
-on the zero-loss peaks of a Schottky field emission microscope. 
+on the zero-loss peaks of a Schottky field emission microscope in the work of~\cite{Erni:2005}. 
 %
 Due to thermal broadening, the unfiltered Schottky field-emission source
-shows a broad tail at the high-energy side, i.e. at negative energy values.
+shows a broad tail at the high-energy side, {\it i.e.} at negative energy loss values.
 %
-The tails of the monochromated beam are highly symmetrical and the energy resolution (FWHM)
-is greatly increased.
+The tails of the monochromated beam are highly symmetrical and the energy dispersion (FWHM)
+is greatly reduced.
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=80mm]{plots/monochromator.png}
     \caption{Comparison of the zero-loss peaks of an unfiltered Schottky field emission microscope 
@@ -268,7 +270,9 @@ is greatly increased.
     Schottky field-emission source (200 kV). 
     The second ZLP shows a wider tail at the low-energy side and the tails of the 
     monochromated beam are highly symmetrical. 
-    The FWHM indicated in each case provides a measure for the energy resolution.}
+    The FWHM indicated in each case provides a measure for the energy resolution.
+    %
+    Retrieved directly from~\cite{Erni:2005}.}
     \label{fig:monochromation}
 \end{figure}
 
@@ -277,7 +281,7 @@ is greatly increased.
 
 The most important aspect complicating the study of the low-loss regime of EEL spectra 
 is the observation of the zero-loss peak, a very intense and ubitiquous feature 
-which right-hand tail suppresses the low loss features, which results in the loss
+whose right-hand tail suppresses the low-loss features, which results in the loss
 of important information within the spectrum.
 %
 Before analysing the low-loss region of EEL spectra, accurate removal of the
@@ -292,7 +296,7 @@ using the vacuum recorded ZLP, because a separately recorded peak is always
 different in shape than the one recorded on a sample, due to phonon excitations, 
 exciton losses, and broadening at the surface of the sample.
 %
-Due to the obvious difference in shape between vacuum and on sample recorded ZLPs, 
+Due to the obvious difference in shape between vacuum and in-sample recorded ZLPs, 
 direct subtraction of the first on the latter would introduce an extra
 source of error. 
 %
@@ -322,8 +326,8 @@ One common flaw of these subtraction methods is the fact that they are often bas
 model assumptions about the ZLP properties and thereby introduce a methodological
 bias which size is difficult to quantify. 
 %
-This bias arises from assumptions made {\it e.g.} on its functional form, symmetric 
-properties or the fitting range that has been used, all introducing an arbitrariness
+This bias arises from assumptions made {\it e.g.} on its functional form, symmetry 
+properties, or the fitting range that has been used, all introducing an arbitrariness
 to the procedure.
 %
 Even more importantly, these subtraction methods lack an estimate of the associated uncertainties, 
@@ -331,9 +335,9 @@ which in turn affects the reliability of any physical interpretation of features
 in the ZLP-subtracted spectra. 
 
 Developing a model-independent strategy that allows for a determination of the ZLP
-with a faithful uncertainty estimate is very welcome.
+with a faithful uncertainty estimate is highly coveted.
 %
-With the knowledge that the magnitude and shape of the ZLP intensity depends
+With the knowledge that the magnitude and shape of the ZLP depend
 not only on the specific values
 of the electron energy loss $\Delta E$, but also on other operation parameters
 of the TEM such as the electron beam energy $E_{\rm b}$, the exposure time
