@@ -1,7 +1,12 @@
 \section{Fundamentals of EELS}
 \label{sec:eels}
 
-Electron energy loss spectroscopy (EELS) is a method used in combination with 
+Realizing the full potential of any material requires knowing its 
+precise electronic, structural and chemical information at high spacial resolution.
+%
+One way to achieve this is by means of electron energy loss spectroscopy (EELS).
+%
+EELS is a method used in combination with 
 transmission electron microscopy (TEM), which analyses the 
 energy distribution of initially monoenergetic electrons after
 they have interacted with a specimen~\cite{Egerton:1996}. 
@@ -22,10 +27,11 @@ Especially since the introduction of modern aberration correctors
 and monochromated electron sources, energy resolutions of 100 meV
 or even higher could be achieved~\cite{Rose:2008},
 which enabled measurements of single (columns of) atoms. 
-%
+
 Transmission electron microscopy can provide structural information 
 with excellent spatial resolution down to atomic dimensions. 
-These structural data can be supplemented by chemical information 
+%
+These compositional data can be supplemented by chemical information 
 from the same specimen region, obtained using analytical techniques
 such as EELS.
 %
@@ -65,19 +71,19 @@ A schematic illustration of a typical EELS setup is shown in the left panel of F
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 Electron energy loss spectroscopy  provides detailed information about the 
-chemical components, bonding, and structure of materials down to the atomic scale.
+chemical components, bonding, and structure of the specimen.
 %
-Thanks to recent progress in TEM instrumentation and data acquisition, state-of-the-art 
-EELS analyses benefit from
-a highly competitive energy (spectral) resolution combined with an unparalleled spatial resolution.
+Thanks to recent progress in TEM instrumentation and data acquisition, the EELS technique 
+benefits from a combination of both
+highly competitive energy (spectral) resolution and spatial resolution.
 %
 Especially scanning transmission electron microscopy (STEM) equipped with a monochromator 
 is extremely useful for high resolution imaging.
 %%
 The right panel of Fig.~\ref{fig:EELS} displays
 a representative EELS spectrum in the region $\Delta E \le 35$ eV, recorded
-in one of the WS$_2$ nanostructures presented in~\cite{SabryaWS2}
-and which will be further discussed later onwards.
+in one of the WS$_2$ nanostructures presented in~\cite{SabryaWS2},
+which will be further discussed later onwards.
 
 \subsection{EEL spectra}
 If we are to understand how the features in electron energy loss spectra are produced, 
@@ -117,27 +123,60 @@ $\theta$ is the scattering angle of the electron of interest,
 and $\theta_0$ represents the angular width of the scattered beam. \\
 
 {\bf Low-loss region.} The second region is the low-loss region or valence region, defined for energy losses
-$\Delta E \lsim 50$ eV, which contains information
-about several important features such as plasmons, excitons, phonons, and
-inter- and intra-band transitions.
-%
-Of particular relevance in this context is the ultra-low-loss region, characterised by $\Delta E \simeq$ few eV.
-Here, the contributions of the ZLP and those from the inelastic interactions
-with the sample are of the same order of magnitude.
-%
-Ranging between electron energy losses of 1 and 5 eV, 
-difficultly distinctive features are the presence of 
-relatively narrow exciton peaks, located close to the ZLP. 
-%
-The intensity of these valence features is over two orders of magnitude lower 
-than the ZLP~\cite{Abajo:2010}. These peaks can be interpreted as arising from
-indirect and direct exciton transitions, the latter of which allows for
-bandgap determination~\cite{Stoger:2008}.
+$\Delta E \lsim 50$ eV, which contains information about interactions between the fast incident electrons
+and the atoms in the specimen.
 
+The two most fundamental types of collective electronic excitations in solids are plasmons and excitons.
+%
+In EEL spectra recorded on rather thick specimens, the most prominently observed peaks are plasmon peaks.
+%
+When an incident electron travels through the crystal lattice, the outer-shell electrons bound to the lattice atoms
+are left oscillating, creating a collective of electron excitation modes called  a plasma resonance.
+%
+This excitation can also be described by means of the creation of a pseudoparticle called a plasmon, 
+whose energy depends on the plasmon frequency~\cite{Nerl:2016}.
+%
+The higher the electron density, the higher the plasmon frequency and therefore the plasmon energy. 
+%
+Characteristic plasmon-loss peaks appear in the EEL spectra between 5 and 50 eV energy loss, and
+can be used to determine the thickness of the specimen, since a higher thickness leads to more
+plasmon excitations.
+
+Additionally, the passage of an incident electron can lead to the excitation of a single outer-shell electron.
+%
+For an insulator or semiconductor, this involves an inter-band transition across the energy bandgap, leaving a hole
+behind in the valence band. 
+%
+The bound state of the electron in the conduction band and electron hole in the valence band is called an exciton.
+%
+Exciton features appear in the ultra-low-loss region of EEL spectra close to the ZLP, 
+characterised by $\Delta E \simeq$ few eV.
+%
+Here, the contributions of the ZLP and those from the inelastic interactions
+with the sample are of the same order of magnitude, and they can be therefore difficultly distinctive~\cite{Abajo:2010}.
+
+When we are dealing with a metal, the higher state can be within the same energy band, corresponding to 
+an intra-band transition.
+%
+Peaks arising from intra-band transition appear very close to the ZLP, with typical energy losses 
+below 500 meV.\\
+
+For very thin specimens, the surface and bulk plasmons largely disappear, leaving
+interband transitions as the main features in the low-loss regime~\cite{Egerton:1996}.
+%
+This facilitates the study after the direct bandgap of the material.
+%
 The  bandgap  refers  to  the  energy  difference between the top of the valence band 
 and the bottom of the conduction band and the corresponding peak is expected to appear 
 at energy losses where the joint density of states (JDOS) exhibits maxima. 
 %
+The nature of the bandgap can be either direct or indirect. For direct bandgap materials,
+electrons can be directly excited from valence to conduction band. However, 
+for indirect band gap materials, a photon or phonon is required to facilitate the transition.
+%
+For this reason, direct bandgap materials tend to have stronger absorption properties.\\
+
+
 It has been shown by Bruley and Brown~\cite{Bruley:1987} that for parabolic bands, 
 the JDOS probed by the electrons can be described by
 \begin{equation}
@@ -165,7 +204,18 @@ as demonstrated in Fig.~\ref{fig:bandgap}.
     \label{fig:bandgap}
 \end{figure}
 
-At even lower energy losses, $\Delta E \lsim 100$ meV, vibrational modes can be revealed. 
+For materials with a large exciton binding energy, it might happen that the energy exchange
+is just barely enough to create an electron-hole pair, but too less to physically separate the electron and hole.
+%
+We then distinguish between the "optical" and the "electrical" band gap, where the first is the threshold
+for the creation of an exciton, while the latter stands for the minimum energy required to create 
+an electron-hole pair that is not bound together.
+%
+The optical and electrical band gap are separated by exactly the binding energy.\\
+
+When we look at features for even lower energy losses in the EEL spectra, $\Delta E \lsim 100$ meV, 
+vibrational modes can be revealed. 
+%
 These are the result of transmitted electrons that generate (and absorb) phonons 
 while passing through the crystal. 
 %
@@ -219,9 +269,9 @@ While this width is small compared to the operating voltage of the STEM (usually
 it sets a limit for the energy resolution of EELS and thereby hinders the ability to distinguish 
 between peaks separated by less than this value. 
 %
-Furthermore, for low-loss phenomena such as excitons and intra-band transitions, 
-excitation probabilities can be quite low and these signals can be lost in the tails of the ZLP.
-%
+Furthermore, for low-loss phenomena such as excitons, 
+excitation probabilities can be quite low and these signals can be lost in the tails of the ZLP.\\
+
 The resolution can be drastically improved by implementation of a monochromator 
 in the TEM. 
 %
@@ -250,8 +300,7 @@ This directly implies that asymmetries of absorption peaks in the spectrum can
 unambiguously be attributed to the response of the material~\cite{Erni:2005}.
 %
 The reduction of the energy spread of the incident electron beam often 
-comes at the expense of the beam intensity. 
-%
+comes at the expense of the beam intensity. \\
 
 In Fig~\ref{fig:monochromation}, one can observe the effect of a monochromator 
 on the zero-loss peaks of a Schottky field emission microscope in the work of~\cite{Erni:2005}. 
@@ -278,6 +327,20 @@ is greatly reduced.
 
 
 \subsection{ZLP subtraction}
+%%%%%%%%%%%
+The properties of the ZLP in monochromated EELS depend on the electron energy dispersion,
+the monochromator alignment, and the sample thickness~\cite{Park:2008, Stoger:2008}.
+%
+The first two limitations are already preesent in the absence of a specimen (vacuum operation),
+but the third one is associated
+to elastic interactions with the sample such as 
+phonon excitation, atomic scattering, and exciton losses.
+%
+This implies that measurements of vacuum EEL spectra can be used for calibration purposes
+but not to directly subtract the ZLP from spectra taken on specimens, since their shapes will differ
+in general.
+%%%%%%%%%%%%%%%
+
 
 The most important aspect complicating the study of the low-loss regime of EEL spectra 
 is the observation of the zero-loss peak, a very intense and ubitiquous feature 

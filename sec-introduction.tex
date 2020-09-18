@@ -1,70 +1,65 @@
 \section{Introduction}
 \label{sec:introduction}
 
-When an incident electron beam passes through a thin specimen in an electron microscope, the electrons lose
-an amount of energy that can be traced back to specific interactions with the sample.
+The appreciation for the family of two-dimensional (2D) materials has grown rapidly since the 
+first isolation of graphene~\cite{Novoselov:2004}.
 %
-The resulting energy distribution can be measured by means of electron energy-loss spectroscopy (EELS), 
-providing a wide range of
-valuable information on the structural, chemical, and electronic properties of nanoscale materials.
+The properties of these two-dimensional materials are usually very different from their 3D counterparts, 
+offering functionalities for novel nanodevices that are not accessible from other heterostructures.
 %
-Thanks to recent instrumentation breakthroughs
-such as electron monochromators~\cite{Terauchi:2005, Freitag:2005} and aberration correctors~\cite{Haider:1998},
-modern EELS analyses can map these properties with unprecedented spatial and spectral resolution.
+The combination of optically active semiconducting layers for light-emitting devices,
+the implementation of indirect-to-direct bandgap transition 
+materials for flexible electronics, the effect of chemical compositions on many-body instabilities such as
+superconductivity~\cite{Novoselov:2016},
 %
-This unique combination makes it possible for instance to chart the local
- electronic properties of nanomaterials
- down to the atomic scale~\cite{Geiger:1967}, and this way to explore various
- important phenomena from the characterisation of bulk and surface plasmons~\cite{Daniels:2003, Schaffer:2008}, 
- excitons~\cite{Erni:2005},
-  phonons~\cite{Ibach:1980}, and inter- and intra-band transitions~\cite{Rafferty:1998},
-  to the determination of the bandgap energy and the band structure~\cite{Stoger:2008}.
+these are just a few examples of the relevance to exploit the properties of these 2D materials. 
+%
+However, realizing the full potential of any materials system requires knowing the precise 
+electronic, structural and chemical information
+at high resolution.
 
-A particularly important region of EEL spectra is
-the low-loss region, defined by electrons that have lost
+Thanks to recent instrumentation breakthroughs in electron microscopy,
+such as electron monochromators~\cite{Terauchi:2005, Freitag:2005} and aberration correctors~\cite{Haider:1998},
+it becomes possible to map these properties with unexampled spatial and spectral resolution.
+%
+Specifically by means of electron energy loss spectroscopy (EELS), it becomes possible to study the local
+electronic properties of nanomaterials
+down to the atomic scale~\cite{Geiger:1967}, and this way to explore various
+important phenomena from the characterisation of bulk and surface plasmons~\cite{Daniels:2003, Schaffer:2008}, 
+excitons~\cite{Erni:2005},
+phonons~\cite{Ibach:1980}, and inter- and intra-band transitions~\cite{Rafferty:1998},
+to the determination of the bandgap energy and the band structure~\cite{Stoger:2008}.
+
+Particulary important information about the material's characteristics can be extracted from studying the
+low-loss region of EEL spectra,
+defined by electrons that have lost
 less than a few eV ($\Delta E\lsim 5$ eV) following their inelastic interactions
 with the sample.
 %
-Provided the sample is electron-penetrable, as required for TEM inspection,
-the majority of the incident electron beam will traverse it
-either without interactions or scattering only elastically with the atoms
-of the sample's crystalline lattice, therefore losing little to no energy.
+However, an omnipresent feature called the zero-loss peak (ZLP) dominates
+the low-loss region of the spectra. 
 %
-These electrons are recorded as a narrow,
-high intensity peak centered at energy losses
-of $\Delta E\simeq 0$, known as the zero-loss peak (ZLP).
-%
-The energy resolution of EELS analyses is ultimately determined by
-the electron beam size of the system, often expressed in terms
-of the full width at half maximum (FWHM) of the
-ZLP~\cite{Egerton:2009}.
-%
-This peak is often asymmetric and its tails extend significantly 
+This narrow, high intensity peak is centered at energy losses
+of $\Delta E\simeq 0$, is often asymmetric and its tails extend significantly 
 beyond the FWHM. 
 %
-In the low-loss region, the contribution from the ZLP tail
-often overwhelms those from the inelastic interactions between
-the incident electrons and the specimen.
+This peak results from the fact that 
+the majority of the incident electron beam will traverse the electron-penetrable sample
+either without interactions or scattering only elastically with the 
+sample's crystalline lattice, therefore losing little to no energy
+and ending up in the ZLP.
 %
-Therefore, relevant signals of low-loss phenomena such as excitons,
+Since in the low-loss region, the contribution from the ZLP tail
+overwhelms those from the inelastic interactions between
+the incident electrons and the specimen,
+relevant signals of low-loss phenomena such as excitons,
 phonons, and intra-band transitions risk being drowned
 in the ZLP tail~\cite{Abajo:2010}.
 %
 An accurate removal of the ZLP
-contribution is thus crucial  in order to efficiently chart and identify the features
+contribution is thus crucial in order to efficiently chart and identify the features
 of the low-loss region in EEL spectra. 
 
-The properties of the ZLP in monochromated EELS depend on the electron energy dispersion,
-the monochromator alignment, and the sample thickness~\cite{Park:2008, Stoger:2008}.
-%
-The first two limitations are already preesent in the absence of a specimen (vacuum operation),
-but the third one is associated
-to elastic interactions with the sample such as 
-phonon excitation, atomic scattering, and exciton losses.
-%
-This implies that measurements of vacuum EEL spectra can be used for calibration purposes
-but not to directly subtract the ZLP from spectra taken on specimens, since their shapes will differ
-in general.
 
 Several approaches to ZLP subtraction have been put forward in 
 literature~\cite{Rafferty:2000, Erni:2005, Stoger:2008, Egerton:1996,Dorneich:1998, Benthem:2001, Lazar:2003}.
@@ -90,7 +85,7 @@ Secondly, they lack an estimate of the associated uncertainties, which in turn a
 the reliability of any physical interpretations of the low-loss region such as
 band gap extraction.
 %
-Thirdly, {\it ad hoc} choices such as fitting ranges introduce a significant degree of
+Thirdly, methodological choices such as fitting ranges introduce a significant degree of
 arbitrariness to the procedure.\\
 
 In this work we bypass these limitations by developing a model-independent strategy
@@ -102,12 +97,12 @@ developed in high-energy physics to study
 quark and gluon substructure of protons
 particle collisions~\cite{Ball:2008by,Ball:2012cx,Ball:2014uwa,Ball:2017nwa}.
 %
-This technique is based on the  Monte Carlo replica method to construct a probability
+This technique is based on the Monte Carlo replica method to construct a probability
 distribution in the space of the experimental data (here the ZLP) and to use artificial
 neural networks as unbiased interpolators to parametrise the ZLP.
 %
 The result is
-a faithful sampling of the probability distribution in the space of the ZLP,
+a prediction of the ZLP intensity based on its input variables,
 without the need to make specific model assumptions or approximations,
 which can be used to subtract its contribution to EEL spectra while
 propagating the associated uncertainties.
@@ -138,10 +133,10 @@ to characterise features arising in the very-low-loss region.
 
 This work is organized as follows.
 %
-First of all, in Sects.~\ref{sec:eels} and~\ref{sec:tmd}
-we review the main features of the EELS technique and
+First of all, in Sects.~\ref{sec:tmd} and~\ref{sec:eels}
 we discuss the intriguing class of transition metal 
-dichalcogenide (TMD) materials, with emphasis on WS$_2$.
+dichalcogenide (TMD) materials, with emphasis on WS$_2$,
+and we review the main features of the EELS technique.
 %
 Sect.~\ref{sec:nn} contains
 the fundamentals of neural networks and the principles

@@ -4,45 +4,45 @@ The top-level auxiliary file: thesis.aux
 The style file: JHEP.bst
 Database file #1: thesis.bib
 Warning--empty booktitle in Bruley:1987
-You've used 70 entries,
+You've used 72 entries,
             2195 wiz_defined-function locations,
-            971 strings with 15916 characters,
-and the built_in function-call counts, 22914 in all, are:
-= -- 2292
-> -- 828
+            986 strings with 16435 characters,
+and the built_in function-call counts, 23779 in all, are:
+= -- 2367
+> -- 881
 < -- 0
-+ -- 303
-- -- 233
-* -- 1520
-:= -- 3140
-add.period$ -- 74
-call.type$ -- 70
-change.case$ -- 68
++ -- 321
+- -- 249
+* -- 1592
+:= -- 3268
+add.period$ -- 76
+call.type$ -- 72
+change.case$ -- 70
 chr.to.int$ -- 0
-cite$ -- 71
-duplicate$ -- 1353
-empty$ -- 2090
-format.name$ -- 233
-if$ -- 5959
+cite$ -- 73
+duplicate$ -- 1391
+empty$ -- 2161
+format.name$ -- 249
+if$ -- 6169
 int.to.chr$ -- 0
-int.to.str$ -- 70
-missing$ -- 260
-newline$ -- 216
-num.names$ -- 70
-pop$ -- 322
+int.to.str$ -- 72
+missing$ -- 268
+newline$ -- 222
+num.names$ -- 72
+pop$ -- 330
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 1014
+skip$ -- 1042
 stack$ -- 0
-substring$ -- 1134
-swap$ -- 661
+substring$ -- 1196
+swap$ -- 679
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 1
-while$ -- 151
-width$ -- 72
-write$ -- 708
+while$ -- 156
+width$ -- 74
+write$ -- 727
 (There was 1 warning)

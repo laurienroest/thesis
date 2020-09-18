@@ -1,5 +1,15 @@
 \providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{10}
 
+\bibitem{Novoselov:2004}
+K.~S. Novoselov, A.~K. Geim, S.~V. Morozov, D.~Jiang, Y.~Zhang, S.~V. Dubonos,
+  I.~V. Grigorieva, and A.~A. Firsov, {\it {Electric Field Effect in Atomically
+  Thin Carbon Films}},  {\em Science} {\bf 306} (2004) 666--669.
+
+\bibitem{Novoselov:2016}
+K.~S. Novoselov, A.~Mishchenko, A.~Carvalho, and A.~H.~C. Neto, {\it {2D
+  materials and van der Waals heterostructures}},  {\em Science} {\bf 353}
+  (2016).
+
 \bibitem{Terauchi:2005}
 M.~Terauchi, T.~M., K.~Tsuno, and M.~Ishida, {\it {Development of a high energy
   resolution electron energy-loss spectroscopy microscope}},  {\em Journal of
@@ -49,19 +59,10 @@ B.~Rafferty and L.~Brown, {\it {Direct and indirect transitions in the region
 M.~Stöger-Pollach, {\it {Optical properties and bandgaps from low loss EELS:
   Pitfalls and solutions}},  {\em Nano Lett.} {\bf 39} (2008) 1092–1110.
 
-\bibitem{Egerton:2009}
-R.~Egerton, {\it {Electron energy-loss spectroscopy in the TEM}},  {\em Rep.
-  Prog. Phys} {\bf 72} (2009) 1.
-
 \bibitem{Abajo:2010}
 F.~García~de Abajo, {\it {Optical excitations in electron microscopy}},  {\em
   RevModPhys} {\bf 82} (2010) 209--256,
   [\href{http://arxiv.org/abs/0903.1669}{{\tt arXiv:0903.1669}}].
-
-\bibitem{Park:2008}
-J.~Park, S.~Heo, et~al., {\it {Bandgap measurement of thin dielectric films
-  using monochromated STEM-EELS}},  {\em Ultramicroscopy} {\bf 109} (2008)
-  1183–1188.
 
 \bibitem{Rafferty:2000}
 B.~Rafferty, S.~Pennycook, and L.~Brown, {\it {Zero loss peak deconvolution for
@@ -134,50 +135,10 @@ S.~E. van Heijst, M.~Masaki, E.~Okunishi, H.~Kurata, and S.~Conesa-Boj, {\it A
   nanoscale tulip garden: Fingerprinting plasmons and excitons in the petals of
   2h/3r - ws2 nanoflowers}, .
 
-\bibitem{Hillier:1944}
-J.~Hillier and R.~Baker, {\it {Microanalysis by Means of Electrons}},  {\em
-  Journal of Applied Physics} {\bf 15} (1944) 663.
-
-\bibitem{Rose:2008}
-H.~Rose, {\it {Optics of high-performance electron microscopes}},  {\em Science
-  and Technology of Advanced Materials} {\bf 9} (2008).
-
-\bibitem{Bruley:1987}
-J.~Bruley and L.~Brown, {\it {Analytical Electron Microscopy Workshop}},  The
-  Institute of Metals, London, Edited by G.W. Lorimer, 1987.
-
-\bibitem{Krivanek:2009}
-O.~Krivanek, N.~Dellby, J.~Hachtel, and M.~Hotz, {\it {Progress in ultrahigh
-  energy resolution EELS}},  {\em Ultramicroscopy} {\bf 203} (2009) 60--67.
-
-\bibitem{Bangert:2003}
-U.~Bangert, A.~Harvey, D.~Freundt, and R.~Keyse, {\it {Highly spatially
-  resolved electron energy‐loss spectroscopy in the bandgap regime of GaN}},
-  {\em Journal of Microscopy} {\bf 188} (1998) 237--242.
-
-\bibitem{Hachtel:2018}
-J.~Hachtel, A.~Lupini, and J.~Idrobo, {\it {Exploring the capabilities of
-  monochromated electron energy loss spectroscopy in the infrared regime}},
-  {\em Scientific Reports} {\bf 8} (2018) 5637.
-
-\bibitem{Tenailleau:1992}
-H.~Tenailleau and J.~M. Martin, {\it {A new background subtraction for
-  low‐energy EELS core edges}},  {\em Journal of Microscopy} {\bf 116} (1992)
-  297–306.
-
-\bibitem{Reed:2002}
-B.~Reed and M.~Sarikaya, {\it {Background subtraction for low-loss transmission
-  electron energy-loss spectroscopy}},  {\em Ultramicroscopy} {\bf 93} (2002)
-  25--37.
-
-\bibitem{Bosman:2006}
-M.~Bosman, M.~Watanabe, D.~Alexander, and V.~Keast, {\it {Mapping chemical and
-  bonding information using multivariate analysis of electron energy-loss
-  spectrum images}},  {\em Ultramicroscopy} {\bf 106} (2006) 1024--1032.
-
-\bibitem{Kothleitner:2003}
-G.~Kothleitner and F.~Hofer, {\it {EELS performance measurements on a new high
-  energy resolution imaging filter}},  {\em Micron} {\bf 34} (2003) 211--218.
+\bibitem{Toh:2017}
+R.~J. Toh, Z.~Sofer, J.~Luxa, D.~Sedmidubský, and M.~Pumera, {\it {3R phase of
+  MoS2 and WS2 outperforms the corresponding 2H phase for hydrogen evolution}},
+   {\em Chemical Communications} {\bf 53} (2017) 3054--3057.
 
 \bibitem{Chhowalla:2013}
 M.~Chhowalla, H.~S. Shin, G.~Eda, L.-J. Li, K.~P. Loh, and H.~Zhangs, {\it {The
@@ -221,6 +182,56 @@ K.~Kam and B.~Parkinson, {\it {Detailed photocurrent spectroscopy of the
 H.~Shi, H.~Pan, Y.-W. Zhang, and B.~I. Yakobson, {\it {Quasiparticle band
   structures and optical properties of strained monolayer MoS2 and WS2}},  {\em
   PHYSICAL REVIEW B} {\bf 87} (2013) 155304.
+
+\bibitem{Hillier:1944}
+J.~Hillier and R.~Baker, {\it {Microanalysis by Means of Electrons}},  {\em
+  Journal of Applied Physics} {\bf 15} (1944) 663.
+
+\bibitem{Rose:2008}
+H.~Rose, {\it {Optics of high-performance electron microscopes}},  {\em Science
+  and Technology of Advanced Materials} {\bf 9} (2008).
+
+\bibitem{Bruley:1987}
+J.~Bruley and L.~Brown, {\it {Analytical Electron Microscopy Workshop}},  The
+  Institute of Metals, London, Edited by G.W. Lorimer, 1987.
+
+\bibitem{Krivanek:2009}
+O.~Krivanek, N.~Dellby, J.~Hachtel, and M.~Hotz, {\it {Progress in ultrahigh
+  energy resolution EELS}},  {\em Ultramicroscopy} {\bf 203} (2009) 60--67.
+
+\bibitem{Park:2008}
+J.~Park, S.~Heo, et~al., {\it {Bandgap measurement of thin dielectric films
+  using monochromated STEM-EELS}},  {\em Ultramicroscopy} {\bf 109} (2008)
+  1183–1188.
+
+\bibitem{Bangert:2003}
+U.~Bangert, A.~Harvey, D.~Freundt, and R.~Keyse, {\it {Highly spatially
+  resolved electron energy‐loss spectroscopy in the bandgap regime of GaN}},
+  {\em Journal of Microscopy} {\bf 188} (1998) 237--242.
+
+\bibitem{Hachtel:2018}
+J.~Hachtel, A.~Lupini, and J.~Idrobo, {\it {Exploring the capabilities of
+  monochromated electron energy loss spectroscopy in the infrared regime}},
+  {\em Scientific Reports} {\bf 8} (2018) 5637.
+
+\bibitem{Tenailleau:1992}
+H.~Tenailleau and J.~M. Martin, {\it {A new background subtraction for
+  low‐energy EELS core edges}},  {\em Journal of Microscopy} {\bf 116} (1992)
+  297–306.
+
+\bibitem{Reed:2002}
+B.~Reed and M.~Sarikaya, {\it {Background subtraction for low-loss transmission
+  electron energy-loss spectroscopy}},  {\em Ultramicroscopy} {\bf 93} (2002)
+  25--37.
+
+\bibitem{Bosman:2006}
+M.~Bosman, M.~Watanabe, D.~Alexander, and V.~Keast, {\it {Mapping chemical and
+  bonding information using multivariate analysis of electron energy-loss
+  spectrum images}},  {\em Ultramicroscopy} {\bf 106} (2006) 1024--1032.
+
+\bibitem{Kothleitner:2003}
+G.~Kothleitner and F.~Hofer, {\it {EELS performance measurements on a new high
+  energy resolution imaging filter}},  {\em Micron} {\bf 34} (2003) 211--218.
 
 \bibitem{greplova}
 E.~Greplova~et al., {\it Quantum parameter estimation with a neural network}, .

@@ -2,43 +2,100 @@
 \label{sec:tmd}
 
 In this work we will apply our machine learning-based method
-for describing the ZLP to a novel class of tungsten disulfide (WS$_2$) nanostructures known
-as nanoflowers~\cite{SabryaWS2}.
-
-WS$_2$ is a transition metal dichalcogenide (TMD) material, which 
-belongs to a large family of materials known as 2D materials or van der Waals materials.
+for describing the ZLP to a novel class of tungsten disulfide (WS$_2$) nanostructures~\cite{SabryaWS2}.
 %
-They are named two-dimensional to emphasize their extraordinary thinness: 
+WS$_2$ is a transition metal dichalcogenide (TMD) material, which 
+belongs to a large family of materials known as two-dimensional (2D) materials or Van der Waals materials.
+%
+In order to interpret  the obtained EEL spectra later in this work, we first need to 
+understand the most important characterics of this class of materials.\\
+
+The appreciation for the family of two-dimensional (2D) materials has grown rapidly since the 
+first isolation of graphene almost two decades ago~\cite{Novoselov:2004}.
+%
+Since then, the family of one-atom-thick crystals has grown with the inclusion of metals, semi-conductors
+and insulators. 
+%
+These materials are named two-dimensional to emphasize their extraordinary thinness: 
 TMDs are characterised by the remarkable property of being fully 
 functional down to a single atomic layer.
 %
-A monolayer MoS$_2$ is only 6.5 Å thick. 
+The properties of these materials are usually very different from their 3D counterparts
+and offer great flexibility for tuning their electronic properties on the nanoscale.
+
+Interestingly, numerous possibilities appear when several 2D crystals are combined in one vertical stacking,
+allowing for a much greater number of combinations than traditional growth methods.
 %
-Just like graphite is a stacking of individual layers of graphene,
-bulk crystals can be formed by stacking 2D monolayers, 
- bound to each other by Van der Waals attraction. 
+The nature of the intralayer bonds is mostly covalent, whereas the stacking layers 
+are held together by weak van der Waals forces, which allows the crystal to easily cleave 
+along the layer surface.
 %
+Such stackings behave signifcantly different from traditional 3D heterostructures, because each layer 
+on itself act as both the interface and the bulk material. 
+%
+This has great influence on the charge displacements: within each layer, charge transfers are reduced
+dramatically, however the mobility can be very large between subsequent layers, which offers
+interesting possibilities for engineering the band structure.
+%
+The relative alignment of neighbouring crystals is therefore of great influence on the physics that can be
+observed in such crystals.\\
+
+
 Over the past few years the exploration of these 2D layered materials
  has developed rapidly. 
  %
  In particular significant attention has been 
- going to monolayers of transition metal dichalcogenides,
+ going to transition metal dichalcogenides,
  atomically thin semiconductor of the type $MX_2$, here M is a 
 transition metal atom (such as Mo or W) and X is a chalcogen atom (such as S, Se, or Te). 
  %
-The characteristic crystalline structure of TMDs is one layer of M atoms 
+All TMDs have a hexagonal structure,
+with each characteristic monolayer comprising one layer of M atoms 
 that is sandwiched between two layers of X atoms.
- %
-The electronic structure of TMDs strongly depends on the coordination 
- of the transition metal atoms, giving rise to a variety of electronic
+%
+As depicted in Fig.~\ref{fig:stackingtypes}, the two most common coordination phases of the monolayers 
+are octahedral and trigonal prismatic, which refers to the coordination of the transition metal atom~\cite{Toh:2017}.
+%
+The electronic properties of TMDs strongly depends on this coordination,
+giving rise to a variety of electronic
  and magnetic properties~\cite{Chhowalla:2013}.
  %
-In fact, most of the remarkable electronic and optical properties of TMDs
-can be traced back to the underlying periodic arrangements of their layers, 
-the so-called stacking sequences~\cite{SabryaWS2}.
+As each individual layer can have any of the two coordinations, 
+multi-layered TMDs can have a large variety of stacking types (polytypes), 
+of which the most commonly found are defined as 1T, 2H and 3R.
 %
-Furthermore, the properties of this class of materials vary significantly
-with their thickness, for instance MoS$_2$ exhibits an indirect bandgap
+In this notation, the digit indicates the number of layers in the unit cell and the
+letter stands for trigonal, hexagonal and rhombohedral respectively.
+
+Most of the remarkable electronic and optical properties of TMDs
+can be traced back to the underlying periodic arrangements of their layers.
+%
+For example, the 1T form displays metallic behaviour, 
+while both 2H and 3R forms are semiconducting.
+%
+While nanostructures built upon 2H or 3R crystalline phases have been routinely studied,
+knowledge about those based on mixed 2H/3R polytypes is far more limited~\cite{SabryaWS2}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{plots/stackings.pdf}
+    \caption{The most common coordinations and polytypes of TMD unit cells. 
+    %
+    Stacking single layers with the  octahedral coordination yields a tetragonal symmetry (1T). 
+    %
+    The prismatic coordination can yield different stacking symmetries: 
+    hexagonal (2H) and rhombohedral (3R).
+    %
+    Retrieved from~\cite{Toh:2017}}.
+    \label{fig:stackingtypes}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+
+
+Apart from the dependence on the stacking sequence, 
+the properties of this class of materials vary significantly
+with their thickness. For instance, MoS$_2$ exhibits an indirect bandgap
 in the bulk form which becomes direct at the monolayer level~\cite{Splendiani:2010}.
 %
 The indirect-to-direct bandgap transition is the main reason for the interest in 
@@ -66,7 +123,7 @@ photoluminescence in monolayer WS$_2$, whereas only little emission is observed 
 the corresponding bulk form.
 %
 WS$_2$ adopts a layered structure by stacking atomic layers of S-W-S 
-in a sandwich-like configuration. 
+in a sandwich-like configuration, with each monolayer of the trigonal prismatic type (Fig.~\ref{fig:stackingtypes}). 
 %
 Although the interaction between adjacent layers is a weak Van der Waals 
 force, the dependence of the interlayer interaction on the stacking 
@@ -87,10 +144,13 @@ and lithium for batteries~\cite{Bhandavat:2012}.
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
-A low-magnification TEM image of the WS$_2$ nanoflowers presented in~\cite{SabryaWS2} is displayed
+For this work, we have studied specific nanostructures of WS$_2$ called nanoflowers,
+which are presented in~\cite{SabryaWS2}. 
+%
+A low-magnification TEM image of the WS$_2$ nanoflowers is displayed
 in the left panel of Fig.~\ref{fig:nanoflowers}.
 %
-These nanostructures are grown directly on top of a TEM substrate with holes in it. 
+These structures are grown directly on top of a TEM substrate with holes in it. 
 %
 The right panel shows the magnification of a representative petal of a nanoflower,
 where the difference in contrast indicates terraces of varying thickness.
@@ -101,19 +161,18 @@ substrate underneath.
 These WS$_2$ nanoflowers contain areas with different thicknesses, orientations
 and crystalline structures, therefore representing an ideal environment to investigate
 structural morphology in WS$_2$ with electronic properties at the nanoscale.
+
+What makes it even more interesting is that these nanoflowers exhibit a mixed form of 3R/2H polytypism, 
+which is of importance for the interlayer interactions: 
+it has been observed that the coexistence of multiple stacking types can complicate
+the characterization of the physical properties~\cite{Na:2018}.
 %
-What makes it even more interesting is that these nanoflowers display 3R/2H polytypism, 
-an important issue for the interlayer
- interactions within WS$_2$: different stacking types tend to coexist, 
- complicating the characterization of the physical properties~\cite{Na:2018}.
-%
-One possible response of polytypism to electric fields is
+For example, one possible response of polytypism to electric fields is
  spontaneous electrical polarization, leading to modifications on the 
- electronic band structure and correspondingly on the band gap.
+ electronic band structure and correspondingly on the band gap~\cite{Li:2016}.
  %
-Tailoring the specific stacking sequences (polytypes) 
-represents a powerful strategy to identify and design novel physical properties~\cite{SabryaWS2}.
-%
+Tailoring the specific stacking sequences
+represents a powerful strategy to identify and design novel physical properties~\cite{SabryaWS2}.\\
 
 As mentioned before, one of the most interesting properties of TMDs that also
 occurs in WS$_2$ is the fact when the material
@@ -135,7 +194,6 @@ obtained at the monolayer level.
 We observe that for monolayers, the results for the measured
 value of $E_{\rm bg}$ are quite inconsistent, 
 reflecting the challenges of its accurate determination.
-
 
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

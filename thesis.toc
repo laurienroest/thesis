@@ -1,29 +1,29 @@
 \contentsline {section}{\numberline {1}Introduction}{5}{section.1}%
-\contentsline {section}{\numberline {2}Fundamentals of EELS}{7}{section.2}%
-\contentsline {subsection}{\numberline {2.1}EEL spectra}{8}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Energy resolution}{10}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}ZLP subtraction}{11}{subsection.2.3}%
-\contentsline {section}{\numberline {3}Transition metal dichalcogenides and WS$_2$}{13}{section.3}%
-\contentsline {section}{\numberline {4}Fundamentals of neural networks}{16}{section.4}%
-\contentsline {section}{\numberline {5}Neural network determination of the ZLP}{20}{section.5}%
-\contentsline {subsection}{\numberline {5.1}ZLP parametrisation}{20}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Uncertainty propagation}{22}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}Training strategy}{25}{subsection.5.3}%
-\contentsline {paragraph}{Training of vacuum spectra.}{25}{section*.15}%
-\contentsline {paragraph}{Training of sample spectra.}{27}{section*.16}%
-\contentsline {section}{\numberline {6}Results I. Vacuum spectra}{31}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Training initialization}{31}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Fit quality}{34}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}Dependence on the electron energy loss}{35}{subsection.6.3}%
-\contentsline {subsection}{\numberline {6.4}Dependence on beam energy and exposure time }{38}{subsection.6.4}%
-\contentsline {subsection}{\numberline {6.5}Stability and reliability checks}{39}{subsection.6.5}%
-\contentsline {section}{\numberline {7}Results II. Sample spectra}{43}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Training dataset}{43}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Subtraction procedure}{45}{subsection.7.2}%
-\contentsline {subsection}{\numberline {7.3}Bandgap analysis of sample A}{50}{subsection.7.3}%
-\contentsline {subsection}{\numberline {7.4}Mapping excitonic transitions in sample B}{53}{subsection.7.4}%
-\contentsline {section}{\numberline {8}Summary and outlook}{56}{section.8}%
-\contentsline {section}{\numberline {A}Installation and usage of {\tt EELSfitter}}{59}{appendix.A}%
-\contentsline {paragraph}{\tt Load\_data.py}{59}{section*.43}%
-\contentsline {paragraph}{\tt Fitter.ipynb}{59}{section*.44}%
-\contentsline {paragraph}{\tt predictions.ipynb}{61}{section*.45}%
+\contentsline {section}{\numberline {2}Transition metal dichalcogenides and WS$_2$}{7}{section.2}%
+\contentsline {section}{\numberline {3}Fundamentals of EELS}{11}{section.3}%
+\contentsline {subsection}{\numberline {3.1}EEL spectra}{12}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Energy resolution}{14}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}ZLP subtraction}{16}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Fundamentals of neural networks}{18}{section.4}%
+\contentsline {section}{\numberline {5}Neural network determination of the ZLP}{22}{section.5}%
+\contentsline {subsection}{\numberline {5.1}ZLP parametrisation}{22}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Uncertainty propagation}{24}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Training strategy}{27}{subsection.5.3}%
+\contentsline {paragraph}{Training of vacuum spectra.}{27}{section*.16}%
+\contentsline {paragraph}{Training of sample spectra.}{29}{section*.17}%
+\contentsline {section}{\numberline {6}Results I. Vacuum spectra}{33}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Training initialization}{33}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Fit quality}{36}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Dependence on the electron energy loss}{37}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Dependence on beam energy and exposure time }{40}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Stability and reliability checks}{41}{subsection.6.5}%
+\contentsline {section}{\numberline {7}Results II. Sample spectra}{45}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Training dataset}{45}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Subtraction procedure}{47}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Bandgap analysis of sample A}{52}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Mapping excitonic transitions in sample B}{55}{subsection.7.4}%
+\contentsline {section}{\numberline {8}Summary and outlook}{58}{section.8}%
+\contentsline {section}{\numberline {A}Installation and usage of {\tt EELSfitter}}{61}{appendix.A}%
+\contentsline {paragraph}{\tt Load\_data.py}{61}{section*.44}%
+\contentsline {paragraph}{\tt Fitter.ipynb}{61}{section*.45}%
+\contentsline {paragraph}{\tt predictions.ipynb}{63}{section*.46}%
