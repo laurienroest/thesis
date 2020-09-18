@@ -192,17 +192,7 @@ from the first few eV of the energy-loss function.
 %
 From a fit of the band gap onset to Eq.~\ref{eq:bandgap}, 
 the value of (1/2) for a direct bandgap switches to (3/2) for an indirect bandgap,
-as demonstrated in Fig.~\ref{fig:bandgap}.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{plots/bandgap.png}
-    \caption{Schematic diagrams showing the contributions from the JDOS and matrix elements for (a) direct and (b) indirect transitions. From a fit of the bandgap onset to Eq.~\ref{eq:bandgap}, the power of (1/2) for a direct bandgap switches
-    to (3/2) for an indirect transition.
-    %
-    Retrieved directly from~\cite{Rafferty:1998}.}
-    \label{fig:bandgap}
-\end{figure}
+as demonstrated in Fig.~\ref{fig:bandgap}.\\
 
 For materials with a large exciton binding energy, it might happen that the energy exchange
 is just barely enough to create an electron-hole pair, but too less to physically separate the electron and hole.
@@ -213,7 +203,19 @@ an electron-hole pair that is not bound together.
 %
 The optical and electrical band gap are separated by exactly the binding energy.\\
 
-When we look at features for even lower energy losses in the EEL spectra, $\Delta E \lsim 100$ meV, 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{plots/bandgap.png}
+    \caption{Schematic diagrams showing the contributions from the JDOS and matrix elements for (a) direct and (b) indirect transitions. From a fit of the bandgap onset to Eq.~\ref{eq:bandgap}, the power of (1/2) for a direct bandgap switches
+    to (3/2) for an indirect transition.
+    %
+    Retrieved directly from~\cite{Rafferty:1998}.}
+    \label{fig:bandgap}
+\end{figure}
+
+
+
+When we look at features in the EEL spectra for even lower energy losses, $\Delta E \lsim 100$ meV, 
 vibrational modes can be revealed. 
 %
 These are the result of transmitted electrons that generate (and absorb) phonons 
@@ -245,6 +247,8 @@ therefore we will not go into more detail regarding the core ionisation peaks.
 
 
 \subsection{Energy resolution}
+\label{sec:energyresolution}
+
 The energy resolution of an EEL spectrum is determined by several factors. 
 %
 Firstly, aberrations of the electron spectrometer cause blur of the incoming 
@@ -313,7 +317,7 @@ is greatly reduced.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=80mm]{plots/monochromator.png}
+    \includegraphics[width=70mm]{plots/monochromator.png}
     \caption{Comparison of the zero-loss peaks of an unfiltered Schottky field emission microscope 
     (200 kV), a cold field-emission microscope (100 kV) and a monochromated electron beam with 
     Schottky field-emission source (200 kV). 
@@ -325,22 +329,22 @@ is greatly reduced.
     \label{fig:monochromation}
 \end{figure}
 
+There is one more limitation to the EELS resolution that needs to be discussed,
+that is the contribution coming from multiple scattering. 
+%
+In the general case, but specifically for thicker samples, plural scattering of electrons
+is possible, introducing additional peaks at two (or three, four...) times the single
+scattering energy loss. 
+%
+Distinguishing the single scattering contributions from the multiply-scattered electrons 
+is typically done by means of a deconvolution method~\cite{Egerton:1996}.
+%
+Multiple scattering restricts elemental mapping to specimen thickness below the mean free path of scattered 
+electrons, which usually corresponds to a thickness $<70$ nm~\cite{Hofer:2016}.
+
 
 \subsection{ZLP subtraction}
-%%%%%%%%%%%
-The properties of the ZLP in monochromated EELS depend on the electron energy dispersion,
-the monochromator alignment, and the sample thickness~\cite{Park:2008, Stoger:2008}.
-%
-The first two limitations are already preesent in the absence of a specimen (vacuum operation),
-but the third one is associated
-to elastic interactions with the sample such as 
-phonon excitation, atomic scattering, and exciton losses.
-%
-This implies that measurements of vacuum EEL spectra can be used for calibration purposes
-but not to directly subtract the ZLP from spectra taken on specimens, since their shapes will differ
-in general.
-%%%%%%%%%%%%%%%
-
+\label{sec:zlpsubtraction}
 
 The most important aspect complicating the study of the low-loss regime of EEL spectra 
 is the observation of the zero-loss peak, a very intense and ubitiquous feature 
@@ -352,25 +356,32 @@ ZLP is crucial.
 %
 In the last several years different removal routines for the ZLP were introduced, 
 as the increasing energy resolution of the instrumentation would allow for bandgap 
-determination by means of VEELS. 
+determination by means of VEELS.\\
+
+The properties of the ZLP in monochromated EELS depend on the electron energy dispersion,
+the monochromator alignment, and the sample thickness~\cite{Park:2008, Stoger:2008}.
 %
-The most general suggestion is the subtraction of a fitted ZLP rather than 
-using the vacuum recorded ZLP, because a separately recorded peak is always 
-different in shape than the one recorded on a sample, due to phonon excitations, 
+The first two limitations are already present for a ZLP recorded in vacuum,
+but the third is associated to interactions with the sample, such as phonon excitations, 
 exciton losses, and broadening at the surface of the sample.
+%
+This implies that the separately recorded peak can be used for calibration purposes,
+but not to directly subtract the ZLP from spectra taken on specimens. 
 %
 Due to the obvious difference in shape between vacuum and in-sample recorded ZLPs, 
 direct subtraction of the first on the latter would introduce an extra
-source of error. 
-%
-For this reason, using a fitted ZLP and subtracting it from the EEL spectrum 
-is the preferred way to go.
+source of error. \\
+
+For this reason, the most general suggestion is the subtraction of a fitted ZLP 
+from the EEL spectrum.
 %
 Representative examples include the subtraction of a fitted Lorentzian distribution~\cite{Dorneich:1998},
 directly subtracting the mirrored left-hand side of the ZLP~\cite{Lazar:2003},
 the subtraction of a power-law fit~\cite{Erni:2005}, and the use of a
 more general multi-parameter function~\cite{Benthem:2001}.
 %
+The fitted ZLPs and the corresponding subtracted spectra can be observed in Fig.~\ref{fig:comparesub}.
+
 These and several other attempts to model the ZLP distribution 
 have had some success at describing the main intensity of the peak, 
 but in the tails discrepancies can be as large as several tens of percent~\cite{Bangert:2003}.
@@ -395,7 +406,21 @@ to the procedure.
 %
 Even more importantly, these subtraction methods lack an estimate of the associated uncertainties, 
 which in turn affects the reliability of any physical interpretation of features that are observed
-in the ZLP-subtracted spectra. 
+in the ZLP-subtracted spectra.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.9\textwidth]{plots/compare_subtractions.pdf}
+    \caption{Comparison of the fitted zero-loss peaks and the corresponding ZLP-subtracted 
+    spectra by means of fitting an (a) Lorentzian distribution~\cite{Dorneich:1998}, \
+    (b) mirrored left-hand side~\cite{Lazar:2003}, (c) power-law fit~\cite{Erni:2005}, \
+    (d) general multi-parameter function~\cite{Benthem:2001}.
+    %
+    One can observe how all subtracted spectra lack any form of associated uncertainties.}
+    \label{fig:comparesub}
+\end{figure}
+
+
 
 Developing a model-independent strategy that allows for a determination of the ZLP
 with a faithful uncertainty estimate is highly coveted.
@@ -423,4 +448,7 @@ the local environment (possibly exposed to mechanical, pressure and temperature 
 and spectral aberrations~\cite{Egerton:1996}. 
 %
 Any model for the ZLP should thus account for this source of uncertainties.
+
+
+
 

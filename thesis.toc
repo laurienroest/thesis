@@ -9,8 +9,8 @@
 \contentsline {subsection}{\numberline {5.1}ZLP parametrisation}{22}{subsection.5.1}%
 \contentsline {subsection}{\numberline {5.2}Uncertainty propagation}{24}{subsection.5.2}%
 \contentsline {subsection}{\numberline {5.3}Training strategy}{27}{subsection.5.3}%
-\contentsline {paragraph}{Training of vacuum spectra.}{27}{section*.16}%
-\contentsline {paragraph}{Training of sample spectra.}{29}{section*.17}%
+\contentsline {paragraph}{Training of vacuum spectra.}{27}{section*.17}%
+\contentsline {paragraph}{Training of sample spectra.}{29}{section*.18}%
 \contentsline {section}{\numberline {6}Results I. Vacuum spectra}{33}{section.6}%
 \contentsline {subsection}{\numberline {6.1}Training initialization}{33}{subsection.6.1}%
 \contentsline {subsection}{\numberline {6.2}Fit quality}{36}{subsection.6.2}%
@@ -24,6 +24,6 @@
 \contentsline {subsection}{\numberline {7.4}Mapping excitonic transitions in sample B}{55}{subsection.7.4}%
 \contentsline {section}{\numberline {8}Summary and outlook}{58}{section.8}%
 \contentsline {section}{\numberline {A}Installation and usage of {\tt EELSfitter}}{61}{appendix.A}%
-\contentsline {paragraph}{\tt Load\_data.py}{61}{section*.44}%
-\contentsline {paragraph}{\tt Fitter.ipynb}{61}{section*.45}%
-\contentsline {paragraph}{\tt predictions.ipynb}{63}{section*.46}%
+\contentsline {paragraph}{\tt Load\_data.py}{61}{section*.45}%
+\contentsline {paragraph}{\tt Fitter.ipynb}{61}{section*.46}%
+\contentsline {paragraph}{\tt predictions.ipynb}{63}{section*.47}%
